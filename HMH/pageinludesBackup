@@ -1,0 +1,183 @@
+exports.include = {
+  I: './helpers/actorCapabilities.js',
+
+  // pages
+  adminGrowthReportPage:
+    './pages/ed/adminGrowthReport/adminGrowthReport.page.js',
+  adminProgramActivityReportPage:
+    './pages/ed/adminProgramActivityReport/adminProgramActivityReport.page.js',
+  adminRosterPage: './pages/ed/adminRoster/adminRoster.page.js',
+  adminStandardReportPage:
+    './pages/ed/adminStandardReport/adminStandardReport.page.js',
+  adminUsageReportPage: './pages/ed/adminUsageReport/adminUsageReport.page.js',
+  assessmentReportPage: './pages/ed/assessmentReport/assessmentReport.page.js',
+  assignmentDetailsPage: './pages/ed/assignments/assignmentDetails.page.js',
+  assignmentsOverviewPage: './pages/ed/assignments/assignmentsOverview.page.js',
+  authorPage: './pages/ed/professionalLearning/author.page.js',
+  canvasCreateAssignmentPage:
+    './pages/learningManagementSystem/canvasCreateAssignment.page.js',
+  canvasDashboardPage:
+    './pages/learningManagementSystem/canvasDashboard.page.js',
+  canvasLoginPage: './pages/learningManagementSystem/canvasLogin.page.js',
+  clientRegistryPage: './pages/learningManagementSystem/clientRegistry.page.js',
+  contentProviderPage: './pages/ed/contentProvider/contentProvider.page.js',
+  contentPickerPage: './pages/ed/contentPicker/contentPicker.page.js',
+  contentPickerPageAMP: './pages/ed/contentPickerAMP/contentPickerAMP.page.js',
+  connectedProductsPage:
+    './pages/ed/connectedProducts/connectedProducts.page.js',
+  createGroupsModal: './pages/ed/groups/createGroupsModal.page.js',
+  createAssignmentsPage:
+    './pages/ed/createAssignments/createAssignments.page.js',
+  createAssignmentModalPage:
+    './pages/ed/assignments/createAssignmentModal.page.js',
+  dashboardHeinemann:
+    './pages/heinemannFlight/dashboard/heinemannDashboard.page.js',
+  directionsModal: './pages/ed/assignments/directionsModal.page.js',
+  discoverPage: './pages/ed/discover/discoverPage.page.js',
+  discoverlessonPage: './pages/ed/discover/lessonPage.page.js',
+  ebrLandingPage: './pages/ed/ebr/ebrLandingPage.page.js',
+  editAssignmentModal: './pages/ed/assignments/editAssignmentModal.page.js',
+  edLoginPage: './pages/ed/edLogin.page.js',
+  example: './pages/ed/example.page.js',
+  forgotPasswordPage: './pages/ed/forgotPassword/forgotPassword.page.js',
+  growthMeasurePage: './pages/ed/growthMeasure/growthMeasure.page.js',
+  groupsPage: './pages/ed/groups/groups.page.js',
+  growthReportPage: './pages/ed/growthReport/growthReport.page.js',
+  helpPanelPage: './pages/ed/helpPanel/helpPanel.page.js',
+  productSelectionPage: './pages/common/licensing/productSelection.page.js',
+  instructionalPracticeReportPage:
+    './pages/ed/instructionalPracticeReport/instructionalPracticeReport.page.js',
+  iReadPage: './pages/ed/iRead/iRead.page.js',
+  linkedAssignmentsPage:
+    './pages/ed/linkedAssignments/linkedAssignments.page.js',
+  learningResourcePage:
+    './pages/ed/professionalLearning/learningResource.page.js',
+  legacyArvoPage: './pages/ed/arvo/legacyArvoPage.page.js',
+  lessonPage: './pages/ed/myStuff/lessons/lesson.page.js',
+  licensingPage: './pages/ed/licensing/licensingLegacy.page.js',
+  licensesSummaryOverviewPage:
+    './pages/common/licensing/licensesSummaryOverview.page.js',
+  licenseManagementPage: './pages/common/licensing/licenseManagement.page.js',
+  loginPage: './pages/ed/login/login.page.js',
+  newFlightlogin: './pages/heinemannFlight/login/flightNewLogin.page.js',
+  loginHeinemann: './pages/heinemannFlight/login/flightLogin.page.js',
+  licensesHeinemann:
+    './pages/heinemannFlight/licensing/heinemannLicensesLegacy.page.js',
+  liveAssessmentPage: './pages/ed/liveAssessment/liveAssessment.page.js',
+  linkedClassesModal: './pages/ed/linkedAssignments/linkedClasses.page.js',
+  mainNav: './pages/ed/mainNavigation.page.js',
+  mainNavHeinemannHeader:
+    './pages/heinemannFlight/dashboard/heinemannMainNavigation.page.js',
+  myAssessmentsPage: './pages/ed/myStuff/assessments/myAssessments.page.js',
+  myClassesSideNavPage: './pages/ed/myClassesSideNav/myClassesSideNav.page.js',
+  myClassSettingsPage: './pages/ed/myClassSettings/myClassSettings.page.js',
+  myClassesPage: './pages/ed/myClasses/myClasses.page.js',
+  myItemsPage: './pages/ed/myStuff/items/myItems.page.js',
+  myLessonsPage: './pages/ed/myStuff/lessons/myLessons.page.js',
+  mySchools: './pages/ed/mySchools/mySchools.page.js',
+  mySchoolsClassEditor: './pages/ed/mySchools/classEditor.page.js',
+  adminPreferencesPage: './pages/ed/adminPreferences/adminPreferences.page.js',
+  myStuffCommonPage: './pages/ed/myStuff/commons/myStuffCommon.page.js',
+  productLandingPage: './pages/ed/productLanding/productLanding.page.js',
+  productResourceHeinemann:
+    './pages/heinemannFlight/productResource/heinemannProductResource.page.js',
+  professionalLearningPage:
+    './pages/ed/professionalLearning/professionalLearning.page.js',
+  previewSwitcher: './pages/ed/previewSwitcher/previewSwitcher.page.js',
+  pocketlabsPage: './pages/connectedProducts/pocketlabs.page.js',
+  rosterDashboardPage: './pages/ed/adminRoster/rosterDashboard.page.js',
+  rcePage: './pages/ed/rce/rce.page.js',
+  registerPage: './pages/ed/register/register.page.js',
+  resourcePage: './pages/ed/discover/resourcePage.page.js',
+  resourceSummaryPanel: './pages/ed/discover/resourceSummaryPanel.page.js',
+  schoologyLoginPage: './pages/schoology/schoologyLogin.page.js',
+  schoologyMaterialsPage: './pages/schoology/schoologyMaterials.page.js',
+  scoresPage: './pages/ed/scores/scores.page.js',
+  scoresReviewPage: './pages/ed/scoresReview/scoresReview.page.js',
+  sharedWithMePage: './pages/ed/myStuff/sharedWithMe/sharedWithMe.page.js',
+  sharedWithMeCustomAssessmentPage:
+    './pages/ed/myStuff/sharedWithMe/sharedWithMeCustomAssessment.page.js',
+  sharedWithMeCustomLessonPage:
+    './pages/ed/myStuff/sharedWithMe/sharedWithMeCustomLesson.page.js',
+  standardsReportPage: './pages/ed/standardsReport/standardsReport.page.js',
+  storyBookPage: './pages/storybook/storybook.page.js',
+  studentAssignmentsPage:
+    './pages/ed/studentAssignments/studentAssignments.page.js',
+  studentDashboardPage: './pages/ed/studentDashboard/studentDashboard.page.js',
+  teacherDashboardPage: './pages/ed/teacherDashboard/teacherDashboard.page.js',
+  tertiaryNavDesktop: './pages/ed/tertiaryNavDesktop.page.js',
+  teacherAssignmentsOverviewPage:
+    './pages/ed/teacherAssignmentsOverview/teacherAssignmentsOverview.page.js',
+  teacherDashboardRecentlyViewed:
+    './pages/ed/teacherDashboard/teacherDashboardRecentlyViewed.page.js',
+  trainingPathways: './pages/ed/trainingPathways/trainingPathways.page.js',
+  teacherRosterPage: './pages/ed/teacherRoster/teacherRosterPage.js',
+  themePage: './pages/ed/professionalLearning/theme.page.js',
+  quickViewModal: './pages/ed/discover/quickViewModal.page.js',
+  wagglePage: './pages/connectedProducts/waggle.page.js',
+  updatesPage: './pages/ed/updatesPage/updatesPage.js',
+  userProfile: './pages/ed/userProfile/userProfile.page.js',
+  userPageHeinemann:
+    './pages/heinemannFlight/userManagment/heinemannUser.page.js',
+  virtualClassroomPage: './pages/ed/virtualClassroom/virtualClassroom.page.js',
+  writablePage: './pages/connectedProducts/writable.page.js',
+
+  // services
+  classAssociationsService: './services/classes.api.js',
+  contentProviderService: './services/contentProvider.api.js',
+  dataPurgeService: './services/dataPurge.api.js',
+  edAssignmentService: './services/assignments.api.js',
+  edDMPSService: './services/dmps.api.js',
+  edLoginService: './services/login.api.js',
+  edManagePrograms: './services/manageprograms.api.js',
+  edNotificationService: './services/notifications.api.js',
+  edVirtualClassroomService: './services/virtualClassroom.api.js',
+  edMyStuffService: './services/myStuff.api.js',
+  edViaductService: './services/viaductService.api.js',
+  entitlementsService: './services/entitlements.api.js',
+  groupsService: './services/groups.api.js',
+  idsService: './services/ids.api.js',
+  legalAcceptService: './services/legalAccept.api.js',
+  lessonsService: './services/lessons.api.js',
+  myFavoritesService: './services/myFavorites.api.js',
+  recentlyViewedService: './services/recentlyViewed.api.js',
+  recentScoresService: './services/recentScores.api.js',
+  resourceDetailsPage: './pages/ed/discover/resourceDetailsPage.page.js',
+  rosterBatchHistory: './services/rosterBatchHistory.api.js',
+  updatesService: './services/updates.api.js',
+
+  // components
+  autoCompleteComponent: './components/autoComplete.component.js',
+  dropDownComponent: './components/dropdown.component.js',
+  dateTimePickerComponent: './components/dateTimePicker.component.js',
+  edResourceTableComponent: './components/table/ed/resource.table.component.js',
+  edResourceFeatureFlagTableComponent:
+    './components/table/ed/resource.featureFlag.table.component.js',
+  flightUserTableComponent: './components/table/flight/user.table.component',
+  filterComponent: './components/table/filter.component.js',
+  licensingOverviewTeacherTableComponent:
+    './components/table/licensing/licensingOverviewTeacher.table.component.js',
+  licensingOverviewStudentTableComponent:
+    './components/table/licensing/licensingOverviewStudent.table.component.js',
+  licensingManagementUsersTableComponent:
+    './components/table/licensing/licensingManagementUsers.table.component.js',
+  tableHeaderComponent: './components/table/table.header.component.js',
+
+  // flight
+  teacherProductModuleDTM:
+    './pages/heinemannFlight/doTheMath/teacherProductModule.page.js',
+  studentProductModuleDTM:
+    './pages/heinemannFlight/doTheMath/studentProductModule.page.js',
+  createAssessment:
+    './pages/heinemannFlight/assessmentModule/createAssessment.page.js',
+  studentAssignmentsModule:
+    './pages/heinemannFlight/assessmentModule/studentAssignmentsModule.page.js',
+  studentAssignmentPlayer:
+    './pages/heinemannFlight/assessmentModule/studentAssignmentPlayer.page.js',
+  myClassesModule: './pages/heinemannFlight/myClasses/myClassesModule.page.js',
+  myClassesAssignmentsOverview:
+    './pages/heinemannFlight/myClasses/myClassesAssignmentsOverview.page.js',
+  rosterModule: './pages/heinemannFlight/myClasses/rosterModule.page.js',
+  scores: './pages/heinemannFlight/scores/scores.page.js',
+  reports: './pages/heinemannFlight/assessmentReports/reports.page.js',
+};

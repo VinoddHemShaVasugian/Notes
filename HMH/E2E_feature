@@ -1,0 +1,78 @@
+@dtmAssessmentFlowE2e @New-code
+
+Feature: Validate the e2e assessment flow.
+
+    @dtmTeacherAssessmentFlowE2e
+    Scenario Outline: Teacher Logins to Heinemann Flight new site and assign assignments to required class/student.
+        Given The user launch the Flight login URL
+        Then The user selects the "<country>" from the Country input in Flight login
+        And The user selects the "<state>" state from the State input in Flight login
+        And The user selects the "<suite>" org for "<userLoginType>" tests in Flight login
+        And The user presses the "Next" button in Flight login
+        Given The user launch the Flight login URL
+        Then The user should be redirected back to login
+        And The user logs into the "<suite>" org for "<userLoginType>" tests in Flight login
+        Then The user should land on Dashboard page
+        When the user clicks launch button on product
+        Then the teacher should land on "<productName>" product page
+        When the teacher selects the required "<assessmentModule>" to navigate assessment module page
+        Then the teacher should land on the "<assignmentName>" module page
+        When the teacher select required assessment to create assignment and assign to students
+        Then the teacher should land on create assessment page
+        When the teacher provide "<assignmentName>" and select required "<className>"
+        And the teacher clicks assign button to create assessment and assign to students
+        Then the success message should be displayed for creating an assessment and assigned to students succeeded
+        Examples:
+            | country       | state | suite        | userLoginType            | productName | assessmentModule                                       | assignmentName                                            | className       |
+            | United States | Other | unitedStates | flightTeachersLoginTests | Do The Math | Addition & Subtraction A: Addition With Sums Up to 100 | Addition & Subtraction A – Beginning of Module Assessment | AutomationClass |
+
+    @dtmStudentAssessmentFlowE2e
+    Scenario Outline: Student will login to Flight site and complete the assignment. Student will review their score.
+        Given The user launch the Flight login URL
+        Then The user selects the "<country>" from the Country input in Flight login
+        And The user selects the "<state>" state from the State input in Flight login
+        And The user selects the "<suite>" org for "<userLoginType>" tests in Flight login
+        And The user presses the "Next" button in Flight login
+        Given The user launch the Flight login URL
+        Then The user should be redirected back to login
+        And The user logs into the "<suite>" org for "<userLoginType>" tests in Flight login
+        Then The user should land on Dashboard page
+        When the user clicks launch button on product
+        Then the student should land on product page
+        When the student clicks launch button on product page
+        Then the student should land on assignments module page
+        And the student should see an assigned "<assignmentName>"
+        When the student clicks the required "<assignmentName>" to take assignment
+        Then the student should land on assignment page "<assignmentName>"
+        When the student answering all the questions and submitted
+        Then the student see the success message for assignment completion
+        When the user navigate to dashboard page
+        And the student clicks Scores menu
+        Then the student should landed on Scores page
+        And the student should see the score of completed assignment "<assignmentName>"
+        Examples:
+            | country       | state | suite        | userLoginType            | productName | assessmentModule                                       | assignmentName                                            | className       |
+            | United States | Other | unitedStates | flightStudentsLoginTests | Do The Math | Addition & Subtraction A: Addition With Sums Up to 100 | Addition & Subtraction A – Beginning of Module Assessment | AutomationClass |
+
+    @dtmReportVerificationE2e
+    Scenario Outline: Teacher verify the reports for completed assessment.
+        Given The user launch the Flight login URL
+        Then The user selects the "<country>" from the Country input in Flight login
+        And The user selects the "<state>" state from the State input in Flight login
+        And The user selects the "<suite>" org for "<userLoginType>" tests in Flight login
+        And The user presses the "Next" button in Flight login
+        Given The user launch the Flight login URL
+        Then The user should be redirected back to login
+        And The user logs into the "<suite>" org for "<userLoginType>" tests in Flight login
+        Then The user should land on Dashboard page
+        When the teacher clicks Reports menu
+        Then the teacher should landed on Assessment Reports page
+        When the teacher selects the required completed "<assignmentName>" assessment "<className>"
+        Then the teacher should land on "<assignmentName>" report overview page
+        When the teacher click assessment performance link
+        Then the teacher should land on assessment performance window
+        When the teacher close the assessment performance report window
+        Then the teacher should land on "<assignmentName>" report overview page
+        Examples:
+            | country       | state | suite        | userLoginType            | productName | assessmentModule                                       | assignmentName                                            | className       |
+            | United States | Other | unitedStates | flightTeachersLoginTests | Do The Math | Addition & Subtraction A: Addition With Sums Up to 100 | Addition & Subtraction A – Beginning of Module Assessment | AutomationClass |

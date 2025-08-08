@@ -1,0 +1,67 @@
+const { I } = inject();
+
+module.exports = {
+  SeeAssessmentReportButton: requiredAssignmentName => {
+    return locate(
+      `//*[text()="${requiredAssignmentName}"]//following::*[text()="See Assessment Report"]`,
+    );
+  },
+  classDropdown: { id: 'classDropdown' },
+  selectClass: className => {
+    return locate('li').withText(className);
+  },
+  clickReportOnChart: { css: 'rect.highcharts-point' },
+
+  verifyRequiredAssignment: verifyAssignmentName => {
+    return locate('h1').withText(verifyAssignmentName);
+  },
+  grabAssignmentName: { dataTestId: 'asmtName' },
+  printButton: locate('button').withText('Print Report'),
+  exportCsvButton: locate('button').withText('Export CSV'),
+  viewAllItems: locate('span').withText('View All Items'),
+  verifyAssessmentPerfWindow: locate('h1').withText('Assessment Performance'),
+  closeAssessmentPerfWindow: { dataTestId: 'CloseIcon' },
+
+  async verifyAssessmentReport(assignmentName, className) {
+    await I.waitForVisible(this.classDropdown, 30);
+    await I.clickWhenClickable(this.classDropdown);
+    await I.waitForVisible(this.selectClass(className), 30);
+    await I.clickWhenClickable(this.selectClass(className));
+    const verifyAssignmentName = `Automation dec : ${assignmentName}`;
+    await I.waitForVisible(this.clickReportOnChart, 30);
+    await I.clickWhenClickable(this.clickReportOnChart);
+    await I.waitForVisible(this.grabAssignmentName, 30);
+    let assignmentNameOnChart = await I.grabTextFrom(this.grabAssignmentName);
+    console.log("Vinoth log - verifyAssignmentName: " + verifyAssignmentName);
+    console.log("Vinoth log - assignmentNameOnChart: " + assignmentNameOnChart);
+    await I.assertEqual(verifyAssignmentName, assignmentNameOnChart);
+    console.log("Vinoth log: async verifyAssessmentReport(assignmentName, className) Success :");
+  },
+
+  async clicksSeeReport(assignmentName) {
+    const requiredAssignmentName = `Automation dec : ${assignmentName}`;
+    await I.clickWhenClickable(this.SeeAssessmentReportButton(requiredAssignmentName), 30);
+  },
+
+  async verifyAssessmentDetailsOnOverviewPage(assignmentName) {
+    const verifyAssignmentName = `Automation dec : ${assignmentName}`;
+    await I.waitForVisible(this.verifyRequiredAssignment(verifyAssignmentName), 30);
+    await I.seeElement(this.verifyRequiredAssignment(verifyAssignmentName));
+    await I.seeElement(this.printButton);
+    await I.seeElement(this.exportCsvButton);
+    await I.wait(10);
+  },
+
+  async clicksAssessmentPerformance() {
+    await I.clickWhenClickable(this.viewAllItems);
+  },
+
+  async verifyAssessmentPerformanceWindow() {
+    await I.waitForVisible(this.verifyAssessmentPerfWindow, 30);
+    await I.seeElement(this.verifyAssessmentPerfWindow);
+  },
+
+  async closeAssessmentPerformanceWindow() {
+    await I.clickWhenClickable(this.closeAssessmentPerfWindow);
+  },
+};

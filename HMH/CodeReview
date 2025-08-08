@@ -1,0 +1,98 @@
+
+D:\OneDrive\OneDrive - Softcrylic LLC\HMH\Automation\VS_Code\Flight_e2e\lift\config\config.int.js
+
+heinemannBaseURL: 'https://platform.int.heinemann.com/ui/login',
+
+D:\OneDrive\OneDrive - Softcrylic LLC\HMH\Automation\VS_Code\Flight_e2e\lift\config\config.cert.js
+
+heinemannBaseURL: 'https://platform.cert.heinemann.com/ui/login',
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+D:\OneDrive\OneDrive - Softcrylic LLC\HMH\Automation\VS_Code\Flight_e2e\lift\config\test.config.cert.js
+
+   newLoginTests: {
+      unitedStates: {
+        orgName: 'DistrictA_PopRocksCert-92113040',
+        username: 'Natts',
+        tenantPid: '',
+        password: 'Password!1',
+        resourceUrl:
+          'https://cert.hmhco.com/content/hmof/social_studies/hmhss/na/gr9-12/hs_ah_ese_9780544454163_/#?page=s9ml/module_1_lesson01/lesson_opener.xhtml',
+      },
+    },
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+D:\OneDrive\OneDrive - Softcrylic LLC\HMH\Automation\VS_Code\Flight_e2e\lift\config\test.config.int.js
+
+        newLoginTests: {
+      unitedStates: {
+        orgName: 'DistrictA_PopRocksINT-92033619',
+        username: 'PopRocksTeacher2_92033620_int',
+        tenantPid: '',
+        password: 'Passw0rd!',
+        resourceUrl:
+          'https://cert.hmhco.com/content/hmof/social_studies/hmhss/na/gr9-12/hs_ah_ese_9780544454163_/#?page=s9ml/module_1_lesson01/lesson_opener.xhtml',
+      },
+    },
+
+------------------------------------------------------------------------------------------------------------------------------------------
+
+D:\OneDrive\OneDrive - Softcrylic LLC\HMH\Automation\VS_Code\Flight_e2e\lift\e2e\tests\features\heinemannFlight\login\hnmNewLogin.feature
+
+@flightNewLogin @New-code
+
+Feature: Login App
+
+    Scenario: User Logins to Heinemann Flight new site 
+        Given The user enters the login URL
+        Then The user selects the "United States" from the Country input
+        And The user selects the "Other" state from the State input
+        And The user selects the "unitedStates" org for "newLoginTests" tests
+        And The user presses the "Next" button
+        Given The user enters the login URL
+        Then The user should be redirected back to login
+        And The user logs into the "unitedStates" org for "newLoginTests" tests
+        Then The teacher should land on Dashboard page
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+D:\OneDrive\OneDrive - Softcrylic LLC\HMH\Automation\VS_Code\Flight_e2e\lift\e2e\tests\steps\heinemannFlight\dashboard\heinemannDashboard.e2e.steps.js
+
+Then('The teacher should land on Dashboard page', async () => {
+  await dashboardHeinemann.checkTeacherDashboardIsDisplayed();
+});
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+D:\OneDrive\OneDrive - Softcrylic LLC\HMH\Automation\VS_Code\Flight_e2e\lift\e2e\pages\heinemannFlight\dashboard\heinemannDashboard.page.js
+
+  welcomeMessage: { css: "div[id='main-content'] h1" },
+
+  async checkTeacherDashboardIsDisplayed() {
+    await I.waitForElement(this.welcomeMessage, 60);
+    await I.seeElement(this.welcomeMessage);
+  },
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+@flightNewLogin @New-code
+
+Feature: Login App
+
+    Scenario Outline: User Logins to Heinemann Flight new site
+        Given The user launch the Flight login URL
+        Then The user selects the "<country>" from the Country input in Flight login
+        And The user selects the "<state>" state from the State input in Flight login
+        And The user selects the "<country>" org for "<userLoginType>" tests in Flight login
+        And The user presses the "Next" button in Flight login
+        Given The user launch the Flight login URL
+        Then The user should be redirected back to login
+        And The user selects the "<country>" org for "<userLoginType>" tests in Flight login
+        Then The user should land on Dashboard page
+        
+        Examples:
+            | country | state | userLoginType |
+            | United States  | Other  | flightTeachersLoginTests  |
+            | United States  | Other  | flightStudentsLoginTests  |

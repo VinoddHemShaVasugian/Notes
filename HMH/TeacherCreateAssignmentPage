@@ -1,0 +1,254 @@
+const { I, envUris } = inject();
+
+module.exports = {
+  // productLandingsubTitle: locate({ css: 'p' }).withText(
+  //   'The HMH Growth Measure Reading is a research-based and adaptive',
+  // ),
+  selectAssessment: () =>
+    locate('span').withText('Multiplication A: Basic Concepts'),
+  // assignButton: () =>
+  // locate({xpath: '//span[text()="Multiplication A – Beginning of Module Assessment"]'}).withText('Assessments'),
+  verifyAssessment: () =>
+    locate('span').withText('Multiplication A – Beginning of Module Assessment'),
+
+  productLandingHeader: {
+    xpath: `//h1[contains(text(), 'Do The Math Modules')]`
+  },
+
+  // selectAssessment: {
+  //   xpath: '//span[text()="Multiplication A: Basic Concepts"]'
+  // },
+  // verifyAssessment: {xpath: '//span[text()="Multiplication A – Beginning of Module Assessment"]'},
+  assignButton: {
+    xpath: '//span[text()="Multiplication A: Basic Concepts"]//following::span[text()="Assessments"]'
+  },
+  assignButtonRR: { css: 'div.MuiPaper-root:nth-child(2) button' },
+  assignButtonText: { xpath: '//h4[contains(text(),"Assign")]' },
+  // verifyCreateAssessmentPage:() =>
+  //   locate('h1').withText('Create Assignment'),
+  verifyCreateAssessmentPage: () =>
+    locate({ dataTestId: 'createAssignmentsHeader' }).withText('Create Assignment'),
+
+    assignmentNameTextField: { id: 'assignmentTitleInput' },
+
+    classDropdown: () =>
+    locate({ dataTestId: 'assignToClassList' }),
+    selectClass:{ xpath: '//span[contains(text(),"Class 1 N")]'}, 
+    
+    createAssignmentsAssignButton: () =>
+    locate({ dataTestId: 'createAssignmentsAssignButton' }).withText('Assign'),
+
+    // successAlertNotification: () =>locate({ css: 'p' }).withText(
+      //   'The HMH Growth Measure Reading is a research-based and adaptive',
+      // ),
+      successAlertNotification: () =>
+      locate({ css: 'p' }).withText('Success!'),
+
+      async checkProductLanding() {
+        await I.waitForElement(this.productLandingHeader, 60);
+        await I.seeElement(this.productLandingHeader);
+      },
+
+
+      // ----------------------------------------------------------------------------------------
+
+  async selectAssignmentToAssign() {
+    // const selectAssignmentTOC = this.selectAssignmentTOC();
+    console.log("Vinoth log: page object file entered - > selectAssignmentToAssign");
+    const selectAssessment = this.selectAssessment();
+    await I.waitForElement(selectAssessment, 200);
+    await I.waitForEnabled(selectAssessment, 120);
+    await I.click(selectAssessment);
+    // const assignButton = this.assignButton();
+    // await I.waitForEnabled(assignButton, 120);
+    // await I.click(assignButton);
+
+
+    // await I.waitForEnabled(this.selectAssignmentTOC, 120);
+    // await I.waitForElement(this.selectAssignmentTOC, 60);
+    // await I.click(this.selectAssignmentTOC);
+    // console.log("Vinoth log: Clicked Multiplication A: Basic Concepts assessment");
+    // // const clickAssessments = this.clickAssessments();
+    // await I.waitForElement(this.clickAssessments, 60);
+    // await I.click(this.clickAssessments);
+    // await I.waitForElement();
+  },
+
+  async clickAssessemntsLinkTOC() {
+    // const selectAssignmentTOC = this.selectAssignmentTOC();
+    console.log("Vinoth log: page object file entered - > clickAssessemntsLinkTOC");
+
+    // const assignButton = this.assignButton();
+    // await I.waitForEnabled(assignButton, 120);
+    // await I.click(assignButton);
+    await I.waitForElement(this.assignButton, 120);
+    await I.waitForEnabled(this.assignButton, 120);
+    await I.click(this.assignButton);
+  },
+
+
+  async verifyTeacherLandedAssessmentPage() {
+    console.log("Vinoth log: verifyTeacherLandedAssessmentPage");
+
+    const verifyAssessment = this.verifyAssessment();
+    await I.waitForElement(verifyAssessment, 120);
+    await I.seeElement(verifyAssessment);
+  },
+
+  // async clickCreateAssignmentButton() {
+  //   const selectAssignmentTOC = this.assignButton();
+  //   await I.waitForEnabled(selectAssignmentTOC);
+  //   await I.click(selectAssignmentTOC);
+  // },
+  // async selectAssignmentToAssign() {
+  //   const assignButton = this.assignButton();
+  //   await I.waitForEnabled(assignButton);
+  //   await I.click(assignButton);
+  // },
+  async clickAssignIcon() {
+    // const selectAssignmentTOC = this.selectAssignmentTOC();
+    console.log("Vinoth log: clickAssignIcon");
+    // const selectAssessment = this.selectAssessment();
+    await I.waitForElement(this.assignButtonRR, 60);
+    await I.click(this.assignButtonRR);
+    await I.waitForElement(this.assignButtonText, 60);
+    await I.click(this.assignButtonText);
+  },
+
+  async clickCreateAssignmentButton() {
+    const createAssignmentsAssignButton = this.createAssignmentsButton();
+    await I.waitForEnabled(createAssignmentsAssignButton);
+    await I.click(createAssignmentsAssignButton);
+  },
+
+
+  async verifyCreateAssignmentPage() {
+    console.log("Vinoth log: verifyCreateAssignmentPage");
+    const verifyCreateAssessmentPage = this.verifyCreateAssessmentPage();
+    await I.waitForElement(verifyCreateAssessmentPage, 120);
+    await I.seeElement(verifyCreateAssessmentPage);
+  },
+  
+  async createAssignment() {
+    // const selectAssignmentTOC = this.selectAssignmentTOC();
+    console.log("Vinoth log: page object file entered - > createAssignment");
+
+    // const assignButton = this.assignButton();
+    // await I.waitForEnabled(assignButton, 120);
+    // await I.click(assignButton);
+    await I.waitForElement(this.assignmentNameTextField, 60);
+    await I.clearField(this.assignmentNameTextField);
+    await I.fillField(this.assignmentNameTextField, 'Automation - Multiplication A – Beginning of Module Assessment');
+    const classDropdown = this.classDropdown();
+    await I.waitForElement(classDropdown, 60);
+    await I.moveCursorTo(this.selectClass);
+    await I.click(this.selectClass);
+    const createAssignmentsAssignButton = this.createAssignmentsAssignButton();
+    await I.waitForElement(createAssignmentsAssignButton, 60);
+    await I.clickWhenClickable(createAssignmentsAssignButton);  
+  },
+
+  async checkCreateAssignmentSuccess() {
+    const successAlertNotification = this.successAlertNotification();
+    await I.waitForElement(successAlertNotification, 30);
+    await I.seeElement(successAlertNotification);
+  },
+
+  //-------------------------------------
+  // assignButton: { css: 'div.MuiPaper-root:nth-child(2) button'}
+  // username: { css: 'input[type="text"]' },
+  // password: { css: 'input[type="password"]' },
+  // loginButton: { css: 'input[type="submit"]' },
+  // hnmLogo: { dataTestId: 'navHome' },
+
+  // welcomeMessage: { css: "div[id='main-content'] h1" },
+  // productcardButton: locate('button').withText('Launch'),
+
+  // exportName: 'productLandingPage',
+  // // productLandingHeader: {
+  // //   xpath: `//h1[contains(text(), 'Do The Math Modules')]`,
+  // // },
+  // productLandingsubTitle: locate({ css: 'p' }).withText(
+  //   'The HMH Growth Measure Reading is a research-based and adaptive',
+  // ),
+  // productLandingHeaderMath: {
+  //   xpath: `//h1[contains(text(), 'HMH Growth Measure Math')]`,
+  // },
+  // productLandingsubTitleMath: locate({ css: 'p' }).withText(
+  //   'The HMH Growth Measure Math is a research-based and adaptive',
+  // ),
+
+  // // assignButton: () =>
+  // //   locate({ dataTestId: 'lesson-card-icon-button' }).withText('Assign'),
+  // backLink: () => locate({ dataTestId: 'back-button' }).withText('Back'),
+  // firstStudentCheckbox: () =>
+  //   locate({ css: "ul li input[type='checkbox']:not([disabled])" }),
+  // createAssignmentsButton: () =>
+  //   locate({ dataTestId: 'createAssignmentsAssignButton' }).withText('Assign'),
+  // // successAlertNotification: () =>
+  // //   locate({ dataTestId: 'alertMessage' }).withText(
+  // //     'Your assignment has been updated.',
+  // //   ),
+  // // async checkProductLanding() {
+  // //   await I.waitForElement(this.productLandingHeader);
+  // //   await I.waitForElement(this.productLandingsubTitle);
+  // // },
+
+  // async checkProductLandingMath() {
+  //   await I.waitForElement(this.productLandingHeaderMath);
+  //   await I.waitForElement(this.productLandingsubTitleMath);
+  // },
+
+  // // async productIsAssignable() {
+  // //   const assignButton = this.assignButton();
+  // //   await I.waitForEnabled(assignButton);
+  // //   await I.click(assignButton);
+  // // },
+  // async clickFirstStudentCheckbox() {
+  //   const firstStudentCheckbox = this.firstStudentCheckbox();
+  //   await I.waitForEnabled(firstStudentCheckbox);
+  //   await I.click(firstStudentCheckbox);
+  // },
+  // // async clickCreateAssignmentButton() {
+  // //   const createAssignmentsAssignButton = this.createAssignmentsButton();
+  // //   await I.waitForEnabled(createAssignmentsAssignButton);
+  // //   await I.click(createAssignmentsAssignButton);
+  // // },
+  // async clickBackLink() {
+  //   const backLink = this.backLink();
+  //   await I.click(backLink);
+  // },
+  // // async checkCreateAssignmentSuccess() {
+  // //   const successAlertNotification = this.successAlertNotification();
+  // //   await I.waitForElement(successAlertNotification, 5);
+  // // },
+
+  // async clickProductLaunchButton() {
+  //   await I.clickWhenClickable(this.productcardButton);
+  // },
+
+  // async logOntoHeinemann(user, clearSessionStorage) {
+  //   await I.clearCookie();
+  //   await this.logOntoHeinemannUi(user, clearSessionStorage);
+  // },
+  // async logOntoHeinemannUi(user, clearSessionStorage) {
+  //   const uri = `${envUris.heinemannBaseURL}`;
+  //   console.log(`direct login url: ${uri}`);
+  //   await I.navigateAndbyPassExecutionContextDestroyedException(uri);
+  //   if (clearSessionStorage) {
+  //     await I.clearSessionStorage();
+  //     await I.navigateAndbyPassExecutionContextDestroyedException(uri);
+  //   }
+  //   await this.signIn(user.username, user.password);
+  // },
+
+  // async verifyProductCardUrl() {
+  //   await I.seeCurrentUrlEquals(`${envUris.heinemannProductCards}`);
+  // },
+
+  // async checkTeacherDashboardIsDisplayed() {
+  //   await I.waitForElement(this.welcomeMessage, 60);
+  //   await I.seeElement(this.welcomeMessage);
+  // }
+  //------------------------
+}

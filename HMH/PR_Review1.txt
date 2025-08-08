@@ -1,0 +1,601 @@
+In e2e/pages/heinemannFlight/assessmentModule/studentAssignmentsModule.page.js:
+> +    locate({ dataTestId: 'student-assignments-page-greeting' }).withText(
++      'Assignments',
++    ),
++  verifyAssignment: verifyAssignmentName => {
++    return locate({ dataTestId: 'title' }).withText(verifyAssignmentName);
++  },
++  startAssignment: assignmentNameToStart => {
++    return locate(
++      `//td[text()='${assignmentNameToStart}']//following::button[text()='Start']`,
++    );
++  },
++  startAssignmentButton: locate('button').withText('Start'),
++  continueAssignmentButtonDirectionsPage: locate('span').withText('Continue'),
++
++  async verifyAssignmentsModulePage() {
++    const assignmentsPage = this.assignmentsPage();
+remove it
+
+________________________________________
+In e2e/pages/heinemannFlight/assessmentModule/studentAssignmentsModule.page.js:
+> +    ),
++  verifyAssignment: verifyAssignmentName => {
++    return locate({ dataTestId: 'title' }).withText(verifyAssignmentName);
++  },
++  startAssignment: assignmentNameToStart => {
++    return locate(
++      `//td[text()='${assignmentNameToStart}']//following::button[text()='Start']`,
++    );
++  },
++  startAssignmentButton: locate('button').withText('Start'),
++  continueAssignmentButtonDirectionsPage: locate('span').withText('Continue'),
++
++  async verifyAssignmentsModulePage() {
++    const assignmentsPage = this.assignmentsPage();
++    await I.waitForElement(assignmentsPage, 30);
++    await I.seeElement(assignmentsPage);
+use I watiForVisible instead using both waitForElement and seeElement
+
+REVIEW COMMENTS IMPLEMENTED: Removed and added timeout on verification step.
+________________________________________
+In e2e/pages/heinemannFlight/assessmentModule/studentAssignmentsModule.page.js:
+> +    return locate(
++      `//td[text()='${assignmentNameToStart}']//following::button[text()='Start']`,
++    );
++  },
++  startAssignmentButton: locate('button').withText('Start'),
++  continueAssignmentButtonDirectionsPage: locate('span').withText('Continue'),
++
++  async verifyAssignmentsModulePage() {
++    const assignmentsPage = this.assignmentsPage();
++    await I.waitForElement(assignmentsPage, 30);
++    await I.seeElement(assignmentsPage);
++  },
++
++  async verifyAssignmentToStart(assignmentName) {
++    const verifyAssignmentName = `Automation : ${assignmentName}`;
++    await I.waitForVisible(this.verifyAssignment(verifyAssignmentName), 30);
+sane here
+
+REVIEW COMMENTS IMPLEMENTED: Removed and added timeout on verificaion step.
+________________________________________
+In e2e/pages/heinemannFlight/assessmentModule/studentAssignmentsModule.page.js:
+> +    await I.waitForElement(assignmentsPage, 30);
++    await I.seeElement(assignmentsPage);
++  },
++
++  async verifyAssignmentToStart(assignmentName) {
++    const verifyAssignmentName = `Automation : ${assignmentName}`;
++    await I.waitForVisible(this.verifyAssignment(verifyAssignmentName), 30);
++    await I.seeElement(this.verifyAssignment(verifyAssignmentName));
++  },
++
++  async startRequiredAssignment(assignmentName) {
++    const assignmentNameToStart = `Automation : ${assignmentName}`;
++    await I.checkClickAndWaitForNewTab(
++      this.startAssignment(assignmentNameToStart),
++    );
++    await I.switchToBrowserWindow(2);
+this should be handled on feature level The user switches to the {int} tab also it should be 2 functions:
+openAssignmentByName(name)
+verifyAssignmentByName(name)
+
+REVIEW COMMENTS IMPLEMENTED: Divided into 2 methods and handling the windows navigation from feature file.
+________________________________________
+In e2e/pages/heinemannFlight/assessmentReports/reports.page.js:
+> @@ -0,0 +1,74 @@
++const { I } = inject();
++
++module.exports = {
++  SeeAssessmentReportButton: requiredAssignmentName => {
+camelCase
+
+REVIEW COMMENTS IMPLEMENTED: Modified to camelCase
+________________________________________
+In e2e/pages/heinemannFlight/assessmentModule/studentAssignmentsModule.page.js:
+> @@ -0,0 +1,42 @@
++const { I } = inject();
+this should be commonPage between Ed and Flight same as licensing e2e/pages/common/licensing/licenseManagement.page.js
+
+REVIEW COMMENTS IMPLEMENTED: Moved to common folder.
+________________________________________
+In e2e/pages/heinemannFlight/assessmentReports/reports.page.js:
+> @@ -0,0 +1,74 @@
++const { I } = inject();
+same here should be 1 common page for both applications see e2e/pages/common/licensing/licenseManagement.page.js
+
+REVIEW COMMENTS IMPLEMENTED: Moved to common folder.
+________________________________________
+In e2e/pages/heinemannFlight/assessmentReports/reports.page.js:
+> +  },
++  clickReportOnChart:
++    '//div[contains(@class,"AllAssessmentBarGraph")]//following::*[contains(@class,"highcharts-point")]',
++
++  verifyRequiredAssignment: verifyAssignmentName => {
++    return locate('h1').withText(verifyAssignmentName);
++  },
++  grabAssignmentName: { dataTestId: 'asmtName' },
++  printButton: locate('button').withText('Print Report'),
++  exportCsvButton: locate('button').withText('Export CSV'),
++  viewAllItems: locate('span').withText('View All Items'),
++  verifyAssessmentPerfWindow: locate('h1').withText('Assessment Performance'),
++  closeAssessmentPerfWindow: { dataTestId: 'CloseIcon' },
++
++  async selectRequiredAssessmentReport(assignmentName, className) {
++    await I.waitForVisible(this.classDropdown, 30);
+you don't need await I.waitForVisible(this.classDropdown, 30); if you are using I.clickWhenClickable
+
+REVIEW COMMENTS IMPLEMENTED: Removed and added timeout on verificaion step.
+________________________________________
+In e2e/pages/heinemannFlight/dashboard/heinemannDashboard.page.js:
+>  
+   async clickProductLaunchButton() {
++    await I.waitForElement(this.productcardButton, 30);
+same here, just pass timeout to I.clickWhenClickable
+
+REVIEW COMMENTS IMPLEMENTED: Removed and added timeout on verificaion step.
+________________________________________
+In e2e/pages/heinemannFlight/dashboard/heinemannDashboard.page.js:
+>      await I.clickWhenClickable(this.productcardButton);
+   },
+ 
+   async verifyProductCardUrl() {
+     await I.seeCurrentUrlEquals(`${envUris.heinemannProductCards}`);
+   },
++
++  async checkTeacherDashboardIsDisplayed() {
++    await I.waitInUrl(`/dashboard`, 30);
++    await I.waitForVisible(this.welcomeMessage, 30);
++    await I.seeElement(this.welcomeMessage);
++    await I.refreshPage(); // We have temporary issue on loading Flight dashboard page. Refreshing the page will resolve it.
+fix an issue do not spoil tests by adding refresh
+
+REVIEW COMMENTS IMPLEMENTED: Its product issue, dev team is working on it. Removed refresh steps.
+________________________________________
+In e2e/pages/heinemannFlight/doTheMath/teacherProductModule.page.js:
+> +    return locate('span').withText(assessmentModule);
++  },
++  assignButton: assessmentModule => {
++    return locate(
++      `//span[text()='${assessmentModule}']//following::span[text()='Assessments']`,
++    );
++  },
++  verifyAssessment: assignmentName => {
++    return locate('span').withText(assignmentName);
++  },
++  assessmentOption: { css: 'div.MuiPaper-root:nth-child(2) button' },
++  clickAssignButton: { xpath: '//h4[contains(text(),"Assign")]' },
++
++  async checkProductLanding(productName) {
++    await I.waitForNavigation(30);
++    await I.waitForElement(this.productLandingHeader(productName), 20);
+same here
+
+REVIEW COMMENTS IMPLEMENTED: Removed and added timeout on verificaion step.
+________________________________________
+In config/config.cert.js:
+> @@ -132,6 +132,7 @@ module.exports = {
+   heinemannProductCards:
+     'https://platform.cert.heinemann.com/ui/products/calkins',
+   heinemannBaseURL: 'https://platform.cert.heinemann.com',
++  heinemannFightBaseURL: 'https://platform.cert.heinemann.com/ui/login',
+wait until #12381 merge
+________________________________________
+In e2e/config/pageIncludes.js:
+> @@ -161,4 +162,22 @@ exports.include = {
+   licensingManagementUsersTableComponent:
+     './components/table/licensing/licensingManagementUsers.table.component.js',
+   tableHeaderComponent: './components/table/table.header.component.js',
++
++  // flight
+•	alphabetical order
+•	if it Is page add word page everywhere
+•	do not use obreveations DTM use doTheMath instead of flight teacherProductModuleDTM -> doTheMathProductPage etc...
+
+REVIEW COMMENTS IMPLEMENTED:
+1. Added in alphabetical order
+2. Added page suffix for page object files.
+3. Changed DTM to doTheMath.
+________________________________________
+In e2e/pages/heinemannFlight/assessmentModule/studentAssignmentPlayer.page.js:
+> +        ).at(i),
++      );
++      const sourceElement = locate('span.customTile').at(i);
++      const targetElement = locate('span.fractionTarget').at(i);
++      I.dragAndDrop(sourceElement, targetElement);
++      const afterDragAndDrop = I.grabTextFrom(
++        locate(
++          '//span[contains(@class,"fractionTarget")]//following::strong',
++        ).at(i),
++      );
++      I.assertEqual(beforeDragAndDrop, afterDragAndDrop);
++    }
++    await this.clickNextButton();
++  },
++
++  async answerQuestionSeventeen() {
+what is that? it should be 1 function with loop inside controlling switch between questions rewrite the whole page function in appropriate way please
+
+REVIEW COMMENTS IMPLEMENTED: Refactored the code by modified the logical approach.
+________________________________________
+In e2e/pages/heinemannFlight/assessmentModule/studentAssignmentPlayer.page.js:
+> +      i += 1
++    ) {
++      const beforeDragAndDrop = I.grabTextFrom(
++        locate(
++          '//div[contains(@class,"tilePoolContainer")]/span[contains(@class,"customTile")]//strong',
++        ).at(i),
++      );
++      const sourceElement = locate('span.customTile').at(i);
++      const targetElement = locate('span.fractionTarget').at(i);
++      I.dragAndDrop(sourceElement, targetElement);
++      const afterDragAndDrop = I.grabTextFrom(
++        locate(
++          '//span[contains(@class,"fractionTarget")]//following::strong',
++        ).at(i),
++      );
++      I.assertEqual(beforeDragAndDrop, afterDragAndDrop);
+create separate function to control different question types and use it inside function which will control answering question logic so the you should have something like:
+async answerQuestions(type){
+    await questionType(type)
+    .....
+}
+
+REVIEW COMMENTS IMPLEMENTED: Divided into 2 methods and handling same method for similar type questions
+________________________________________
+In e2e/pages/heinemannFlight/assessmentModule/studentAssignmentPlayer.page.js:
+> +  async answerQuestionSixteen() {
++    await I.waitForElement('//*[contains(text(),"16 of 20 Questions")]', 30);
++    await I.waitForPageLoad();
++    for (
++      let i = 1;
++      i <= I.grabNumberOfVisibleElements('span.fractionTarget');
++      i += 1
++    ) {
++      const beforeDragAndDrop = I.grabTextFrom(
++        locate(
++          '//div[contains(@class,"tilePoolContainer")]/span[contains(@class,"customTile")]//strong',
++        ).at(i),
++      );
++      const sourceElement = locate('span.customTile').at(i);
++      const targetElement = locate('span.fractionTarget').at(i);
++      I.dragAndDrop(sourceElement, targetElement);
+await
+
+REVIEW COMMENTS IMPLEMENTED: Added await.
+________________________________________
+In e2e/pages/heinemannFlight/assessmentModule/studentAssignmentPlayer.page.js:
+> +    for (
++      let i = 1;
++      i <= I.grabNumberOfVisibleElements('span.fractionTarget');
++      i += 1
++    ) {
++      const beforeDragAndDrop = I.grabTextFrom(
++        locate(
++          '//div[contains(@class,"tilePoolContainer")]/span[contains(@class,"customTile")]//strong',
++        ).at(i),
++      );
++      const sourceElement = locate('span.customTile').at(i);
++      const targetElement = locate('span.fractionTarget').at(i);
++      I.dragAndDrop(sourceElement, targetElement);
++      const afterDragAndDrop = I.grabTextFrom(
++        locate(
++          '//span[contains(@class,"fractionTarget")]//following::strong',
+to page top locators
+
+REVIEW COMMENTS IMPLEMENTED: Locators are added on top of the page and using in required methods.
+________________________________________
+In e2e/pages/heinemannFlight/assessmentReports/reports.page.js:
+> +    const verifyAssignmentName = `Automation : ${assignmentName}`;
++    await I.waitForVisible(
++      this.verifyRequiredAssignment(verifyAssignmentName),
++      30,
++    );
++    await I.seeElement(this.verifyRequiredAssignment(verifyAssignmentName));
++    await I.seeElement(this.printButton);
++    await I.seeElement(this.exportCsvButton);
++  },
++
++  async clicksAssessmentPerformance() {
++    await I.clickWhenClickable(this.viewAllItems);
++  },
++
++  async verifyAssessmentPerformanceWindow() {
++    await I.waitForVisible(this.verifyAssessmentPerfWindow, 30);
+same here
+
+REVIEW COMMENTS IMPLEMENTED: Removed and added timeout on verificaion step.
+________________________________________
+In e2e/pages/heinemannFlight/assessmentReports/reports.page.js:
+> +        I.clickWhenClickable(
++          this.SeeAssessmentReportButton(requiredAssignmentName),
++          30,
++        );
++        break;
++      }
++    }
++  },
++
++  async verifyAssessmentDetailsOnOverviewPage(assignmentName) {
++    const verifyAssignmentName = `Automation : ${assignmentName}`;
++    await I.waitForVisible(
++      this.verifyRequiredAssignment(verifyAssignmentName),
++      30,
++    );
++    await I.seeElement(this.verifyRequiredAssignment(verifyAssignmentName));
+remove that you do not need see if you already using waitForVisible
+
+REVIEW COMMENTS IMPLEMENTED: Removed and added timeout on verificaion step.
+________________________________________
+In e2e/pages/heinemannFlight/dashboard/heinemannDashboard.page.js:
+>      await I.clickWhenClickable(this.productcardButton);
+   },
+ 
+   async verifyProductCardUrl() {
+     await I.seeCurrentUrlEquals(`${envUris.heinemannProductCards}`);
+   },
++
++  async checkTeacherDashboardIsDisplayed() {
++    await I.waitInUrl(`/dashboard`, 30);
++    await I.waitForVisible(this.welcomeMessage, 30);
+same here
+
+REVIEW COMMENTS IMPLEMENTED: Removed and added timeout on verificaion step.
+________________________________________
+In e2e/pages/heinemannFlight/doTheMath/teacherProductModule.page.js:
+> +  selectAssessment: assessmentModule => {
++    return locate('span').withText(assessmentModule);
++  },
++  assignButton: assessmentModule => {
++    return locate(
++      `//span[text()='${assessmentModule}']//following::span[text()='Assessments']`,
++    );
++  },
++  verifyAssessment: assignmentName => {
++    return locate('span').withText(assignmentName);
++  },
++  assessmentOption: { css: 'div.MuiPaper-root:nth-child(2) button' },
++  clickAssignButton: { xpath: '//h4[contains(text(),"Assign")]' },
++
++  async checkProductLanding(productName) {
++    await I.waitForNavigation(30);
+you already have checkProductLanding here e2e/pages/heinemannFlight/doTheMath/studentProductModule.page.js why do you have 2 function with the same logic under different pages?
+
+REVIEW COMMENTS IMPLEMENTED: Removed duplicate and redirected to calling existing method.
+________________________________________
+In e2e/pages/heinemannFlight/doTheMath/teacherProductModule.page.js:
+> +    await I.waitForNavigation(30);
++    await I.waitForElement(this.productLandingHeader(productName), 20);
++    await I.seeElement(this.productLandingHeader(productName));
++  },
++
++  async navigateToAssessmentModule(assessmentModule) {
++    await I.clickWhenClickable(this.selectAssessment(assessmentModule), 20);
++    await I.clickWhenClickable(this.assignButton(assessmentModule), 20);
++  },
++
++  async verifyAssessmentModulePage(assignmentName) {
++    await I.seeElement(this.verifyAssessment(assignmentName), 20);
++  },
++
++  async selectAssignmentToAssign() {
++    await I.waitForElement(this.assessmentOption, 20);
+remove that just pass timeout inside
+
+REVIEW COMMENTS IMPLEMENTED: Removed and added timeout on verificaion step.
+________________________________________
+In e2e/pages/heinemannFlight/login/flightLogin.page.js:
+> @@ -22,6 +22,11 @@ module.exports = {
+   async openLoginUrl() {
+     await I.amOnPage(`${envUris.heinemannBaseURL}`);
+   },
++
++  async openNewFligtLoginUrl() {
++    await I.amOnPage(`${envUris.heinemannFightBaseURL}`);
+wait for #12381 merge then clean up
+________________________________________
+In e2e/pages/heinemannFlight/login/flightNewLogin.page.js:
+> @@ -0,0 +1,110 @@
++const { I, envUris } = inject();
+this already done here #12381 in appropriate way
+________________________________________
+In e2e/pages/heinemannFlight/myClasses/myClassesModule.page.js:
+> @@ -0,0 +1,19 @@
++const { I } = inject();
++
++module.exports = {
++  clickClass: className => {
++    return locate(
++      `//*[@data-testid="section-card"]/parent::div//div[*[text()='${className}']]/following-sibling::div[*[text()='View Class']]`,
++    );
++  },
++  clickRosterSubMenu: locate('p').withText('Roster'),
++
++  async clickRequiredClass(className) {
++    await I.waitForVisible(this.clickClass(className), 30);
+remove that just pass timeout inside
+
+REVIEW COMMENTS IMPLEMENTED: Removed and added timeout on verificaion step.
+________________________________________
+In e2e/tests/features/heinemannFlight/assessmentReports/reports.feature:
+> +        Given The user launch the Flight login URL
++        Then The user should be redirected back to login
++        And The user logs into the "<suite>" org for "<userLoginType>" tests in Flight login
++        Then The user should land on Dashboard page
++        When the teacher clicks Reports menu
++        Then the teacher should landed on Assessment Reports page
++        When the teacher selects the required completed "<assignmentName>" assessment "<className>"
++        Then the teacher should land on "<assignmentName>" report overview page
++        When the teacher click assessment performance link
++        Then the teacher should land on assessment performance window
++        When the teacher close the assessment performance report window
++        Then the teacher should land on "<assignmentName>" report overview page
++
++        Examples:
++            | country       | state | suite        | userLoginType            | productName | assessmentModule                                       | assignmentName                                            | className       |
++            | United States | Other | unitedStates | flightTeachersLoginTests | Do The Math | Addition & Subtraction A: Addition With Sums Up to 100 | Addition & Subtraction A – Beginning of Module Assessment | AutomationClass |
+why do you need Examples for 1 test case only?
+
+REVIEW COMMENTS IMPLEMENTED: Added multiple test data.
+________________________________________
+In e2e/tests/features/heinemannFlight/doTheMath/e2eAssessmentFlow.feature:
+> +        And The user presses the "Next" button in Flight login
++        Given The user launch the Flight login URL
++        Then The user should be redirected back to login
++        And The user logs into the "<suite>" org for "<userLoginType>" tests in Flight login
++        Then The user should land on Dashboard page
++        When the user clicks launch button on product
++        Then the teacher should land on "<productName>" product page
++        When the teacher selects the required "<assessmentModule>" to navigate assessment module page
++        Then the teacher should land on the "<assignmentName>" module page
++        When the teacher select required assessment to create assignment and assign to students
++        Then the teacher should land on create assessment page
++        When the teacher provide "<assignmentName>" and select required "<className>"
++        And the teacher clicks assign button to create assessment and assign to students
++        Then the success message should be displayed for creating an assessment and assigned to students succeeded
++        Examples:
++            | country       | state | suite        | userLoginType            | productName | assessmentModule                                       | assignmentName                                            | className       |
+same here
+
+REVIEW COMMENTS IMPLEMENTED: Added multiple test data.
+________________________________________
+In e2e/tests/features/heinemannFlight/doTheMath/e2eAssessmentFlow.feature:
+> +        Then The user should land on Dashboard page
++        When the user clicks launch button on product
++        Then the student should land on product page
++        When the student clicks launch button on product page
++        Then the student should land on assignments module page
++        And the student should see an assigned "<assignmentName>"
++        When the student clicks the required "<assignmentName>" to take assignment
++        Then the student should land on assignment page "<assignmentName>"
++        When the student answering all the questions and submitted
++        Then the student see the success message for assignment completion
++        When the user navigate to dashboard page
++        And the student clicks Scores menu
++        Then the student should landed on Scores page
++        And the student should see the score of completed assignment "<assignmentName>"
++        Examples:
++            | country       | state | suite        | userLoginType            | productName | assessmentModule                                       | assignmentName                                            | className       |
+and here
+
+REVIEW COMMENTS IMPLEMENTED: Added multiple test data.
+________________________________________
+In e2e/tests/features/heinemannFlight/doTheMath/e2eAssessmentFlow.feature:
+> +        And The user presses the "Next" button in Flight login
++        Given The user launch the Flight login URL
++        Then The user should be redirected back to login
++        And The user logs into the "<suite>" org for "<userLoginType>" tests in Flight login
++        Then The user should land on Dashboard page
++        When the teacher clicks Reports menu
++        Then the teacher should landed on Assessment Reports page
++        When the teacher selects the required completed "<assignmentName>" assessment "<className>"
++        Then the teacher should land on "<assignmentName>" report overview page
++        When the teacher click assessment performance link
++        Then the teacher should land on assessment performance window
++        When the teacher close the assessment performance report window
++        Then the teacher should land on "<assignmentName>" report overview page
++        Examples:
++            | country       | state | suite        | userLoginType            | productName | assessmentModule                                       | assignmentName                                            | className       |
++            | United States | Other | unitedStates | flightTeachersLoginTests | Do The Math | Addition & Subtraction A: Addition With Sums Up to 100 | Addition & Subtraction A – Beginning of Module Assessment | AutomationClass |
+and here
+
+REVIEW COMMENTS IMPLEMENTED: Added multiple test data.
+________________________________________
+In e2e/tests/features/heinemannFlight/doTheMath/studentAssignmentFlow.feature:
+> +        And The user selects the "<suite>" org for "<userLoginType>" tests in Flight login
++        And The user presses the "Next" button in Flight login
++        Given The user launch the Flight login URL
++        Then The user should be redirected back to login
++        And The user logs into the "<suite>" org for "<userLoginType>" tests in Flight login
++        Then The user should land on Dashboard page
++        When the user clicks launch button on product
++        Then the student should land on product page
++        When the student clicks launch button on product page
++        Then the student should land on assignments module page
++        Then the student should see an assigned "<assignmentName>"
++        When the student clicks the required "<assignmentName>" to take assignment
++        Then the student should land on assignment page
++
++        Examples:
++            | country       | state | suite        | userLoginType            | productName | assessmentModule                                       | assignmentName                                            | className       |
+same here
+
+REVIEW COMMENTS IMPLEMENTED: Added multiple test data.
+________________________________________
+In e2e/tests/features/heinemannFlight/doTheMath/teacherAssessmentFlow.feature:
+> +        Then the teacher should land on create assessment page
++        When the teacher provide "<assignmentName>" and select required "<className>"
++        And the teacher clicks assign button to create assessment and assign to students
++        Then the success message should be displayed for creating an assessment and assigned to students succeeded
++        When the teacher clicks My Classes menu
++        Then the teacher should landed on My Classes page
++        When the teacher selects the required "<className>"
++        Then the teacher should land on Assignments Overview page of their "<className>"
++        When the teacher search the required "<assignmentName>"
++        Then the teacher should see the created "<assignmentName>"
++        When the user click logout from Flight application
++        Then the user should logout from Fight application
++
++        Examples:
++            | country       | state | suite        | userLoginType            | productName | assessmentModule                                       | assignmentName                                            | className       |
++            | United States | Other | unitedStates | flightTeachersLoginTests | Do The Math | Addition & Subtraction A: Addition With Sums Up to 100 | Addition & Subtraction A – Beginning of Module Assessment | AutomationClass |
+same
+
+REVIEW COMMENTS IMPLEMENTED: Added multiple test data.
+________________________________________
+In e2e/tests/features/heinemannFlight/myClasses/roster.feature:
+> +        And The user presses the "Next" button in Flight login
++        Given The user launch the Flight login URL
++        Then The user should be redirected back to login
++        And The user logs into the "<suite>" org for "<userLoginType>" tests in Flight login
++        Then The user should land on Dashboard page
++        When the teacher clicks My Classes menu
++        Then the teacher should landed on My Classes page
++        When the teacher clicks Roster sub menu
++        Then the teacher should land on Roster page
++        When the teacher creating a new class
++        Then the success message should be displayed for created class
++        Then the created class should be listed in Roster module
++
++        Examples:
++            | country       | state | suite        | userLoginType            |
++            | United States | Other | unitedStates | flightTeachersLoginTests |
+same
+
+REVIEW COMMENTS IMPLEMENTED: Added multiple test data.
+________________________________________
+In e2e/tests/features/heinemannFlight/scores/scoresModule.feature:
+> +        Given The user launch the Flight login URL
++        Then The user selects the "<country>" from the Country input in Flight login
++        And The user selects the "<state>" state from the State input in Flight login
++        And The user selects the "<suite>" org for "<userLoginType>" tests in Flight login
++        And The user presses the "Next" button in Flight login
++        Given The user launch the Flight login URL
++        Then The user should be redirected back to login
++        And The user logs into the "<suite>" org for "<userLoginType>" tests in Flight login
++        Then The user should land on Dashboard page
++        When the student clicks Scores menu
++        Then the student should landed on Scores page
++        And the student should see the score of completed assignment "<assignmentName>"
++
++        Examples:
++            | country       | state | suite        | userLoginType            | assignmentName                                         |
++            | United States | Other | unitedStates | flightStudentsLoginTests | Addition & Subtraction A – Beginning of Module Assessment |
+same
+
+REVIEW COMMENTS IMPLEMENTED: Added multiple test data.
+________________________________________
+In e2e/tests/steps/heinemannFlight/assessmentModule/studentAssignmentPlayer.e2e.steps.js:
+> @@ -0,0 +1,35 @@
++const { studentAssignmentPlayer } = inject();
++
++Then('the student should land on assignment page {string}', async () => {
++  await studentAssignmentPlayer.verifyStudentAssignmentPage(true);
++});
++
++When('the student answering all the questions and submitted', async () => {
++  await studentAssignmentPlayer.answerQuestionOne(true);
+this should be rewritten using SOLID and DRY
+
+REVIEW COMMENTS IMPLEMENTED: Refactored the code by modified the logical approach.

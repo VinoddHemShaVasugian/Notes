@@ -1,0 +1,115 @@
+a[class="tss-1rfelik-PrimaryNavLink-root selected"]
+
+
+Dev:
+http://local.hmhone.hmhco.com:9002/ui/login
+
+
+HMH Automation:
+
+Scenarios - Feature for various login flow (Teachers/Students/School admin/Dist admin).
+Roaster flow - Teachers login (Create/assign/edit/delete classes).
+Identify the end-to-end scenario for Teachers flow(Assignment/Review the assignment -> give scores -> publish reports) and student's flow(Take assignment -> complete ->/ Review the report/scores).
+
+
+https://confluence.hmhco.com/pages/viewpage.action?spaceKey=RFS&title=Set+up+WSL+in+Windows+Computer
+
+https://confluence.hmhco.com/pages/viewpage.action?spaceKey=HNM&title=Developer+Onboarding
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+JENKINS JOBS - https://jenkins.devel.hmheng-cds.br.internal/blue/organizations/jenkins/heinemann-flight-heinemannUser-E2E-INT/detail/heinemann-flight-heinemannUser-E2E-INT/40/pipeline/
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+COMMANDS:
+
+https://yarnpkg.com/en/docs/cli/workspace
+
+There are two ways you can start tests, depending on the current directory you're in.
+When in lift root:
+
+`yarn workspace @hmhco/lift-e2e e2e {env}:{tag}:{browserProfile}:{helper}`
+
+When in the `lift/e2e` folder:
+`yarn e2e {env}:{tag}:{browserProfile}:{helper}`
+
+Testing from Local: yarn workspace @hmhco/lift-e2e e2e {env}:{tag}:{browserProfile}:{helper}
+yarn workspace @hmhco/lift-e2e e2e int:hnmLoginCTS:chrome:playwright
+yarn workspace @hmhco/lift-e2e e2e int:adminGrowthReportCTS:chrome:playwright
+
+yarn workspace @hmhco/lift-e2e e2e cert:flightNewLogin:chrome:playwright
+yarn workspace @hmhco/lift-e2e e2e int:flightNewLogin:chrome:playwright
+
+yarn workspace @hmhco/lift-e2e e2e cert:dtmTeacherAssessmentFlow:chrome:playwright
+
+yarn workspace @hmhco/lift-e2e e2e cert:dtmStudentAssignmentFlow:chrome:playwright
+
+yarn workspace @hmhco/lift-e2e e2e cert:dtmTeacherMyClasses:chrome:playwright
+
+yarn workspace @hmhco/lift-e2e e2e cert:dtmRosterCreateClass:chrome:playwright
+
+yarn workspace @hmhco/lift-e2e e2e prod:dtmRosterCreateClass:chrome:playwright
+
+yarn workspace @hmhco/lift-e2e e2e cert:dtmE2EAssessmentFlow:chrome:playwright
+
+yarn workspace @hmhco/lift-e2e e2e cert:@dtmStudentCompleteAssignment:chrome:playwright
+
+yarn workspace @hmhco/lift-e2e e2e cert:@testScenarioDTM:chrome:playwright
+
+yarn workspace @hmhco/lift-e2e e2e cert:dtmTeacherAssessmentFlowE2e:chrome:playwright
+
+yarn workspace @hmhco/lift-e2e e2e cert:dtmVerifyReport:chrome:playwright
+
+dtmStudentScores
+
+yarn workspace @hmhco/lift-e2e e2e cert:dtmStudentScores:chrome:playwright
+
+yarn workspace @hmhco/lift-e2e e2e cert:dtmStudentVerifyScores:chrome:playwright
+
+
+
+
+
+
+Pushed the latest code for automation script development to the remote branch - "HNM-1688-StudentsFlow-VerifyAssessment-module".
+
+
+
+yarn e2e cert:dtmAssessmentFlow:chrome:playwright
+yarn e2e int:hnmLoginCTS:chrome:playwright
+yarn e2e int:loginToHeinemann:chrome:playwright
+
+After the test is complete, you can use the following to display the report:  
+`yarn workspace @hmhco/lift-e2e testReport`
+
+## Test reports
+
+### On local
+
+To view the report on local you can type in `yarn workspace @hmhco/lift-e2e testReport` when in `lift` root.
+
+We use `allure-reports` for E2E report generation, after the test run, the `teardown.js` script uses `allure-commandline` to generate the report in html and stores it in the `allure-reports` folder.
+The generated report cannot be opened directly from file, as modern browsers have CORS limitations that get set off by the nature of the scripts in the report html.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+While running:
+PS C:\Windows\System32\lift\e2e> bash
+vinoth@SCI-LT-101:/mnt/c/Windows/system32/lift/e2e$ yarn workspace @hmhco/lift-e2e e2e int:hnmLoginCTS:chrome:playwright
+yarn workspace v1.22.19
+yarn run v1.22.19
+$ codeceptjs run --reporter mocha-multi --steps --profile int:hnmLoginCTS:chrome:playwright
+/bin/sh: 1: codeceptjs: not found
+error Command failed with exit code 127.
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+error Command failed.
+Exit code: 127
+Command: /home/vinoth/.nvm/versions/node/v16.15.1/bin/node
+Arguments: /home/vinoth/.yarn/lib/cli.js e2e int:hnmLoginCTS:chrome:playwright
+Directory: /mnt/c/Windows/system32/lift/e2e
+Output:
+
+info Visit https://yarnpkg.com/en/docs/cli/workspace for documentation about this command.
+
+sudo apt-get install libgbm1\
+sudo apt-get install libxkbcommon0
+sudo apt-get install libpango-1.0-0
+sudo apt-get install libcairo2

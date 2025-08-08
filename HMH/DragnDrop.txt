@@ -1,0 +1,66 @@
+codecept:
+windowSize 
+
+span.jss847:nth-child(1)
+span.fractionTarget:nth-child(1)
+
+span.jss847:nth-child(2)
+span.fractionTarget:nth-child(2)
+
+await page.mouse.move(srcBound.x, srcBound.y);
+await page.mouse.move(src.x + src.width / 2, src.y + src.height / 2);
+await page.mouse.move(tgt.x + tgt.width / 2, tgt.y + tgt.height / 2);
+
+
+I.moveCursorTo('.tooltip');
+I.moveCursorTo('#submit', 5,5);
+I.pressKeyDown('Control');
+I.click('#element');
+I.pressKeyUp('Control');
+
+
+await page.locator('#item-to-be-dragged').hover();
+await page.mouse.down();
+await page.locator('#item-to-drop-at').hover();
+await page.locator('#item-to-drop-at').hover();
+await page.mouse.up();
+
+const width = await I.grabElementBoundingRect('h3', 'width');
+// width == 527
+
+const value = await I.grabElementBoundingRect('h3');
+// value is like { x: 226.5, y: 89, width: 527, height: 220 }
+
+
+https://playwright.dev/docs/input
+
+await page.locator('#item-to-be-dragged').dragTo(page.locator('#item-to-drop-at'));
+
+await page.locator('#item-to-be-dragged').hover();
+await page.mouse.down();
+await page.locator('#item-to-drop-at').hover();
+await page.mouse.up();
+
+const source = this.page.locator('text=Column').first()
+const target = this.page.locator('[role="tabpanel"]').first()
+await source.dragTo(target)
+
+await this.page
+  .locator('text=Column')
+  .first()
+  .dragTo(this.page.locator('[role="tabpanel"]').first(), {
+    force: true,
+    timeout: 3000,
+  })
+  
+  async dragDrop(page: Page, originSelector: string, destinationSelector: string) {
+    const originElement = await page.waitForSelector(originSelector);
+    const destinationElement = await page.waitForSelector(destinationSelector);
+
+    await originElement.hover();
+    await page.mouse.down();
+    const box = (await destinationElement.boundingBox())!;
+    await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
+    await destinationElement.hover();
+    await page.mouse.up();
+}

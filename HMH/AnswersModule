@@ -1,0 +1,338 @@
+const { I } = inject();
+const { chromium } = require('playwright');
+
+module.exports = {
+  avatarButton: { id: 'avatarButton' },
+  verifyAssignment: { xpath: '//div[text()="Addition & Subtraction A - Beginning of Module Assessment"]' },
+  nextButton: locate('span').withText('Next'),
+  submitButton: locate('span').withText('Submit'),
+  yesButton: locate('span').withText('Yes'),
+  textBox: '//*[@type="text"]',
+  checkBox: '//*[@type="checkbox"]',
+  assignmentEndPage: locate('p').withText('Your test has been submitted.'),
+
+  async clickNextButton() {
+    await I.waitForElement(this.nextButton, 30);
+    await I.clickWhenClickable(this.nextButton);
+  },
+
+  async clickSubmitButton() {
+    await I.waitForElement(this.submitButton, 30);
+    await I.clickWhenClickable(this.submitButton);
+    await I.waitForElement(this.submitButton, 30);
+    await I.clickWhenClickable(this.submitButton);
+    await I.waitForElement(this.yesButton, 30);
+    await I.clickWhenClickable(this.yesButton);
+  },
+
+  async verifyAssignmentEndPage() {
+    await I.waitForPageLoad(30);
+    await I.waitForElement(this.assignmentEndPage, 30);
+    await I.seeElement(this.assignmentEndPage);
+  },
+
+  async answerTextBox(questionNumber) {
+    await I.waitForElement('//*[contains(text(),"' + questionNumber + ' of 20 Questions")]', 30);
+    for (let i = 1; i <= await I.grabNumberOfVisibleElements(this.textBox); i++) {
+      await I.clearField(locate(this.textBox).at(i));
+      await I.fillField(locate(this.textBox).at(i), i);
+    }
+  },
+
+  async verifyStudentAssignmentPage(assignmentName) {
+    await I.waitForPageLoad(30);
+    await I.seeInCurrentUrl(`assessments/app/assessment`);
+    await I.seeElement(this.avatarButton);
+    await I.seeElement(this.verifyAssignment);
+    console.log("assignmentName from feature file: " + assignmentName);
+    let grabTextFrom = await I.grabTextFrom({ xpath: '//div/span' });
+    console.log("grabTextFrom value: " + grabTextFrom);
+    console.log(
+      `assignmentName" ${grabTextFrom.includes(assignmentName) ? 'is' : 'is not'
+      } in grabTextFrom`,
+    );
+  },
+
+  async answerQuestionOne() {
+    await this.answerTextBox(1);
+    await this.clickNextButton();
+  },
+
+  async answerQuestionTwo() {
+    await I.waitForElement('//*[contains(text(),"2 of 20 Questions")]', 30);
+    for (let i = 1; i <= 10; i++) {
+      if (!(i == 5 || i == 10)) {
+        await I.clickWhenClickable('//div[@data-id=' + i + ']');
+      }
+    }
+    await this.clickNextButton();
+  },
+
+  async answerQuestionThree() {
+    await I.waitForElement('//*[contains(text(),"3 of 20 Questions")]', 30);
+    for (let i = 1; i <= await I.grabNumberOfVisibleElements(this.checkBox); i++) {
+      if (i == 2 || i == 3) {
+        await I.clickWhenClickable(locate(this.checkBox).at(i));
+      }
+    }
+    await this.clickNextButton();
+  },
+
+  async answerQuestionFour() {
+    await I.waitForElement('//*[contains(text(),"4 of 20 Questions")]', 30);
+    for (let i = 1; i <= 8; i++) {
+      await I.clickWhenClickable('//div[@data-id=' + i + ']');
+    }
+    await this.clickNextButton();
+  },
+
+  async answerQuestionFive() {
+    await this.answerTextBox(5);
+    for (let i = 1; i <= 3; i++) {
+      await I.clickWhenClickable('//div[@data-id=' + i + ']');
+    }
+    await this.clickNextButton();
+  },
+
+  async answerQuestionSix() {
+    await this.answerTextBox(6);
+    await this.clickNextButton();
+  },
+
+  async answerQuestionSeven() {
+    await this.answerTextBox(7);
+    await this.clickNextButton();
+  },
+
+  async answerQuestionNine() {
+    await this.answerTextBox(9);
+    for (let i = 1; i <= 5; i++) {
+      await I.clickWhenClickable('//div[@data-id=' + i + ']');
+    }
+    await this.clickNextButton();
+  },
+
+  async answerQuestionTen() {
+    await this.answerTextBox(10);
+    await this.clickNextButton();
+  },
+
+  async answerQuestionEleven() {
+    await this.answerTextBox(11);
+    await this.clickNextButton();
+  },
+
+  async answerQuestionTwelve() {
+    await this.answerTextBox(12);
+    for (let i = 1; i <= 5; i++) {
+      await I.clickWhenClickable('//div[@data-id=' + i + ']');
+    }
+    await this.clickNextButton();
+  },
+
+  async answerQuestionThirteen() {
+    await this.answerTextBox(13);
+    await this.clickNextButton();
+  },
+
+  async answerQuestionFourteen() {
+    await this.answerTextBox(14);
+    await this.clickNextButton();
+  },
+
+  async answerQuestionFifteen() {
+    await this.answerTextBox(15);
+    await this.clickNextButton();
+  },
+
+  async answerQuestionSeventeen() {
+    await this.answerTextBox(17);
+    await this.clickNextButton();
+  },
+
+  async answerQuestionEighteen() {
+    await this.answerTextBox(18);
+    await this.clickNextButton();
+  },
+
+  async answerQuestionNineteen() {
+    await this.answerTextBox(19);
+    await this.clickNextButton();
+  },
+
+  async answerQuestionTwenty() {
+    await this.answerTextBox(20);
+    await this.clickSubmitButton();
+  },
+
+  async answerQuestionEight() {
+    await I.waitForElement('//*[contains(text(),"8 of 20 Questions")]', 30);
+    await I.wait(10);
+    for (let i = 1; i <= await I.grabNumberOfVisibleElements('span.fractionTarget'); i++) {
+      const beforeDragAndDrop = await I.grabTextFrom(locate('//div[contains(@class,"tilePoolContainer")]/span[contains(@class,"customTile")]//strong').at(i));
+      console.log("beforeDragAndDrop: "+beforeDragAndDrop);
+      const tgtEle = await locate('span.fractionTarget').at(i);
+      const tgtElementvalue = await I.grabElementBoundingRect(tgtEle);
+      console.log("ele "+i+" : "+tgtElementvalue);
+      // I.moveCursorTo(srcElement);
+      // I.pressKeyDown(srcElement);
+      // I.focus(beforeDragAndDrop)
+      // I.moveCursorTo(beforeDragAndDrop);
+      // I.pressKeyDown(beforeDragAndDrop);
+      // I.pressKeyUp(value);
+      const sourceElement = await locate('span.customTile').at(i);
+      const targetElement = await locate('span.fractionTarget').at(i);
+      // await I.dragAndDrop(sourceElement, targetElement, {timeout: 3000}, { targetPosition: {x: tgtElementvalue.width / 2, y: tgtElementvalue.height / 2} });
+      await sourceElement.dragAndDrop(targetElement);
+      // await I.dragAndDrop(sourceElement, targetElement, {timeout: 3000}, { targetPosition: {x: 5, y: 5} }, {force: true});
+      // await I.dragAndDrop(locate('span.customTile').at(i), locate('span.fractionTarget').at(i));
+      // await I.dragAndDrop('img.src', 'img.dst', { sourcePosition: {x: 10, y: 10} })      
+      await I.wait(5);
+      const afterDragAndDrop = await I.grabTextFrom(locate('//span[contains(@class,"fractionTarget")]//following::strong').at(i));
+      console.log("afterDragAndDrop: "+afterDragAndDrop);
+      await I.assertEqual(beforeDragAndDrop, afterDragAndDrop);
+    }
+    console.log('Answered Eight question - answerQuestionSix ');
+    await this.clickNextButton();
+  },
+
+  async answerQuestionSixteen() {
+    await I.waitForElement('//*[contains(text(),"16 of 20 Questions")]', 30);
+    await I.wait(10);
+    // await I.resizeWindow(1366, 768);
+    // for (let i = 1; i <= await I.grabNumberOfVisibleElements('span.fractionTarget'); i++) {
+    //   const beforeDragAndDrop = await I.grabTextFrom(await locate('//div[contains(@class,"tilePoolContainer")]/span[contains(@class,"customTile")]//strong').at(i));
+    //   await I.dragAndDrop(locate('span.customTile').at(i), locate('span.fractionTarget').at(i));
+    //   await I.wait(5);
+    //   const afterDragAndDrop = await I.grabTextFrom(locate('//span[contains(@class,"fractionTarget")]//following::strong').at(i));
+    //   await I.assertEqual(beforeDragAndDrop, afterDragAndDrop);
+    // }
+    console.log('Answered Sixteen question - answerQuestionSix ');
+    await this.clickNextButton();
+  },
+};
+
+
+
+
+
+
+
+
+
+
+//***************************************************************************************************************************//
+
+
+const { I } = inject();
+
+
+module.exports = {
+  // verifyAssignment: verifyAssignmentName => {
+  //   return locate('div').withText(verifyAssignmentName);
+  // },   //div[text()='Addition & Subtraction A - Beginning of Module Assessment']
+  avatarButton: {
+    id: 'avatarButton',
+  },
+  // verifyAssignment: assignmentName => {
+  //   return locate(
+  //     `//div[text()="${assignmentName}"]`,
+  //   );
+  // },
+  verifyAssignment: { xpath: '//div[text()="Addition & Subtraction A – Beginning of Module Assessment"]' },
+  // verifyAssignment: { xpath: '//div[text()="Addition & Subtraction A – Beginning of Module Assessment"]' },
+                
+  q1TextField: { xpath: '//*[@type="text"]' },
+  nextButton: locate('span').withText('Next'),
+  submitButton: locate('span').withText('Submit'),
+  
+  async clickNextButton() {
+    await I.wait(10);
+    await I.waitForElement(this.nextButton, 30);
+    await I.clickWhenClickable(this.nextButton);
+  },
+
+  async clickSubmitButton() {
+    await I.waitForElement(this.submitButton, 30);
+    await I.clickWhenClickable(this.submitButton);
+  },
+
+  async verifyStudentAssignmentPage(assignmentName) {
+    await I.waitForNavigation(30);
+    await I.seeInCurrentUrl(`assessments/app/assessment`);
+    await I.seeElement(this.avatarButton);
+    await I.waitForElement(this.q1TextField, 30);
+    // await I.seeElement(this.verifyAssignment);
+    // const verifyAssignmentName = assignmentName;
+    // await I.waitForVisible(this.verifyAssignment(verifyAssignmentName), 30);
+    // await I.seeElement(this.verifyAssignment(verifyAssignmentName));
+    // await I.seeElement(
+    //   this.verifyAssignment(assignmentName),
+    // );
+
+    // const verifyAssignmentName = `Automation : ${assignmentName}`;
+    // I.switchTo('iframe');
+    // await I.waitForVisible(this.verifyAssignment(assignmentName));
+    // await I.seeElement(this.verifyAssignment(assignmentName));
+    // await I.waitForVisible(this.avatarButton);
+    // await I.see(this.verifyAssignment(assignmentName));
+    console.log("assignmentName from feature file: "+assignmentName);
+    let grabTextFrom= await I.grabTextFrom({xpath: '//div/span'});
+    console.log("grabTextFrom value: "+grabTextFrom);
+    // grabTextFromAll.includes(assignmentName);
+    console.log(
+      `assignmentName" ${
+        grabTextFrom.includes(assignmentName) ? 'is' : 'is not'
+      } in grabTextFrom`,
+    );
+
+    // await I.seeInSource(assignmentName);
+    // return await test.contain(assignmentName);
+    // await I.see(assignmentName);
+    
+  },
+
+  async answerQuestions() {
+//     const imageList = await page.locator('img');
+// for (let i = 0; i < await imageList.count(); i++) {
+//     const element = await imageList.nth(i).getAttribute('src');
+//     tmpArray.push(element)
+// }
+// grabNumberOfVisibleElements
+// let numOfElements = await I.grabNumberOfVisibleElements('p');
+
+// const webElements = I.grabWebElements(this.q1TextField);
+const webElements = await I.grabNumberOfVisibleElements(this.q1TextField);
+for (let i = 0; i < webElements.count; i++) {
+    const textField = await webElements.nth(i);
+    await I.fillField(textField, i);
+    await I.wait(10);
+}
+// const textFields = await this.helpers['Playwright']._locateElement({xpath: '//*[@type="text"]'});
+// console.log("textFields ENTER ANSWER: "+textFields);
+// for (let i = 0; i < await textFields.count(); i++) {
+//       const element1 = await textFields.nth(i);
+//       await I.fillField(element1, '11');
+//   }
+    // await I.fillField('//*[@type="text"]', `10`);
+    // const elements = await playwright._locate(codeceptElement);
+    // const { page } = this.helpers.Playwright;
+    // const codeceptLocator = locate(codeceptElement).value;
+    // const locator = page.locator(codeceptLocator);
+
+    // const { page } = this.helpers.Playwright;
+    // const codeceptLocator = locate(this.q1TextField);
+    // const locator = page.locator(this.q1TextField);
+    // for (let i = 0; i < locator.count(); i++) {
+    //         const element1 = locator.nth(i);
+    //         await I.fillField(element1, '11');
+    //     }
+    // await expect(locator).toBeFocused();
+    // const selection = await locate(this.modalActionButton);
+
+    // const { page } = this.helpers.Playwright;
+    // const codeceptLocator = locate(codeceptElement).value;
+    // const locator = page.locator(codeceptLocator);
+    // await expect(locator).toBeFocused();
+  },
+};

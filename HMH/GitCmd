@@ -1,0 +1,147 @@
+
+git add .
+git commit -m "Code refactoring for Flight new login flow to ignore ED site dependencies."
+git push
+
+Git comments:
+Create new branch - $ git checkout -b NewBranch
+Switching branch - $ git checkout 9353-MIS-Create-PSEA-QA-Automation-Framework
+git checkout master
+
+git checkout HNM-1524-TeachersFlow-CreateAssessment-module
+
+$ git status
+$ git add .
+$ git commit -m "Added automation scripts for MIS pages"
+$ git push origin vsankar_Quiz
+git push origin master
+
+git push --no-verify
+
+git commit --no-verify -m "Implemented review comments"
+
+
+git push origin HNM-1688-StudentsFlow-VerifyAssessment-module
+
+
+git commit -m "Automation script for MembershipGroupsManagement"
+
+
+$ git checkout
+$ git fetch
+$ git pull WebDevIntegration
+$ git pull origin master
+
+$ git reset --hard origin/WebDevIntegration
+git reset --hard origin/vsankar_Quiz
+git restore
+
+git merge master
+git merge --abort
+
+git stash --include-untracked
+git stash -u
+
+git checkout origin/master -- src/test/java/com/pch/surveytab/SurveyRunnerTest.java
+git checkout origin/master -- src/test/resources/reportportal.properties
+git checkout origin/master -- .gitignore
+git checkout origin/master -- src/test/java/com/pch/surveytab/.gitignore
+git checkout origin/master -- src/test/resources/features/.gitignore
+
+git checkout origin/vsankar -- src/test/java/com/pch/surveytab/SurveyRunnerTest.java
+
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+On branch HNM-1524-Flight-New-Login-flow
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   config/config.cert.js
+        modified:   config/config.int.js
+        modified:   config/test.config.cert.js
+        modified:   config/test.config.int.js
+        modified:   e2e/pages/heinemannFlight/dashboard/heinemannDashboard.page.js
+        modified:   e2e/tests/steps/heinemannFlight/dashboard/heinemannDashboard.e2e.steps.js
+
+        e2e/tests/features/heinemannFlight/login/hnmNewLogin.feature
+
+no changes added to commit (use "git add" and/or "git commit -a")
+PS D:\OneDrive\OneDrive - Softcrylic LLC\HMH\Automation\VS_Code\Flight_e2e\lift> git add .
+PS D:\OneDrive\OneDrive - Softcrylic LLC\HMH\Automation\VS_Code\Flight_e2e\lift> git status
+On branch HNM-1524-Flight-New-Login-flow
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   config/config.cert.js
+        modified:   config/config.int.js
+        modified:   config/test.config.cert.js
+        modified:   config/test.config.int.js
+        modified:   e2e/pages/heinemannFlight/dashboard/heinemannDashboard.page.js
+        new file:   e2e/tests/features/heinemannFlight/login/hnmNewLogin.feature
+        modified:   e2e/tests/steps/heinemannFlight/dashboard/heinemannDashboard.e2e.steps.js
+
+PS D:\OneDrive\OneDrive - Softcrylic LLC\HMH\Automation\VS_Code\Flight_e2e\lift> git commit -m "Scripts developed for student assignments flow"
+husky > pre-commit (node v16.15.1)
+[STARTED] Preparing...
+[SUCCESS] Preparing...
+[STARTED] Running tasks...
+[STARTED] Running tasks for *.{js,jsx,ts,tsx}
+[STARTED] Running tasks for *.{js,jsx,json,ts,tsx}
+[STARTED] Running tasks for *.{css,less}
+[SKIPPED] No staged files match *.{css,less}
+[STARTED] eslint --ignore-path .gitignore --fix --quiet
+[STARTED] prettier --write
+[SUCCESS] prettier --write
+[SUCCESS] Running tasks for *.{js,jsx,json,ts,tsx}
+[SUCCESS] eslint --ignore-path .gitignore --fix --quiet
+[SUCCESS] Running tasks for *.{js,jsx,ts,tsx}
+[SUCCESS] Running tasks...
+[STARTED] Applying modifications...
+[SUCCESS] Applying modifications...
+[STARTED] Cleaning up...
+ Committer: Vinoth Kumar Sankar <vinothkumar.s@softcrylic.co.in>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 7 files changed, 46 insertions(+), 2 deletions(-)
+ create mode 100644 e2e/tests/features/heinemannFlight/login/hnmNewLogin.feature
+PS D:\OneDrive\OneDrive - Softcrylic LLC\HMH\Automation\VS_Code\Flight_e2e\lift> git config user.name "ShankarV1"
+PS D:\OneDrive\OneDrive - Softcrylic LLC\HMH\Automation\VS_Code\Flight_e2e\lift> git config user.email "vinothkumar.shankar@hmhco.com"    
+PS D:\OneDrive\OneDrive - Softcrylic LLC\HMH\Automation\VS_Code\Flight_e2e\lift> git config --list
+diff.astextplain.textconv=astextplain
+filter.lfs.clean=git-lfs clean -- %f
+filter.lfs.smudge=git-lfs smudge -- %f
+filter.lfs.process=git-lfs filter-process
+filter.lfs.required=true
+http.sslbackend=openssl
+http.sslcainfo=C:/Program Files/Git/mingw64/etc/ssl/certs/ca-bundle.crt
+core.autocrlf=true
+PS D:\OneDrive\OneDrive - Softcrylic LLC\HMH\Automation\VS_Code\Flight_e2e\lift> git push
+fatal: The current branch HNM-1524-Flight-New-Login-flow has no upstream branch.
+To push the current branch and set the remote as upstream, use
+
+    git push --set-upstream origin HNM-1524-Flight-New-Login-flow
+
+To have this happen automatically for branches without a tracking
+upstream, see 'push.autoSetupRemote' in 'git help config'.
+
+PS D:\OneDrive\OneDrive - Softcrylic LLC\HMH\Automation\VS_Code\Flight_e2e\lift> git push --set-upstream origin HNM-1524-Flight-New-Login-flow
+ERROR: Permission to Ed-Learning/lift.git denied to ShankarV1.
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+PS D:\OneDrive\OneDrive - Softcrylic LLC\HMH\Automation\VS_Code\Flight_e2e\lift>  
+
+HNM-1524-Flight-New-Login-flow
+HNM-1688-StudentsFlow-VerifyAssessment-module

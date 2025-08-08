@@ -1,0 +1,41 @@
+https://platform.int.heinemann.com/ui/login
+
+Country: United States
+State: Other
+District/Independent School: DistrictA_PopRocksINT-92033619
+Username: PopRocksTeacher1_92033620_int / PopRocksTeacher2_92033620_int
+Password: Passw0rd!
+
+
+Cert - https://platform.cert.heinemann.com/ui/login/index.html
+Teachers cred: ( Account Tested by Natts)
+User: Natts
+Pwd: Password!1
+
+Students cred:
+username: PopRocksStudent4_92113041_cert
+password: Passw0rd!
+
+
+1. Assesments page:
+	- Scope of TOC ????
+	- Non-assignable assisments verification (Preview and Download)
+	- ePub verification
+	- Assignable assisments
+		- Create assignable and we have complete scope
+		- Assign assisments
+		- 
+	
+
+165PG261MG
+
+
+D:\OneDrive\OneDrive - Softcrylic LLC\HMH\Automation\VS_Code\Flight_e2e\lift\e2e\pages\heinemannFlight\dashboard\heinemannDashboard.page.js
+D:\OneDrive\OneDrive - Softcrylic LLC\HMH\Automation\VS_Code\Flight_e2e\lift\e2e\tests\steps\heinemannFlight\dashboard\heinemannDashboard.e2e.steps.js
+D:\OneDrive\OneDrive - Softcrylic LLC\HMH\Automation\VS_Code\Flight_e2e\lift\e2e\tests\features\heinemannFlight\login\hnmNewLogin.feature
+
+D:\OneDrive\OneDrive - Softcrylic LLC\HMH\Automation\VS_Code\Flight_e2e\lift\config\config.cert.js
+D:\OneDrive\OneDrive - Softcrylic LLC\HMH\Automation\VS_Code\Flight_e2e\lift\config\config.int.js
+
+D:\OneDrive\OneDrive - Softcrylic LLC\HMH\Automation\VS_Code\Flight_e2e\lift\config\test.config.cert.js
+D:\OneDrive\OneDrive - Softcrylic LLC\HMH\Automation\VS_Code\Flight_e2e\lift\config\test.config.int.js

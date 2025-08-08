@@ -1,0 +1,601 @@
+        » [Browser:Info] Slow network is detected. See https://www.chromestatus.com/feature/5636954674692096 for more details. Fallback font will be used while loading: https://platform.cert.heinemann.com/44f6f6c44fcf686daa86.woff2
+        » [Browser:Info] Slow network is detected. See https://www.chromestatus.com/feature/5636954674692096 for more details. Fallback font will be used while loading: https://platform.cert.heinemann.com/80dc906ae564ca2f9667.woff2
+        » [Browser:Error] Failed to load resource: the server responded with a status of 403 ()
+        » [Browser:Error] VIDEOJS: ERROR: (CODE:4 MEDIA_ERR_SRC_NOT_SUPPORTED) The media could not be loaded, either because the server or network failed or because the format is not supported. BtVIDEOJS: ERROR: (CODE:4 MEDIA_ERR_SRC_NOT_SUPPORTED) The media could not be loaded, either because the server or network failed or because the format is not supported. Bt
+
+
+
+
+
+
+http://local.hmhone.hmhco.com:9002/ui/login
+
+State: other
+District: DistrictA_PopRocksINT-92033619
+PopRocksTeacher1_92033620_int	Passw0rd!
+
+PopRocksStudent1_92033620_int	Passw0rd!
+
+goldenglow_moth
+P@ssword1
+
+hnm_lc_test_lti@sometestemail.com
+P@ssw0rd!
+
+https://platform.cert.heinemann.com/ui/login/index.html
+
+https://platform.cert.heinemann.com/ui/dashboard
+
+
+PopRocksTeacher1_92113041_cert / Passw0rd!
+PopRocksStudent1_92113041_cert / Passw0rd!
+
+
+
+PopRocksTeacher1_92113041_cert
+Passw0rd!
+DistrictA_PopRocksCert-92113040
+
+
+
+ productLanding: 'http://cert.hmhco.com/ui/#/product',
+ 
+ 
+ 
+ 
+ AnswerModule:
+ 
+ //div[contains(@class,'AllAssessmentBarGraph')]//following::*[contains(@class,'highcharts-point')]
+ 
+ //*[@data-testid="titleCell"]/parent::[*[text()='Vinoth Dec 15 Addition & Subtraction A – Middle of Module Assessment']]/following-sibling::span[[text()='47.8']]
+ 
+ 
+ 
+ Final - //*[@id="ProgressBar"]//following::div[1]
+ //*[@id="ProgressBar"]
+ 
+ //*[@id="ProgressBar"]//following::div[2]
+ 
+ 
+ //*[@id="root"]/div[1]/div/div/div[4]/div/div[2]/div[2]
+ 
+  1 of 20 Questions
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Report module:
+ 
+  //h1[text()='Assessment Report']
+  
+ //*[@id="classDropdown"]
+ //*[text()='AutomationClass']
+ 
+ rect.highcharts-point
+ //div[@data-testid="asmtName"]
+ //button[text()="See Assessment Report"]
+ 
+ //span[text()='See report >']
+ 
+ 
+ /assessment-report
+ //h1[text()="Automation dec : Addition & Subtraction A – End of Module Assessment"]
+ //p[text()='Reports & Insights']
+ 
+ [text()="Automation dec : Addition & Subtraction A – End of Module Assessment"]
+  
+ data-testid="navAvatar"
+ 
+//*[@data-testid="asmtName"]//following::*[text()="See Assessment Report"]
+ 
+ //div[@data-testid="asmtName"]//following::button[text()="See Assessment Report"]
+ 
+ //*[text()="Automation dec : Addition & Subtraction A – End of Module Assessment"]//following::*[text()="See Assessment Report"]
+ 
+ //following::*[text()="AutomationClass"]
+ 
+ //ul[@role="listbox"]//following::*[text()="AutomationClass"]
+ 
+ locate('//ul[@role="listbox"]')
+  .find('li')
+  .withText('AutomationClass')
+ 
+ waitForPageLoad
+ 
+     assert.equal(, grabTextFrom);
+	 
+  viewAllItems: locate('span').withText('View All Items'),
+  verifyAssessmentPerfWindow: locate('h1').withText('Assessment Performance'),
+  closeAssessmentPerfWindow: { dataTestId: 'CloseIcon' },
+	 
+//g[@class,"highcharts-series]
+//*[contains(@class,'highcharts-point')]
+
+Final - //div[contains(@class,'AllAssessmentBarGraph')]//*[contains(@class,'highcharts-point')]
+
+Final speed - //div[contains(@class,'AllAssessmentBarGraph')]//following::*[contains(@class,'highcharts-point')]
+
+class="highcharts-container AllAssessmentBarGraph"
+
+//h1[@id="modal-title"]
+//h1[text()='Assessment Performance'] 
+	 
+data-testid="CloseIcon"
+//span[text()='View All Items']
+ 
+ Valid:
+ --------------------------------------------------------------------------------------------------------
+ Automation dec : Addition & Subtraction A – End of Module Assessment
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ DragAndDrop:
+ 
+ span.fractionTarget
+ 
+ span.customTile
+ 
+ I.dragAndDrop('#dragHandle', '#container');
+ I.dragAndDrop('img.src', 'img.dst', { sourcePosition: {x: 10, y: 10} })
+ 
+ 
+ D:\OneDrive\OneDrive - Softcrylic LLC\HMH\Automation\VS_Code\Flight_e2e\lift\e2e\pages\ed\myStuff\assessments\myAssessments.page.js
+ 195,9:   async dragAndDropItemAndVerifyReordering() {
+   const textPosition1Before = await I.grabTextFrom(this.firstItemCard);
+    const textPosition2Before = await I.grabTextFrom(this.secondItemCard);
+
+    await I.dragToTarget(this.firstItemCard, this.secondItemCard);
+    await I.wait(1); // Making sure the positions are completely changed before grabbing the text again
+
+    const textPosition1After = await I.grabTextFrom(this.firstItemCard);
+    const textPosition2After = await I.grabTextFrom(this.secondItemCard);
+
+    await I.assertEqual(
+      textPosition1Before.substring(1), // Removing the position that item position that is appended to the text
+      textPosition2After.substring(1),
+    );
+    await I.assertEqual(
+      textPosition2Before.substring(1),
+      textPosition1After.substring(1),
+    );
+  },
+
+  async checkSeesUpdatedAssessmentText() {
+    const title = await I.grabTextFrom(this.assessmentTitleEdit);
+    await I.assertEqual(title, 'Mock Updated Title');
+
+    const description = await I.grabTextFrom(this.assessmentDescriptionEdit);
+    await I.assertEqual(description, 'Mock Updated Description');
+  },
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ todayDateInfo: { dataTestId: 'greeting-date' },
+     await I.see('Hi,', this.greetingName);
+    await I.see('Today is', this.todayDateInfo);
+	
+	await I.waitForPageLoad();
+	
+	VinothKumar.Shankar@hmhco.com
+	
+	div.jss461:nth-child(1) > span:nth-child(2) > div:nth-child(1)
+	html body div#root div div div.jss367 nav.navbar header.jss430.jss436.jss421.jss425.jss428 div.jss457.jss459.jss458 div.jss461.jss462.jss501 span div
+	/html/body/div/div[1]/div/div/nav/header/div/div[1]/span/div
+	
+	//span/div
+	
+	
+Final -  //*[text()='Vinoth Dec 15 Addition & Subtraction A – Middle of Module Assessment']//following::span[1]
+         //*[text()='Vinoth Dec 15 Addition & Subtraction A – Middle of Module Assessment']//following::span[1]
+ 
+ 
+ const webElements = await I.grabWebElements('#button');
+ 
+ 
+ button[@type="button"]
+ p[text()="Not Answered"]
+ 
+ 
+ data-testid="56dbc4a3-4f13-4dbd-a87e-2d3ad1fa84aa"
+ 
+ //*[@data-testid="titleCell"]/parent::[*[text()='Vinoth Dec 15 Addition & Subtraction A – Middle of Module Assessment']]/following-sibling::span[[text()='47.8']]
+  
+ /following-sibling::div[*[text()='View Class']]
+ //span[text()='47.8']
+ 
+ /following-sibling::span[text()='47.8']
+ 
+ //*[text()='Vinoth Dec 15 Addition & Subtraction A – Middle of Module Assessment']
+ 
+  //*[text()='Vinoth Dec 15 Addition & Subtraction A – Middle of Module Assessment']//following::span[text()='47.8']
+  
+  //span[@id="MathjaxContent"]//following::strong[text()='1']
+ 
+ //span[contains(@class,"customTile")]
+ 
+ //span[contains(@class,"customTile")]//following::strong[text()='1']
+ 
+ div/tilePoolContainer
+ span/fractionTarget
+ 
+ //div[contains(@class,"tilePoolContainer")]//following::strong[text()='1']
+ 
+ //div[contains(@class,"tilePoolContainer")]/span[contains(@class,"customTile")]//following::strong[text()='1']
+ 
+ //div[contains(@class,"tilePoolContainer")]/span[contains(@class,"customTile")]//strong[text()='1']
+ 
+ Source - //div[contains(@class,"tilePoolContainer")]/span[contains(@class,"customTile")]//strong[text()='5']
+ 
+ Target - //span[contains(@class,"fractionTarget")]//following::strong[text()='1']
+ 
+ 
+ //div[contains(@class,"tilePoolContainer")]/span[contains(@class,"customTile")]//strong
+ //span[contains(@class,"fractionTarget")]//following::strong
+ 
+ span.customTile
+ span.fractionTarget
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+//div[text()='Addition & Subtraction A - Beginning of Module Assessment']
+//div[text()='Addition & Subtraction A – Beginning of Module Assessment']
+              Addition & Subtraction A – Beginning of Module Assessment
+ 
+//div[text()='Addition & Subtraction A - Beginning of Module Assessment']
+              Addition & Subtraction A – Beginning of Module Assessment
+ 
+ 
+ 
+ //span[text()='Addition & Subtraction A - Beginning of Module Assessment']
+ 
+ 
+ Addition & Subtraction A – Beginning of Module Assessment
+ Addition & Subtraction A – Beginning of Module Assessment
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Create Teacher:
+ 
+ //p[text()='Roster']
+ 
+ //button[text()='Create Class']
+ 
+ //div[@data-testid="dialogWrapper"]//following::input[@id="classLocalId"]
+ //input[@id="classLocalId"]
+ 
+ //div[@data-testid="dialogWrapper"]//following::input[@id="name"]
+ //input[@id="name"]
+ 
+ 
+ //div[@data-testid="dialogWrapper"]//following::div[@data-testid="gradeSelect"]
+ //li[@data-testid="menu-item-grade-1"]
+ 
+ 
+ //button[@data-testid="modalActionButton"]
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ aria-label="Vinoth Dec 15 Addition & Subtraction A – Middle of Module Assessment"
+ 
+ //td[@data-testid="titleCell"]
+ 
+ 
+ 
+ //*[@data-testid="section-card"]/parent::div//div[*[text()='Class 1 Natts']]/following-sibling::div//a[text()='View Class']
+ 
+ Final - //*[@data-testid="section-card"]/parent::div//div[*[text()='Class 1 Natts']]/following-sibling::div//*[text()='View Class']
+ //*[@data-testid="section-card"]/parent::div//div[*[text()='Class 1 Natts']]/following-sibling::div/*[text()='View Class']
+ //*[@data-testid="section-card"]/parent::div//div[*[text()='AutomationClass']]/following-sibling::div[*[text()='View Class']]
+ 
+ AutomationClass
+ 
+ //*[@data-testid="section-card"]/parent::div//div[*[text()='Class 1 Natts']]/following-sibling::div/*[@class="MuiBox-root"]
+ 
+ @class="MuiBox-root"
+ 
+ Class 1 Natts 
+ 
+ Class 1 Natts View Class
+ 
+ //h2[contains(text(),'A few of our most popular courses')]/parent::div//div[//a[text()='SELENIUM']]/following-sibling::div[@class='rt-grid-2 rt-omega']
+ 
+ //*[@data-testid="section-card"]/parent::div//div[//*[text()='Class 1 Natts']]/following-sibling::a[@class='MuiButtonBase-root']
+ 
+ 
+ //p[text()='Class 1 Natts']/following-sibling::a[@class='MuiButtonBase-root']
+ 
+ //*[text()='Class 1 Natts']/following-sibling::a[text()='View Class']
+ 
+ /*[text()='Class 1 Natts']//following::a[text()="View Class"]
+ 
+ //div[@data-testid="section-card"]
+ 
+ data-testid="section-card"
+ 
+ //*[text()='Class 1 Natts']
+ 
+ 
+ //*[@data-testid="section-card"]//following::*[text()='Class 1 Natts']
+ 
+ 
+ //*[@data-testid="section-card"]/parent::div//div[//*[text()='Class 1 Natts']]
+ 
+ 
+ 
+ //*[@data-testid="section-card"]/parent::div//div[*[text()='Class 1 Natts']]
+ 
+ /following-sibling::*[text()='View Class']
+ 
+ html body div#amp-container div#amp-container-content div#main-content div.MuiContainer-root.MuiContainer-maxWidthXl.tss-1ebal4g-PageLayout2Col-mainContainer.mui-hrkzt1 div.MuiGrid-root.MuiGrid-container.tss-149fa5x-PageLayout2Col-innerContainer.mui-1d3bbye div.MuiGrid-root.MuiGrid-item.MuiGrid-grid-xs-12.MuiGrid-grid-lg-9.mui-z28m1x main.MuiContainer-root.MuiContainer-maxWidthLg.mui-2jualf div#classes div.MuiBox-root.mui-0 div.MuiBox-root.mui-1yuhvjn div.MuiGrid-root.MuiGrid-container.MuiGrid-spacing-xs-2.mui-isbt42 div.MuiGrid-root.MuiGrid-item.MuiGrid-grid-xs-12.mui-1owwi0p div.MuiPaper-root.MuiPaper-outlined.MuiPaper-rounded.MuiCard-root.tss-1hw4uq8-SectionCard-root.mui-1c79wp0 div.tss-122l1xg-DesktopHeader-root.MuiBox-root.mui-0 div.MuiBox-root.mui-0 a.MuiButtonBase-root.MuiButton-root.tss-18auwzs-DesktopHeader-buttonRoot.MuiButton-outlined.MuiButton-outlinedPrimary.MuiButton-sizeMedium.MuiButton-outlinedSizeMedium.mui-g2rlh8
+ 
+ /html/body/div/div[2]/div/div/div/div[2]/main/div[2]/div/div/div/div[1]/div/div[1]/div[4]/a
+ 
+ div.MuiGrid-grid-xs-12:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(4) > a:nth-child(1)
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ //div[text()='Addition & Subtraction A - Beginning of Module']
+ 
+ 
+ Addition & Subtraction A: Addition With Sums Up to 100
+ Addition & Subtraction A – Beginning of Module Assessment
+ 
+ 
+ //h1[contains(text(), 'Do the Math Modules')]
+ 
+ 
+ //li[contains(@data-testid,'tree-onecms')]
+ //li[contains(@data-testid,'tree-onecms')]//span[text()='Assessments']
+ //li[contains(@data-testid,'tree-onecms')]//span[text()='Number Core']
+ //span[text()='Lessons 6-10: Add Numbers With Sums of 10']
+ //span[text()='Multiplication A: Basic Concepts']
+ 
+ //span[text()="Multiplication A: Basic Concepts"]
+ //span[text()="Assessments"]
+ 
+ //span[text()="Multiplication A – Beginning of Module Assessment"]
+ 
+ http://cert.hmhco.com/ui/#/product/reading-gm
+ 
+ span.MuiTypography-root
+ //span[class="MuiTypography-root"]
+ 
+ { css: 'MuiTypography-root' }
+ 
+ //span[text()="Multiplication A: Basic Concepts"]
+ 
+ //span[text()="Multiplication A: Basic Concepts"]//following::span[text()="Assessments"]
+ 
+ //h2[text()="Multiplication A: Basic Concepts"]
+ 
+ data-testid="createAssignmentsHeader"
+ 
+ //h1[contains(text(),"Create Assignment")]
+ 
+ //input[@id='assignmentTitleInput']
+ 
+ 
+ data-testid="classes-optionsList"
+ 
+ //span[contains(text(),'Class 1 N')]
+ 
+ //p[text()='Success!']
+ ---------------------------------------------------------------------------------------------------------------------------------------------
+ 
+ When the teacher select the required <assessment> to navigate assessment module page
+ Then the teacher should land on the <assessment> module page
+ When the teacher click assign button to assign <assessment>
+ Then the teacher should land on Create assessment page
+ 
+ 
+ #label-onecms\/4ff39d6a-e1b7-4d66-9ae5-46262fe3a98e\/prod\/1701971353886-643\/content\/plankton\.NodeProxy\:\:_plankton\.GenericNode\:\:e07fe998-126a-4da1-b746-55dde2de7fb0_0 > span:nth-child(1)
+ 
+ html body div#amp-container div#amp-container-content div#main-content div.MuiContainer-root.mui-10ur324 main.MuiContainer-root.MuiContainer-maxWidthXl.mui-hrkzt1 div.MuiGrid-root.MuiGrid-container.mui-1d3bbye div#leftNav.MuiGrid-root.MuiGrid-item.MuiGrid-grid-xs-12.MuiGrid-grid-md-4.MuiGrid-grid-lg-3.mui-1ktfntx nav.tss-1lyvhai-LayoutHeader2Columns-leftNav div.tss-3hmofn-ProductLeftNav-productLeftNav.MuiBox-root.mui-0 div.tss-izyut-TreeContainer-container div.mui-4hbyrq nav ul#toc-tree.MuiTreeView-root.tss-a12j0p-Tree-root.mui-12mehxg li#toc-tree-onecms/4ff39d6a-e1b7-4d66-9ae5-46262fe3a98e/prod/1701971353886-643/content/plankton.NodeProxy::_plankton.GenericNode::e07fe998-126a-4da1-b746-55dde2de7fb0_0.MuiTreeItem-root.mui-105mfs8 div.mui-2buir5.Mui-expanded.undefined.tss-1x8ww65-TreeItem-root-TreeItem-parentNode button#label-onecms/4ff39d6a-e1b7-4d66-9ae5-46262fe3a98e/prod/1701971353886-643/content/plankton.NodeProxy::_plankton.GenericNode::e07fe998-126a-4da1-b746-55dde2de7fb0_0.MuiButtonBase-root.MuiButton-root.MuiButton-text.MuiButton-textPrimary.MuiButton-sizeMedium.MuiButton-textSizeMedium.tss-o0tekk-TreeItem-labelButton.mui-114rx86 span.MuiTypography-root.MuiTypography-overline.tss-rmw21p-TreeItem-label.mui-eic9bi
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ /html/body/div/div[2]/div/div/main/div/div[2]/div/div/div/div/div/div[2]/div[2]
+ 
+ div.MuiPaper-root:nth-child(2)
+ div.MuiPaper-root:nth-child(2) button
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 1) Validate the create assessment feature from teacher account. @flightTeacherCreateAssessment @New-code
+       Teacher Logins to Heinemann Flight new site and create assessment for required students. {"country":"United States","state":"Other","suite":"unitedStates","userLoginType":"flightTeachersLoginTests","productName":"Do the Math","assignmentName":"Flight_E2E_Automation"}:
+     Error: Parse error on line 1:
+...data-testid=contains(tree-onecms)]
+-----------------------^
+Expecting 'S', ']', '=', 'CONTAINS', 'DOES_NOT_CONTAIN', 'CONTAINS_WORD', 'CONTAINS_PREFIX', 'STARTS_WITH', 'ENDS_WITH', got '('
+      at Parser.parseError (D:\OneDrive\OneDrive - Softcrylic LLC\HMH\Automation\VS_Code\Flight_e2e\lift\node_modules\bo-selector\parser.js:204:15) 
+      at Parser.parse (D:\OneDrive\OneDrive - Softcrylic LLC\HMH\Automation\VS_Code\Flight_e2e\lift\node_modules\bo-selector\parser.js:262:22)      
+      at parse (D:\OneDrive\OneDrive - Softcrylic LLC\HMH\Automation\VS_Code\Flight_e2e\lift\node_modules\css-to-xpath\js\css_to_xpath.js:12:23)    
+      at convertToXpath (D:\OneDrive\OneDrive - Softcrylic LLC\HMH\Automation\VS_Code\Flight_e2e\lift\node_modules\css-to-xpath\js\css_to_xpath.js:15:16)
+      at Locator.toXPath (D:\OneDrive\OneDrive - Softcrylic LLC\HMH\Automation\VS_Code\Flight_e2e\lift\node_modules\codeceptjs\lib\locator.js:165:30)
+      at Locator.withText (D:\OneDrive\OneDrive - Softcrylic LLC\HMH\Automation\VS_Code\Flight_e2e\lift\node_modules\codeceptjs\lib\locator.js:251:42)
+      at Object.selectAssessment (pages\heinemannFlight\doTheMath\teacherCreateAssessment.page.js:8:51)
+      at MetaStep.run (D:\OneDrive\OneDrive - Softcrylic LLC\HMH\Automation\VS_Code\Flight_e2e\lift\node_modules\codeceptjs\lib\step.js:285:21)     
+      at Object.selectAssignmentToAssign (pages\heinemannFlight\doTheMath\teacherCreateAssessment.page.js:25:35)
+      at MetaStep.run (D:\OneDrive\OneDrive - Softcrylic LLC\HMH\Automation\VS_Code\Flight_e2e\lift\node_modules\codeceptjs\lib\step.js:273:19)     
+      at D:\OneDrive\OneDrive - Softcrylic LLC\HMH\Automation\VS_Code\Flight_e2e\lift\e2e\tests\steps\heinemannFlight\doTheMath\teacherCreateAssessment.e2e.steps.js:17:37
+      at runSteps (D:\OneDrive\OneDrive - Softcrylic LLC\HMH\Automation\VS_Code\Flight_e2e\lift\node_modules\codeceptjs\lib\interfaces\gherkin.js:62:15)
+
+
+  Artifacts:
+  - screenshot: D:\OneDrive\OneDrive - Softcrylic LLC\HMH\Automation\VS_Code\Flight_e2e\lift\e2e\output\Teacher_Logins_to_Heinemann_Flight_new_site_and_create_assessment_for_required_student.failed.png
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ #toc-tree-onecms\/4ff39d6a-e1b7-4d66-9ae5-46262fe3a98e\/prod\/1701478247843-855\/content\/plankton\.NodeProxy\:\:_plankton\.GenericNode\:\:e07fe998-126a-4da1-b746-55dde2de7fb0_0
+ 
+ html body div#amp-container div#amp-container-content div#main-content div.MuiContainer-root.mui-10ur324 main.MuiContainer-root.MuiContainer-maxWidthXl.mui-hrkzt1 div.MuiGrid-root.MuiGrid-container.mui-1d3bbye div#leftNav.MuiGrid-root.MuiGrid-item.MuiGrid-grid-xs-12.MuiGrid-grid-md-4.MuiGrid-grid-lg-3.mui-1ktfntx nav.tss-1lyvhai-LayoutHeader2Columns-leftNav div.tss-3hmofn-ProductLeftNav-productLeftNav.MuiBox-root.mui-0 div.tss-izyut-TreeContainer-container div.mui-4hbyrq nav ul#toc-tree.MuiTreeView-root.tss-a12j0p-Tree-root.mui-12mehxg li#toc-tree-onecms/4ff39d6a-e1b7-4d66-9ae5-46262fe3a98e/prod/1701478247843-855/content/plankton.NodeProxy::_plankton.GenericNode::e07fe998-126a-4da1-b746-55dde2de7fb0_0.MuiTreeItem-root.mui-105mfs8
+ 
+ //*[@id="toc-tree-onecms/4ff39d6a-e1b7-4d66-9ae5-46262fe3a98e/prod/1701478247843-855/content/plankton.NodeProxy::_plankton.GenericNode::e07fe998-126a-4da1-b746-55dde2de7fb0_0"]
+ 
+ 
+ 
+ div.MuiPaper-root:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(3) > button:nth-child(1) > div:nth-child(1) > svg:nth-child(1)
+ 
+ /html/body/div/div[2]/div/div/main/div/div[2]/div/div/div/div/div/div[2]/div[2]/div/div/div/div[3]/button/div/svg
+ 
+ 
+ //*[@id="main-content"]/div/main/div/div[2]/div/div/div/div/div/div[2]/div[2]/div/div/div/div[3]/button/div/svg
+ 
+ //*[@id="main-content"]/div/main/div/div[2]/div/div/div/div/div/div[2]/div[2]/div/div/div/div[3]/button
+ 
+ data-testid="tree-onecms/4ff39d6a-e1b7-4d66-9ae5-46262fe3a98e/prod/1701478247843-855/content/plankton.NodeProxy::_plankton.GenericNode::20fd7ee4-15d2-4488-8bc2-de9b7323fea4_1"
+ 
+ data-testid="tree-onecms/4ff39d6a-e1b7-4d66-9ae5-46262fe3a98e/prod/1701478247843-855/content/plankton.NodeProxy::_plankton.GenericNode::a54b9a91-a537-47f8-9314-95a8d4428c96_1"
+ 
+ data-testid="tree-onecms/4ff39d6a-e1b7-4d66-9ae5-46262fe3a98e
+ 
+ //li[contains(@data-testid,'tree-onecms/4ff39d6a-e1b7-4d66-9ae5-46262fe3a98e')]
+ 
+ contains(tree-onecms)
+ 
+ data-testid="node-item"
+ 
+
+ 
+ 
+ 
+ 
+ //*[contains@id='label-onecms')]
+ //li[contains(@data-testid,'tree-onecms')]
+ 
+ #label-onecms\/4ff39d6a-e1b7-4d66-9ae5-46262fe3a98e\/prod\/1701478247843-855\/content\/plankton\.NodeProxy\:\:_plankton\.GenericNode\:\:8d08c59c-15ac-4825-9bbc-365527b36d6f_0 > span
+ 
+ #label-onecms
+ //*[@id="label-onecms/4ff39d6a-e1b7-4d66-9ae5-46262fe3a98e/prod/1701478247843-855/content/plankton.NodeProxy::_plankton.GenericNode::8d08c59c-15ac-4825-9bbc-365527b36d6f_0"]/span
+ 
+ document.querySelector("#label-onecms\\/4ff39d6a-e1b7-4d66-9ae5-46262fe3a98e\\/prod\\/1701478247843-855\\/content\\/plankton\\.NodeProxy\\:\\:_plankton\\.GenericNode\\:\\:8d08c59c-15ac-4825-9bbc-365527b36d6f_0 > span")

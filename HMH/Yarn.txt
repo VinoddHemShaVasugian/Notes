@@ -1,0 +1,487 @@
+Yarn:
+
+https://classic.yarnpkg.com/en/docs/yarn-workflow
+
+vinoth@SCI-LT-101:/mnt/c/Windows/system32/lift$ yarn install --network-timeout 10000000
+yarn install v1.22.19
+[1/5] Validating package.json...
+[2/5] Resolving packages...
+[3/5] Fetching packages...
+warning Pattern ["wrap-ansi@^7.0.0"] is trying to unpack in the same destination "/home/vinoth/.cache/yarn/v6/npm-wrap-ansi-cjs-7.0.0-67e145cff510a6a6984bdf1152911d69d2eb9e43-integrity/node_modules/wrap-ansi-cjs" as pattern ["wrap-ansi-cjs@npm:wrap-ansi@^7.0.0"]. This could result in non-deterministic behavior, skipping.
+error An unexpected error occurred: "https://registry.yarnpkg.com/npm/-/npm-8.19.4.tgz: getaddrinfo EAI_AGAIN registry.yarnpkg.com".
+info If you think this is a bug, please open a bug report with the information provided in "/mnt/c/Windows/system32/lift/yarn-error.log".
+info Visit https://yarnpkg.com/en/docs/cli/install for documentation about this command.
+vinoth@SCI-LT-101:/mnt/c/Windows/system32/lift$ clear
+vinoth@SCI-LT-101:/mnt/c/Windows/system32/lift$ yarn install --network-timeout 10000000
+yarn install v1.22.19
+[1/5] Validating package.json...
+[2/5] Resolving packages...
+[3/5] Fetching packages...
+warning Pattern ["wrap-ansi@^7.0.0"] is trying to unpack in the same destination "/home/vinoth/.cache/yarn/v6/npm-wrap-ansi-cjs-7.0.0-67e145cff510a6a6984bdf1152911d69d2eb9e43-integrity/node_modules/wrap-ansi-cjs" as pattern ["wrap-ansi-cjs@npm:wrap-ansi@^7.0.0"]. This could result in non-deterministic behavior, skipping.
+[##########################--------------------------------------------------------------------------------------------------------------------------info There appears to be trouble with your network connection. Retrying...
+[4/5] Linking dependencies...
+warning " > graphql-request@3.6.1" has unmet peer dependency "graphql@14.x || 15.x".
+warning " > react-mathjax-preview@2.2.6" has unmet peer dependency "prop-types@^15".
+warning " > react-mathjax-preview@2.2.6" has incorrect peer dependency "react@^16 || ^17".
+warning " > react-mathjax-preview@2.2.6" has unmet peer dependency "react-dom@^16 || ^17".
+warning " > tss-react@4.3.4" has unmet peer dependency "@emotion/react@^11.4.1".
+warning " > @testing-library/react@13.3.0" has unmet peer dependency "react-dom@^18.0.0".
+warning " > @testing-library/user-event@14.4.3" has unmet peer dependency "@testing-library/dom@>=7.21.4".
+warning " > @wojtekmaj/enzyme-adapter-react-17@0.6.5" has incorrect peer dependency "react@^17.0.0-0".
+warning " > @wojtekmaj/enzyme-adapter-react-17@0.6.5" has unmet peer dependency "react-dom@^17.0.0-0".
+warning "@wojtekmaj/enzyme-adapter-react-17 > @wojtekmaj/enzyme-adapter-utils@0.1.1" has incorrect peer dependency "react@^17.0.0-0".
+warning "@wojtekmaj/enzyme-adapter-react-17 > react-test-renderer@17.0.2" has incorrect peer dependency "react@17.0.2".
+warning "@wojtekmaj/enzyme-adapter-react-17 > react-test-renderer > react-shallow-renderer@16.14.1" has incorrect peer dependency "react@^16.0.0 || ^17.0.0".
+warning " > axios-mock-adapter@1.19.0" has unmet peer dependency "axios@>= 0.9.0".
+warning " > css-loader@3.2.0" has incorrect peer dependency "webpack@^4.0.0".
+warning "depcheck > @vue/compiler-sfc@3.0.11" has unmet peer dependency "vue@3.0.11".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/add-to-my-lessons > @apollo/client@3.3.21" has unmet peer dependency "graphql@^14.0.0 || ^15.0.0".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/add-to-my-lessons > react-intl@5.8.8" has incorrect peer dependency "react@^16.3.0".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/add-to-my-lessons > single-spa-react@4.3.0" has unmet peer dependency "@types/react-dom@*".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/admin-program-activity > @mui/styles@5.10.8" has incorrect peer dependency "react@^17.0.0".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/allResources > react-redux@7.1.0" has incorrect peer dependency "react@^16.8.3".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/assignment-feedback > react-redux@7.2.2" has incorrect peer dependency "react@^16.8.3 || ^17".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/coaching-popover > @fullcalendar/react@5.10.1" has incorrect peer dependency "react@^16.7.0 || ^17".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/coaching-popover > @fullcalendar/react@5.10.1" has incorrect peer dependency "react-dom@^16.7.0 || ^17".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/content-provider > react-redux@7.2.0" has incorrect peer dependency "react@^16.8.3".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/evaluator > react-html-parser@2.0.2" has incorrect peer dependency "react@^0.14.0 || ^15.0.0 || ^16.0.0-0".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/groups > react-beautiful-dnd@13.1.0" has incorrect peer dependency "react@^16.8.5 || ^17.0.0".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/groups > react-beautiful-dnd@13.1.0" has incorrect peer dependency "react-dom@^16.8.5 || ^17.0.0".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/groups > react-redux@5.0.7" has incorrect peer dependency "react@^0.14.0 || ^15.0.0-0 || ^16.0.0-0".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/hcp-support-container > graphql-tag@2.12.5" has unmet peer dependency "graphql@^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/iread-practice-report > react-redux-toastr@7.4.5" has incorrect peer dependency "react@^0.14 || ^15.0.1 || ^16.0.0".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/login-form > react-redux@7.2.4" has incorrect peer dependency "react@^16.8.3 || ^17".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @ed/orchid > react-modal@3.5.1" has incorrect peer dependency "react@^0.14.0 || ^15.0.0 || ^16".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @ed/orchid > react-modal@3.5.1" has incorrect peer dependency "react-dom@^0.14.0 || ^15.0.0 || ^16".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @ed/orchid > react-select@2.1.2" has incorrect peer dependency "react@^15.3.0 || ^16.0.0".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @ed/orchid > react-select@2.1.2" has incorrect peer dependency "react-dom@^15.3.0 || ^16.0.0".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @ed/orchid > react-toolbox@2.0.0-beta.12" has incorrect peer dependency "react@^15.5.0".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @ed/orchid > react-toolbox@2.0.0-beta.12" has incorrect peer dependency "react-dom@^15.5.0".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @ed/orchid > react-toolbox@2.0.0-beta.12" has incorrect peer dependency "react-transition-group@^1.1.3".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/combobox > react-uid@2.3.0" has incorrect peer dependency "react@^16.8.0".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/drag-and-drop-list > react-beautiful-dnd-test-utils@3.2.1" has incorrect peer dependency "@testing-library/react@^8.0.1".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/drag-and-drop-list > react-beautiful-dnd-test-utils@3.2.1" has incorrect peer dependency "@testing-library/jest-dom@^4.0.0".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/drag-and-drop-list > react-beautiful-dnd-test-utils@3.2.1" has incorrect peer dependency "jest@^24.0.0".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/page-header > storybook-addon-designs@6.0.0-alpha.3" has unmet peer dependency "@storybook/addons@^5.0.0 || ^6.0.0".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/page-header > storybook-addon-designs@6.0.0-alpha.3" has unmet peer dependency "@storybook/components@^5.0.0 || ^6.0.0".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/page-header > storybook-addon-designs@6.0.0-alpha.3" has unmet peer dependency "@storybook/theming@^5.0.0 || ^6.0.0".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/tree-view-core > @mui/lab@5.0.0-alpha.108" has unmet peer dependency "react-dom@^17.0.0 || ^18.0.0".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/tree-view-core > @mui/material@5.10.11" has unmet peer dependency "react-dom@^17.0.0 || ^18.0.0".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/discover-carousel > react-slick@0.28.1" has incorrect peer dependency "react@^0.14.0 || ^15.0.1 || ^16.0.0 || ^17.0.0".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/discover-carousel > react-slick@0.28.1" has incorrect peer dependency "react-dom@^0.14.0 || ^15.0.1 || ^16.0.0 || ^17.0.0".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/discover-carousel > slick-carousel@1.8.1" has unmet peer dependency "jquery@>=1.8.0".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/discover-resources-container > @mui/x-data-grid@5.17.26" has unmet peer dependency "@mui/system@^5.4.1".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/discover-resources-container > @mui/x-data-grid@5.17.26" has unmet peer dependency "react-dom@^17.0.2 || ^18.0.0".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/reporting-components > react-to-print@2.13.0" has incorrect peer dependency "react@^15.0.0 || ^16.0.0 || ^17.0.0".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/reporting-components > react-to-print@2.13.0" has unmet peer dependency "react-dom@^15.0.0 || ^16.0.0 || ^17.0.0".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/selectable-groups-list > react-truncate@2.4.0" has incorrect peer dependency "react@<= 16.x.x".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/zoom > @zoomus/websdk@2.11.5" has incorrect peer dependency "react@16.13.0".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/zoom > @zoomus/websdk@2.11.5" has unmet peer dependency "react-dom@16.13.0".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/zoom > @zoomus/websdk@2.11.5" has unmet peer dependency "redux@3.7.2".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/zoom > @zoomus/websdk@2.11.5" has unmet peer dependency "react-redux@7.2.4".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/zoom > @zoomus/websdk@2.11.5" has unmet peer dependency "redux-thunk@2.3.0".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hnm/teacher-display-tools-components > html-react-parser@0.7.1" has incorrect peer dependency "react@^0.14 || ^15 || ^16".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @pat/pdf-player > react-pdf@5.2.0" has incorrect peer dependency "react@^16.3.0 || ^17.0.0-0".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @pat/pdf-player > react-pdf@5.2.0" has unmet peer dependency "react-dom@^16.3.0 || ^17.0.0-0".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/amp-storybook > @storybook/react@6.5.12" has unmet peer dependency "require-from-string@^2.0.2".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/amp-storybook > msw-storybook-addon@1.6.1" has incorrect peer dependency "msw@^0.35.0 || ^0.36.0".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/lift-e2e > mocha-junit-reporter@2.2.0" has unmet peer dependency "mocha@>=2.2.5".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/lift-e2e > mocha-multi@1.1.7" has unmet peer dependency "mocha@>=2.2.0 <7 || >=9".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/add-to-my-lessons > @apollo/client > @graphql-typed-document-node/core@3.1.0" has unmet peer dependency "graphql@^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/groups > react-beautiful-dnd > use-memo-one@1.1.2" has incorrect peer dependency "react@^16.8.0 || ^17.0.0".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @ed/orchid > react-select > react-input-autosize@2.2.2" has incorrect peer dependency "react@^0.14.9 || ^15.3.0 || ^16.0.0-rc || ^16.0".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @ed/orchid > react-toolbox > react-css-themr@2.1.2" has incorrect peer dependency "react@^0.14.0 || ^15.0.0-0".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @ed/orchid > react-toolbox > react-transition-group@1.2.1" has incorrect peer dependency "react@^15.0.0 || ^16.0.0".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @ed/orchid > react-toolbox > react-transition-group@1.2.1" has incorrect peer dependency "react-dom@^15.0.0 || ^16.0.0".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/page-header > storybook-addon-designs > @figspec/react@0.1.5" has incorrect peer dependency "react@^16.14.0 || ^17.0.0".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/page-layout-2col > @storybook/addon-docs > @mdx-js/react@1.6.22" has incorrect peer dependency "react@^16.13.1 || ^17.0.0".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/page-layout-2col > @storybook/addon-docs > @storybook/api@6.5.12" has unmet peer dependency "react-dom@^16.8.0 || ^17.0.0 || ^18.0.0".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/page-layout-2col > @storybook/addon-docs > @storybook/components@6.5.12" has unmet peer dependency "react-dom@^16.8.0 || ^17.0.0 || ^18.0.0".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/page-layout-2col > @storybook/addon-docs > @storybook/core-common@6.5.12" has unmet peer dependency "react-dom@^16.8.0 || ^17.0.0 || ^18.0.0".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/page-layout-2col > @storybook/addon-docs > @storybook/preview-web@6.5.12" has unmet peer dependency "react-dom@^16.8.0 || ^17.0.0 || ^18.0.0".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/page-layout-2col > @storybook/addon-docs > @storybook/source-loader@6.5.12" has unmet peer dependency "react-dom@^16.8.0 || ^17.0.0 || ^18.0.0".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/page-layout-2col > @storybook/addon-docs > @storybook/store@6.5.12" has unmet peer dependency "react-dom@^16.8.0 || ^17.0.0 || ^18.0.0".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/tree-view-core > @mui/lab > @mui/base@5.0.0-alpha.106" has unmet peer dependency "react-dom@^17.0.0 || ^18.0.0".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/tree-view-core > @mui/material > @mui/base@5.0.0-alpha.103" has unmet peer dependency "react-dom@^17.0.0 || ^18.0.0".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/section-card > @storybook/addon-actions > react-inspector@5.1.1" has incorrect peer dependency "react@^16.8.4 || ^17.0.0".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/amp-storybook > @storybook/addon-a11y > react-sizeme@3.0.1" has incorrect peer dependency "react@^0.14.0 || ^15.0.0-0 || ^16.0.0 || ^17.0.0".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/amp-storybook > @storybook/addon-a11y > react-sizeme@3.0.1" has incorrect peer dependency "react-dom@^0.14.0 || ^15.0.0-0 || ^16.0.0 || ^17.0.0".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/amp-storybook > @storybook/react > react-element-to-jsx-string@14.3.4" has incorrect peer dependency "react@^0.14.8 || ^15.0.1 || ^16.0.0 || ^17.0.1".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/amp-storybook > @storybook/react > react-element-to-jsx-string@14.3.4" has incorrect peer dependency "react-dom@^0.14.8 || ^15.0.1 || ^16.0.0 || ^17.0.1".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/amp-storybook > msw-storybook-addon > @storybook/addons@6.1.21" has incorrect peer dependency "react@^16.8.0 || ^17.0.0".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/amp-storybook > msw-storybook-addon > @storybook/addons@6.1.21" has incorrect peer dependency "react-dom@^16.8.0 || ^17.0.0".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/admin-class-reports > react-router-dom > react-router > mini-create-react-context@0.4.1" has incorrect peer dependency "react@^0.14.0 || ^15.0.0 || ^16.0.0 || ^17.0.0".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/page-layout-2col > @storybook/addon-docs > @babel/preset-env > @babel/plugin-bugfix-v8-spread-parameters-in-optional-chaining@7.13.12" has incorrect peer dependency "@babel/core@^7.13.0".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/amp-storybook > @storybook/testing-library > @storybook/instrumenter > @storybook/addons@6.4.22" has incorrect peer dependency "react@^16.8.0 || ^17.0.0".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/amp-storybook > @storybook/testing-library > @storybook/instrumenter > @storybook/addons@6.4.22" has incorrect peer dependency "react-dom@^16.8.0 || ^17.0.0".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/amp-storybook > msw-storybook-addon > @storybook/addons > @storybook/api@6.1.21" has incorrect peer dependency "react@^16.8.0 || ^17.0.0".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/amp-storybook > msw-storybook-addon > @storybook/addons > @storybook/api@6.1.21" has incorrect peer dependency "react-dom@^16.8.0 || ^17.0.0".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/amp-storybook > msw-storybook-addon > @storybook/addons > @storybook/router@6.1.21" has incorrect peer dependency "react@^16.8.0 || ^17.0.0".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/amp-storybook > msw-storybook-addon > @storybook/addons > @storybook/router@6.1.21" has incorrect peer dependency "react-dom@^16.8.0 || ^17.0.0".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/amp-storybook > msw-storybook-addon > @storybook/addons > @storybook/theming@6.1.21" has incorrect peer dependency "react@^16.8.0 || ^17.0.0".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/amp-storybook > msw-storybook-addon > @storybook/addons > @storybook/theming@6.1.21" has incorrect peer dependency "react-dom@^16.8.0 || ^17.0.0".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/amp-storybook > @storybook/testing-library > @storybook/instrumenter > @storybook/addons > @storybook/api@6.4.22" has incorrect peer dependency "react@^16.8.0 || ^17.0.0".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/amp-storybook > @storybook/testing-library > @storybook/instrumenter > @storybook/addons > @storybook/api@6.4.22" has incorrect peer dependency "react-dom@^16.8.0 || ^17.0.0".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/amp-storybook > @storybook/testing-library > @storybook/instrumenter > @storybook/addons > @storybook/router@6.4.22" has incorrect peer dependency "react@^16.8.0 || ^17.0.0".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/amp-storybook > @storybook/testing-library > @storybook/instrumenter > @storybook/addons > @storybook/router@6.4.22" has incorrect peer dependency "react-dom@^16.8.0 || ^17.0.0".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/amp-storybook > @storybook/testing-library > @storybook/instrumenter > @storybook/addons > @storybook/theming@6.4.22" has incorrect peer dependency "react@^16.8.0 || ^17.0.0".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/amp-storybook > @storybook/testing-library > @storybook/instrumenter > @storybook/addons > @storybook/theming@6.4.22" has incorrect peer dependency "react-dom@^16.8.0 || ^17.0.0".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/amp-storybook > msw-storybook-addon > @storybook/addons > @storybook/api > @reach/router@1.3.4" has incorrect peer dependency "react@15.x || 16.x || 16.4.0-alpha.0911da3".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/amp-storybook > msw-storybook-addon > @storybook/addons > @storybook/api > @reach/router@1.3.4" has incorrect peer dependency "react-dom@15.x || 16.x || 16.4.0-alpha.0911da3".
+warning "workspace-aggregator-404874a6-7c28-40dd-91b7-aceb5d79b0d7 > @hmhco/amp-storybook > msw-storybook-addon > @storybook/addons > @storybook/api > @reach/router > create-react-context@0.3.0" has incorrect peer dependency "react@^0.14.0 || ^15.0.0 || ^16.0.0".
+warning Workspaces can only be enabled in private projects.
+[5/5] Building fresh packages...
+[14/28] ⠂ core-js
+[10/28] ⠂ nx
+[3/28] ⠂ cpu-features
+[4/28] ⠂ @pact-foundation/pact-core
+error /mnt/c/Windows/system32/lift/node_modules/@pact-foundation/pact-core: Command failed.
+Exit code: 1
+Command: node-gyp rebuild
+Arguments:
+Directory: /mnt/c/Windows/system32/lift/node_modules/@pact-foundation/pact-core
+Output:
+gyp info it worked if it ends with ok
+gyp info using node-gyp@8.4.1
+gyp info using node@16.15.1 | linux | x64
+gyp info find Python using Python version 3.6.9 found at "/usr/bin/python3"
+gyp http GET https://nodejs.org/download/release/v16.15.1/node-v16.15.1-headers.tar.gz
+gyp http 200 https://nodejs.org/download/release/v16.15.1/node-v16.15.1-headers.tar.gz
+gyp http GET https://nodejs.org/download/release/v16.15.1/SHASUMS256.txt
+gyp http 200 https://nodejs.org/download/release/v16.15.1/SHASUMS256.txt
+gyp info spawn /usr/bin/python3
+gyp info spawn args [
+gyp info spawn args   '/mnt/c/Windows/system32/lift/node_modules/@npmcli/metavuln-calculator/node_modules/node-gyp/gyp/gyp_main.py',
+gyp info spawn args   'binding.gyp',
+gyp info spawn args   '-f',
+gyp info spawn args   'make',
+gyp info spawn args   '-I',
+gyp info spawn args   '/mnt/c/Windows/system32/lift/node_modules/@pact-foundation/pact-core/build/config.gypi',
+gyp info spawn args   '-I',
+gyp info spawn args   '/mnt/c/Windows/system32/lift/node_modules/@npmcli/metavuln-calculator/node_modules/node-gyp/addon.gypi',
+gyp info spawn args   '-I',
+gyp info spawn args   '/home/vinoth/.cache/node-gyp/16.15.1/include/node/common.gypi',
+gyp info spawn args   '-Dlibrary=shared_library',
+gyp info spawn args   '-Dvisibility=default',
+gyp info spawn args   '-Dnode_root_dir=/home/vinoth/.cache/node-gyp/16.15.1',
+gyp info spawn args   '-Dnode_gyp_dir=/mnt/c/Windows/system32/lift/node_modules/@npmcli/metavuln-calculator/node_modules/node-gyp',
+gyp info spawn args   '-Dnode_lib_file=/home/vinoth/.cache/node-gyp/16.15.1/<(target_arch)/node.lib',
+gyp info spawn args   '-Dmodule_root_dir=/mnt/c/Windows/system32/lift/node_modules/@pact-foundation/pact-core',
+gyp info spawn args   '-Dnode_engine=v8',
+gyp info spawn args   '--depth=.',
+gyp info spawn args   '--no-parallel',
+gyp info spawn args   '--generator-output',
+gyp info spawn args   'build',
+gyp info spawn args   '-Goutput_dir=.'
+gyp info spawn args ]
+gyp ERR! build error
+gyp ERR! stack Error: not found: make
+gyp ERR! stack     at getNotFoundError (/mnt/c/Windows/system32/lift/node_modules/which/which.js:10:17)
+gyp ERR! stack     at /mnt/c/Windows/system32/lift/node_modules/which/which.js:57:18
+gyp ERR! stack     at new Promise (<anonymous>)
+gyp ERR! stack     at step (/mnt/c/Windows/system32/lift/node_modules/which/which.js:54:21)
+gyp ERR! stack     at /mnt/c/Windows/system32/lift/node_modules/which/which.js:71:22
+gyp ERR! stack     at new Promise (<anonymous>)
+gyp ERR! stack     at subStep (/mnt/c/Windows/system32/lift/node_modules/which/which.js:69:33)
+gyp ERR! stack     at /mnt/c/Windows/system32/lift/node_modules/which/which.js:80:22
+gyp ERR! stack     at /mnt/c/Windows/system32/lift/node_modules/isexe/index.js:42:5
+gyp ERR! stack     at /mnt/c/Windows/system32/lift/node_modules/isexe/mode.js:8:5
+gyp ERR! stack     at FSReqCallback.oncomplete (node:fs:198:21)
+gyp ERR! System Linux 4.4.0-19041-Microsoft
+gyp ERR! command "/home/vinoth/.nvm/versions/node/v16.15.1/bin/node" "/mnt/c/Windows/system32/lift/node_modules/.bin/node-gyp" "rebuild"
+gyp ERR! cwd /mnt/c/Windows/system32/lift/node_modules/@pact-foundation/pact-core
+
+
+
+
+warning Error running install script for optional dependency: "/mnt/c/Windows/system32/lift/node_modules/cpu-features: Command failed.
+Exit code: 1
+Command: node-gyp rebuild
+Arguments:
+Directory: /mnt/c/Windows/system32/lift/node_modules/cpu-features
+Output:
+gyp info it worked if it ends with ok
+gyp info using node-gyp@8.4.1
+gyp info using node@16.15.1 | linux | x64
+gyp info find Python using Python version 3.6.9 found at \"/usr/bin/python3\"
+gyp http GET https://nodejs.org/download/release/v16.15.1/node-v16.15.1-headers.tar.gz
+gyp http 200 https://nodejs.org/download/release/v16.15.1/node-v16.15.1-headers.tar.gz
+gyp http GET https://nodejs.org/download/release/v16.15.1/SHASUMS256.txt
+gyp http 200 https://nodejs.org/download/release/v16.15.1/SHASUMS256.txt
+gyp info spawn /usr/bin/python3
+gyp info spawn args [
+gyp info spawn args   '/mnt/c/Windows/system32/lift/node_modules/@npmcli/metavuln-calculator/node_modules/node-gyp/gyp/gyp_main.py',
+gyp info spawn args   'binding.gyp',
+gyp info spawn args   '-f',
+gyp info spawn args   'make',
+gyp info spawn args   '-I',
+gyp info spawn args   '/mnt/c/Windows/system32/lift/node_modules/cpu-features/build/config.gypi',
+gyp info spawn args   '-I',
+gyp info spawn args   '/mnt/c/Windows/system32/lift/node_modules/@npmcli/metavuln-calculator/node_modules/node-gyp/addon.gypi',
+gyp info spawn args   '-I',
+gyp info spawn args   '/home/vinoth/.cache/node-gyp/16.15.1/include/node/common.gypi',
+gyp info spawn args   '-Dlibrary=shared_library',
+gyp info spawn args   '-Dvisibility=default',
+gyp info spawn args   '-Dnode_root_dir=/home/vinoth/.cache/node-gyp/16.15.1',
+gyp info spawn args   '-Dnode_gyp_dir=/mnt/c/Windows/system32/lift/node_modules/@npmcli/metavuln-calculator/node_modules/node-gyp',
+gyp info spawn args   '-Dnode_lib_file=/home/vinoth/.cache/node-gyp/16.15.1/<(target_arch)/node.lib',
+gyp info spawn args   '-Dmodule_root_dir=/mnt/c/Windows/system32/lift/node_modules/cpu-features',
+gyp info spawn args   '-Dnode_engine=v8',
+gyp info spawn args   '--depth=.',
+gyp info spawn args   '--no-parallel',
+gyp info spawn args   '--generator-output',
+gyp info spawn args   'build',
+gyp info spawn args   '-Goutput_dir=.'
+gyp info spawn args ]
+gyp ERR! build error
+gyp ERR! stack Error: not found: make
+gyp ERR! stack     at getNotFoundError (/mnt/c/Windows/system32/lift/node_modules/which/which.js:10:17)
+gyp ERR! stack     at /mnt/c/Windows/system32/lift/node_modules/which/which.js:57:18
+gyp ERR! stack     at new Promise (<anonymous>)
+gyp ERR! stack     at step (/mnt/c/Windows/system32/lift/node_modules/which/which.js:54:21)
+gyp ERR! stack     at /mnt/c/Windows/system32/lift/node_modules/which/which.js:71:22
+gyp ERR! stack     at new Promise (<anonymous>)
+gyp ERR! stack     at subStep (/mnt/c/Windows/system32/lift/node_modules/which/which.js:69:33)
+gyp ERR! stack     at /mnt/c/Windows/system32/lift/node_modules/which/which.js:80:22
+gyp ERR! stack     at /mnt/c/Windows/system32/lift/node_modules/isexe/index.js:42:5
+gyp ERR! stack     at /mnt/c/Windows/system32/lift/node_modules/isexe/mode.js:8:5
+gyp ERR! stack     at FSReqCallback.oncomplete (node:fs:198:21)
+gyp ERR! System Linux 4.4.0-19041-Microsoft
+gyp ERR! command \"/home/vinoth/.nvm/versions/node/v16.15.1/bin/node\" \"/mnt/c/Windows/system32/lift/node_modules/.bin/node-gyp\" \"rebuild\"
+gyp ERR! cwd /mnt/c/Windows/system32/lift/node_modules/cpu-features
+gyp ERR! node -v v16.15.1
+gyp ERR! node-gyp -v v8.4.1
+gyp ERR! not ok"
+info This module is OPTIONAL, you can safely ignore this error
+yarn install v1.22.19t/c/Windows/system32/lift$ yarn install --network-timeout 10000000000
+[1/5] Validating package.json...
+[2/5] Resolving packages...
+[3/5] Fetching packages...
+warning Pattern ["wrap-ansi@^7.0.0"] is trying to unpack in the same destination "/home/vinoth/.cache/yarn/v6/npm-wrap-ansi-cjs-7.0.0-67e145cff510a6a6984bdf1152911d69d2eb9e43-integrity/node_modules/wrap-ansi-cjs" as pattern ["wrap-ansi-cjs@npm:wrap-ansi@^7.0.0"]. This could result in non-deterministic behavior, skipping.
+[4/5] Linking dependencies...
+warning " > graphql-request@3.6.1" has unmet peer dependency "graphql@14.x || 15.x".
+warning " > react-mathjax-preview@2.2.6" has unmet peer dependency "prop-types@^15".
+warning " > react-mathjax-preview@2.2.6" has incorrect peer dependency "react@^16 || ^17".
+warning " > react-mathjax-preview@2.2.6" has unmet peer dependency "react-dom@^16 || ^17".
+warning " > tss-react@4.3.4" has unmet peer dependency "@emotion/react@^11.4.1".
+warning " > @testing-library/react@13.3.0" has unmet peer dependency "react-dom@^18.0.0".
+warning " > @testing-library/user-event@14.4.3" has unmet peer dependency "@testing-library/dom@>=7.21.4".
+warning " > @wojtekmaj/enzyme-adapter-react-17@0.6.5" has incorrect peer dependency "react@^17.0.0-0".
+warning " > @wojtekmaj/enzyme-adapter-react-17@0.6.5" has unmet peer dependency "react-dom@^17.0.0-0".
+warning "@wojtekmaj/enzyme-adapter-react-17 > @wojtekmaj/enzyme-adapter-utils@0.1.1" has incorrect peer dependency "react@^17.0.0-0".
+warning "@wojtekmaj/enzyme-adapter-react-17 > react-test-renderer@17.0.2" has incorrect peer dependency "react@17.0.2".
+warning "@wojtekmaj/enzyme-adapter-react-17 > react-test-renderer > react-shallow-renderer@16.14.1" has incorrect peer dependency "react@^16.0.0 || ^17.0.0".
+warning " > axios-mock-adapter@1.19.0" has unmet peer dependency "axios@>= 0.9.0".
+warning " > css-loader@3.2.0" has incorrect peer dependency "webpack@^4.0.0".
+warning "depcheck > @vue/compiler-sfc@3.0.11" has unmet peer dependency "vue@3.0.11".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/add-to-my-lessons > @apollo/client@3.3.21" has unmet peer dependency "graphql@^14.0.0 || ^15.0.0".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/add-to-my-lessons > react-intl@5.8.8" has incorrect peer dependency "react@^16.3.0".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/add-to-my-lessons > single-spa-react@4.3.0" has unmet peer dependency "@types/react-dom@*".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/admin-program-activity > @mui/styles@5.10.8" has incorrect peer dependency "react@^17.0.0".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/allResources > react-redux@7.1.0" has incorrect peer dependency "react@^16.8.3".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/assignment-feedback > react-redux@7.2.2" has incorrect peer dependency "react@^16.8.3 || ^17".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/coaching-popover > @fullcalendar/react@5.10.1" has incorrect peer dependency "react@^16.7.0 || ^17".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/coaching-popover > @fullcalendar/react@5.10.1" has incorrect peer dependency "react-dom@^16.7.0 || ^17".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/content-provider > react-redux@7.2.0" has incorrect peer dependency "react@^16.8.3".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/evaluator > react-html-parser@2.0.2" has incorrect peer dependency "react@^0.14.0 || ^15.0.0 || ^16.0.0-0".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/groups > react-beautiful-dnd@13.1.0" has incorrect peer dependency "react@^16.8.5 || ^17.0.0".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/groups > react-beautiful-dnd@13.1.0" has incorrect peer dependency "react-dom@^16.8.5 || ^17.0.0".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/groups > react-redux@5.0.7" has incorrect peer dependency "react@^0.14.0 || ^15.0.0-0 || ^16.0.0-0".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/hcp-support-container > graphql-tag@2.12.5" has unmet peer dependency "graphql@^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/iread-practice-report > react-redux-toastr@7.4.5" has incorrect peer dependency "react@^0.14 || ^15.0.1 || ^16.0.0".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/login-form > react-redux@7.2.4" has incorrect peer dependency "react@^16.8.3 || ^17".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @ed/orchid > react-modal@3.5.1" has incorrect peer dependency "react@^0.14.0 || ^15.0.0 || ^16".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @ed/orchid > react-modal@3.5.1" has incorrect peer dependency "react-dom@^0.14.0 || ^15.0.0 || ^16".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @ed/orchid > react-select@2.1.2" has incorrect peer dependency "react@^15.3.0 || ^16.0.0".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @ed/orchid > react-select@2.1.2" has incorrect peer dependency "react-dom@^15.3.0 || ^16.0.0".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @ed/orchid > react-toolbox@2.0.0-beta.12" has incorrect peer dependency "react@^15.5.0".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @ed/orchid > react-toolbox@2.0.0-beta.12" has incorrect peer dependency "react-dom@^15.5.0".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @ed/orchid > react-toolbox@2.0.0-beta.12" has incorrect peer dependency "react-transition-group@^1.1.3".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/combobox > react-uid@2.3.0" has incorrect peer dependency "react@^16.8.0".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/drag-and-drop-list > react-beautiful-dnd-test-utils@3.2.1" has incorrect peer dependency "@testing-library/react@^8.0.1".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/drag-and-drop-list > react-beautiful-dnd-test-utils@3.2.1" has incorrect peer dependency "@testing-library/jest-dom@^4.0.0".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/drag-and-drop-list > react-beautiful-dnd-test-utils@3.2.1" has incorrect peer dependency "jest@^24.0.0".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/page-header > storybook-addon-designs@6.0.0-alpha.3" has unmet peer dependency "@storybook/addons@^5.0.0 || ^6.0.0".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/page-header > storybook-addon-designs@6.0.0-alpha.3" has unmet peer dependency "@storybook/components@^5.0.0 || ^6.0.0".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/page-header > storybook-addon-designs@6.0.0-alpha.3" has unmet peer dependency "@storybook/theming@^5.0.0 || ^6.0.0".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/tree-view-core > @mui/lab@5.0.0-alpha.108" has unmet peer dependency "react-dom@^17.0.0 || ^18.0.0".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/tree-view-core > @mui/material@5.10.11" has unmet peer dependency "react-dom@^17.0.0 || ^18.0.0".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/discover-carousel > react-slick@0.28.1" has incorrect peer dependency "react@^0.14.0 || ^15.0.1 || ^16.0.0 || ^17.0.0".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/discover-carousel > react-slick@0.28.1" has incorrect peer dependency "react-dom@^0.14.0 || ^15.0.1 || ^16.0.0 || ^17.0.0".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/discover-carousel > slick-carousel@1.8.1" has unmet peer dependency "jquery@>=1.8.0".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/discover-resources-container > @mui/x-data-grid@5.17.26" has unmet peer dependency "@mui/system@^5.4.1".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/discover-resources-container > @mui/x-data-grid@5.17.26" has unmet peer dependency "react-dom@^17.0.2 || ^18.0.0".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/reporting-components > react-to-print@2.13.0" has incorrect peer dependency "react@^15.0.0 || ^16.0.0 || ^17.0.0".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/reporting-components > react-to-print@2.13.0" has unmet peer dependency "react-dom@^15.0.0 || ^16.0.0 || ^17.0.0".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/selectable-groups-list > react-truncate@2.4.0" has incorrect peer dependency "react@<= 16.x.x".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/zoom > @zoomus/websdk@2.11.5" has incorrect peer dependency "react@16.13.0".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/zoom > @zoomus/websdk@2.11.5" has unmet peer dependency "react-dom@16.13.0".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/zoom > @zoomus/websdk@2.11.5" has unmet peer dependency "redux@3.7.2".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/zoom > @zoomus/websdk@2.11.5" has unmet peer dependency "react-redux@7.2.4".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/zoom > @zoomus/websdk@2.11.5" has unmet peer dependency "redux-thunk@2.3.0".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hnm/teacher-display-tools-components > html-react-parser@0.7.1" has incorrect peer dependency "react@^0.14 || ^15 || ^16".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @pat/pdf-player > react-pdf@5.2.0" has incorrect peer dependency "react@^16.3.0 || ^17.0.0-0".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @pat/pdf-player > react-pdf@5.2.0" has unmet peer dependency "react-dom@^16.3.0 || ^17.0.0-0".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/amp-storybook > @storybook/react@6.5.12" has unmet peer dependency "require-from-string@^2.0.2".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/amp-storybook > msw-storybook-addon@1.6.1" has incorrect peer dependency "msw@^0.35.0 || ^0.36.0".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/lift-e2e > mocha-junit-reporter@2.2.0" has unmet peer dependency "mocha@>=2.2.5".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/lift-e2e > mocha-multi@1.1.7" has unmet peer dependency "mocha@>=2.2.0 <7 || >=9".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/add-to-my-lessons > @apollo/client > @graphql-typed-document-node/core@3.1.0" has unmet peer dependency "graphql@^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/groups > react-beautiful-dnd > use-memo-one@1.1.2" has incorrect peer dependency "react@^16.8.0 || ^17.0.0".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @ed/orchid > react-select > react-input-autosize@2.2.2" has incorrect peer dependency "react@^0.14.9 || ^15.3.0 || ^16.0.0-rc || ^16.0".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @ed/orchid > react-toolbox > react-css-themr@2.1.2" has incorrect peer dependency "react@^0.14.0 || ^15.0.0-0".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @ed/orchid > react-toolbox > react-transition-group@1.2.1" has incorrect peer dependency "react@^15.0.0 || ^16.0.0".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @ed/orchid > react-toolbox > react-transition-group@1.2.1" has incorrect peer dependency "react-dom@^15.0.0 || ^16.0.0".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/page-header > storybook-addon-designs > @figspec/react@0.1.5" has incorrect peer dependency "react@^16.14.0 || ^17.0.0".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/page-layout-2col > @storybook/addon-docs > @mdx-js/react@1.6.22" has incorrect peer dependency "react@^16.13.1 || ^17.0.0".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/page-layout-2col > @storybook/addon-docs > @storybook/api@6.5.12" has unmet peer dependency "react-dom@^16.8.0 || ^17.0.0 || ^18.0.0".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/page-layout-2col > @storybook/addon-docs > @storybook/components@6.5.12" has unmet peer dependency "react-dom@^16.8.0 || ^17.0.0 || ^18.0.0".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/page-layout-2col > @storybook/addon-docs > @storybook/core-common@6.5.12" has unmet peer dependency "react-dom@^16.8.0 || ^17.0.0 || ^18.0.0".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/page-layout-2col > @storybook/addon-docs > @storybook/preview-web@6.5.12" has unmet peer dependency "react-dom@^16.8.0 || ^17.0.0 || ^18.0.0".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/page-layout-2col > @storybook/addon-docs > @storybook/source-loader@6.5.12" has unmet peer dependency "react-dom@^16.8.0 || ^17.0.0 || ^18.0.0".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/page-layout-2col > @storybook/addon-docs > @storybook/store@6.5.12" has unmet peer dependency "react-dom@^16.8.0 || ^17.0.0 || ^18.0.0".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/tree-view-core > @mui/lab > @mui/base@5.0.0-alpha.106" has unmet peer dependency "react-dom@^17.0.0 || ^18.0.0".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/tree-view-core > @mui/material > @mui/base@5.0.0-alpha.103" has unmet peer dependency "react-dom@^17.0.0 || ^18.0.0".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/section-card > @storybook/addon-actions > react-inspector@5.1.1" has incorrect peer dependency "react@^16.8.4 || ^17.0.0".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/amp-storybook > @storybook/addon-a11y > react-sizeme@3.0.1" has incorrect peer dependency "react@^0.14.0 || ^15.0.0-0 || ^16.0.0 || ^17.0.0".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/amp-storybook > @storybook/addon-a11y > react-sizeme@3.0.1" has incorrect peer dependency "react-dom@^0.14.0 || ^15.0.0-0 || ^16.0.0 || ^17.0.0".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/amp-storybook > @storybook/react > react-element-to-jsx-string@14.3.4" has incorrect peer dependency "react@^0.14.8 || ^15.0.1 || ^16.0.0 || ^17.0.1".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/amp-storybook > @storybook/react > react-element-to-jsx-string@14.3.4" has incorrect peer dependency "react-dom@^0.14.8 || ^15.0.1 || ^16.0.0 || ^17.0.1".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/amp-storybook > msw-storybook-addon > @storybook/addons@6.1.21" has incorrect peer dependency "react@^16.8.0 || ^17.0.0".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/amp-storybook > msw-storybook-addon > @storybook/addons@6.1.21" has incorrect peer dependency "react-dom@^16.8.0 || ^17.0.0".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/admin-class-reports > react-router-dom > react-router > mini-create-react-context@0.4.1" has incorrect peer dependency "react@^0.14.0 || ^15.0.0 || ^16.0.0 || ^17.0.0".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/page-layout-2col > @storybook/addon-docs > @babel/preset-env > @babel/plugin-bugfix-v8-spread-parameters-in-optional-chaining@7.13.12" has incorrect peer dependency "@babel/core@^7.13.0".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/amp-storybook > @storybook/testing-library > @storybook/instrumenter > @storybook/addons@6.4.22" has incorrect peer dependency "react@^16.8.0 || ^17.0.0".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/amp-storybook > @storybook/testing-library > @storybook/instrumenter > @storybook/addons@6.4.22" has incorrect peer dependency "react-dom@^16.8.0 || ^17.0.0".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/amp-storybook > msw-storybook-addon > @storybook/addons > @storybook/api@6.1.21" has incorrect peer dependency "react@^16.8.0 || ^17.0.0".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/amp-storybook > msw-storybook-addon > @storybook/addons > @storybook/api@6.1.21" has incorrect peer dependency "react-dom@^16.8.0 || ^17.0.0".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/amp-storybook > msw-storybook-addon > @storybook/addons > @storybook/router@6.1.21" has incorrect peer dependency "react@^16.8.0 || ^17.0.0".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/amp-storybook > msw-storybook-addon > @storybook/addons > @storybook/router@6.1.21" has incorrect peer dependency "react-dom@^16.8.0 || ^17.0.0".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/amp-storybook > msw-storybook-addon > @storybook/addons > @storybook/theming@6.1.21" has incorrect peer dependency "react@^16.8.0 || ^17.0.0".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/amp-storybook > msw-storybook-addon > @storybook/addons > @storybook/theming@6.1.21" has incorrect peer dependency "react-dom@^16.8.0 || ^17.0.0".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/amp-storybook > @storybook/testing-library > @storybook/instrumenter > @storybook/addons > @storybook/api@6.4.22" has incorrect peer dependency "react@^16.8.0 || ^17.0.0".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/amp-storybook > @storybook/testing-library > @storybook/instrumenter > @storybook/addons > @storybook/api@6.4.22" has incorrect peer dependency "react-dom@^16.8.0 || ^17.0.0".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/amp-storybook > @storybook/testing-library > @storybook/instrumenter > @storybook/addons > @storybook/router@6.4.22" has incorrect peer dependency "react@^16.8.0 || ^17.0.0".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/amp-storybook > @storybook/testing-library > @storybook/instrumenter > @storybook/addons > @storybook/router@6.4.22" has incorrect peer dependency "react-dom@^16.8.0 || ^17.0.0".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/amp-storybook > @storybook/testing-library > @storybook/instrumenter > @storybook/addons > @storybook/theming@6.4.22" has incorrect peer dependency "react@^16.8.0 || ^17.0.0".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/amp-storybook > @storybook/testing-library > @storybook/instrumenter > @storybook/addons > @storybook/theming@6.4.22" has incorrect peer dependency "react-dom@^16.8.0 || ^17.0.0".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/amp-storybook > msw-storybook-addon > @storybook/addons > @storybook/api > @reach/router@1.3.4" has incorrect peer dependency "react@15.x || 16.x || 16.4.0-alpha.0911da3".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/amp-storybook > msw-storybook-addon > @storybook/addons > @storybook/api > @reach/router@1.3.4" has incorrect peer dependency "react-dom@15.x || 16.x || 16.4.0-alpha.0911da3".
+warning "workspace-aggregator-38aecc0d-f5e2-4fd8-bc20-4d6cbaebc56a > @hmhco/amp-storybook > msw-storybook-addon > @storybook/addons > @storybook/api > @reach/router > create-react-context@0.3.0" has incorrect peer dependency "react@^0.14.0 || ^15.0.0 || ^16.0.0".
+warning Workspaces can only be enabled in private projects.
+[5/5] Building fresh packages...
+[10/28] ⡀ nx
+[14/28] ⢀ core-js
+[3/28] ⢀ cpu-features
+[4/28] ⢀ @pact-foundation/pact-core
+warning Error running install script for optional dependency: "/mnt/c/Windows/system32/lift/node_modules/cpu-features: Command failed.
+Exit code: 1
+Command: node-gyp rebuild
+Arguments:
+Directory: /mnt/c/Windows/system32/lift/node_modules/cpu-features
+Output:
+gyp info it worked if it ends with ok
+gyp info using node-gyp@8.4.1
+gyp info using node@16.15.1 | linux | x64
+gyp info find Python using Python version 3.6.9 found at \"/usr/bin/python3\"
+gyp info spawn /usr/bin/python3
+gyp info spawn args [
+gyp info spawn args   '/mnt/c/Windows/system32/lift/node_modules/@npmcli/metavuln-calculator/node_modules/node-gyp/gyp/gyp_main.py',
+gyp info spawn args   'binding.gyp',
+gyp info spawn args   '-f',
+gyp info spawn args   'make',
+gyp info spawn args   '-I',
+gyp info spawn args   '/mnt/c/Windows/system32/lift/node_modules/cpu-features/build/config.gypi',
+gyp info spawn args   '-I',
+gyp info spawn args   '/mnt/c/Windows/system32/lift/node_modules/@npmcli/metavuln-calculator/node_modules/node-gyp/addon.gypi',
+gyp info spawn args   '-I',
+gyp info spawn args   '/home/vinoth/.cache/node-gyp/16.15.1/include/node/common.gypi',
+gyp info spawn args   '-Dlibrary=shared_library',
+gyp info spawn args   '-Dvisibility=default',
+gyp info spawn args   '-Dnode_root_dir=/home/vinoth/.cache/node-gyp/16.15.1',
+gyp info spawn args   '-Dnode_gyp_dir=/mnt/c/Windows/system32/lift/node_modules/@npmcli/metavuln-calculator/node_modules/node-gyp',
+gyp info spawn args   '-Dnode_lib_file=/home/vinoth/.cache/node-gyp/16.15.1/<(target_arch)/node.lib',
+gyp info spawn args   '-Dmodule_root_dir=/mnt/c/Windows/system32/lift/node_modules/cpu-features',
+gyp info spawn args   '-Dnode_engine=v8',
+gyp info spawn args   '--depth=.',
+gyp info spawn args   '--no-parallel',
+gyp info spawn args   '--generator-output',
+gyp info spawn args   'build',
+gyp info spawn args   '-Goutput_dir=.'
+gyp info spawn args ]
+gyp ERR! build error
+gyp ERR! stack Error: not found: make
+gyp ERR! stack     at getNotFoundError (/mnt/c/Windows/system32/lift/node_modules/which/which.js:10:17)
+gyp ERR! stack     at /mnt/c/Windows/system32/lift/node_modules/which/which.js:57:18
+gyp ERR! stack     at new Promise (<anonymous>)
+gyp ERR! stack     at step (/mnt/c/Windows/system32/lift/node_modules/which/which.js:54:21)
+gyp ERR! stack     at /mnt/c/Windows/system32/lift/node_modules/which/which.js:71:22
+gyp ERR! stack     at new Promise (<anonymous>)
+gyp ERR! stack     at subStep (/mnt/c/Windows/system32/lift/node_modules/which/which.js:69:33)
+gyp ERR! stack     at /mnt/c/Windows/system32/lift/node_modules/which/which.js:80:22
+gyp ERR! stack     at /mnt/c/Windows/system32/lift/node_modules/isexe/index.js:42:5
+gyp ERR! stack     at /mnt/c/Windows/system32/lift/node_modules/isexe/mode.js:8:5
+gyp ERR! stack     at FSReqCallback.oncomplete (node:fs:198:21)
+gyp ERR! System Linux 4.4.0-19041-Microsoft
+gyp ERR! command \"/home/vinoth/.nvm/versions/node/v16.15.1/bin/node\" \"/mnt/c/Windows/system32/lift/node_modules/.bin/node-gyp\" \"rebuild\"
+gyp ERR! cwd /mnt/c/Windows/system32/lift/node_modules/cpu-features
+gyp ERR! node -v v16.15.1
+gyp ERR! node-gyp -v v8.4.1
+gyp ERR! not ok"
+info This module is OPTIONAL, you can safely ignore this error
+error /mnt/c/Windows/system32/lift/node_modules/@pact-foundation/pact-core: Command failed.
+Exit code: 1
+Command: node-gyp rebuild
+Arguments:
+Directory: /mnt/c/Windows/system32/lift/node_modules/@pact-foundation/pact-core
+Output:
+gyp info it worked if it ends with ok
+gyp info using node-gyp@8.4.1
+gyp info using node@16.15.1 | linux | x64
+gyp info find Python using Python version 3.6.9 found at "/usr/bin/python3"
+gyp info spawn /usr/bin/python3
+gyp info spawn args [
+gyp info spawn args   '/mnt/c/Windows/system32/lift/node_modules/@npmcli/metavuln-calculator/node_modules/node-gyp/gyp/gyp_main.py',
+gyp info spawn args   'binding.gyp',
+gyp info spawn args   '-f',
+gyp info spawn args   'make',
+gyp info spawn args   '-I',
+gyp info spawn args   '/mnt/c/Windows/system32/lift/node_modules/@pact-foundation/pact-core/build/config.gypi',
+gyp info spawn args   '-I',
+gyp info spawn args   '/mnt/c/Windows/system32/lift/node_modules/@npmcli/metavuln-calculator/node_modules/node-gyp/addon.gypi',
+gyp info spawn args   '-I',
+gyp info spawn args   '/home/vinoth/.cache/node-gyp/16.15.1/include/node/common.gypi',
+gyp info spawn args   '-Dlibrary=shared_library',
+gyp info spawn args   '-Dvisibility=default',
+gyp info spawn args   '-Dnode_root_dir=/home/vinoth/.cache/node-gyp/16.15.1',
+gyp info spawn args   '-Dnode_gyp_dir=/mnt/c/Windows/system32/lift/node_modules/@npmcli/metavuln-calculator/node_modules/node-gyp',
+gyp info spawn args   '-Dnode_lib_file=/home/vinoth/.cache/node-gyp/16.15.1/<(target_arch)/node.lib',
+gyp info spawn args   '-Dmodule_root_dir=/mnt/c/Windows/system32/lift/node_modules/@pact-foundation/pact-core',
+gyp info spawn args   '-Dnode_engine=v8',
+gyp info spawn args   '--depth=.',
+gyp info spawn args   '--no-parallel',
+gyp info spawn args   '--generator-output',
+gyp info spawn args   'build',
+gyp info spawn args   '-Goutput_dir=.'
+gyp info spawn args ]
+gyp ERR! build error
+gyp ERR! stack Error: not found: make
+gyp ERR! stack     at getNotFoundError (/mnt/c/Windows/system32/lift/node_modules/which/which.js:10:17)
+gyp ERR! stack     at /mnt/c/Windows/system32/lift/node_modules/which/which.js:57:18
+gyp ERR! stack     at new Promise (<anonymous>)
+gyp ERR! stack     at step (/mnt/c/Windows/system32/lift/node_modules/which/which.js:54:21)
+gyp ERR! stack     at /mnt/c/Windows/system32/lift/node_modules/which/which.js:71:22
+gyp ERR! stack     at new Promise (<anonymous>)
+gyp ERR! stack     at subStep (/mnt/c/Windows/system32/lift/node_modules/which/which.js:69:33)
+gyp ERR! stack     at /mnt/c/Windows/system32/lift/node_modules/which/which.js:80:22
+gyp ERR! stack     at /mnt/c/Windows/system32/lift/node_modules/isexe/index.js:42:5
+gyp ERR! stack     at /mnt/c/Windows/system32/lift/node_modules/isexe/mode.js:8:5
+gyp ERR! stack     at FSReqCallback.oncomplete (node:fs:198:21)
+gyp ERR! System Linux 4.4.0-19041-Microsoft
+gyp ERR! command "/home/vinoth/.nvm/versions/node/v16.15.1/bin/node" "/mnt/c/Windows/system32/lift/node_modules/.bin/node-gyp" "rebuild"
+gyp ERR! cwd /mnt/c/Windows/system32/lift/node_modules/@pact-foundation/pact-core
+
+
+
+
+vinoth@SCI-LT-101:/mnt/c/Windows/system32/lift$

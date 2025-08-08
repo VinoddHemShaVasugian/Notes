@@ -1,0 +1,426 @@
+const { I } = inject();
+
+module.exports = {
+  avatarButton: { id: 'avatarButton' },
+  nextButton: locate('span').withText('Next'),
+  submitButton: locate('span').withText('Submit'),
+  yesButton: locate('span').withText('Yes'),
+  textBox: '//*[@type="text"]',
+  checkBox: '//*[@type="checkbox"]',
+  selectBox: '//*[@data-id=1]',
+  totalNumOfQuestions: '//*[@id="ProgressBar"]//following::div[1]',
+  assignmentEndPage: locate('p').withText('Your test has been submitted.'),
+  getSourceElementValue: locate('//div[contains(@class,"tilePoolContainer")]/span[contains(@class,"customTile")]//strong'),
+  getTargetElementValue: locate('//span[contains(@class,"fractionTarget")]//following::strong'),
+  verifyQuestionNumber: questionNumber => {
+    return locate(
+      `//*[contains(text(),"${questionNumber} of 20 Questions")]`,
+    );
+  },
+  clickSelectBox: i => {
+    return locate(
+      `//*[@data-id=${i}]`,
+    );
+  },
+  
+
+  // sourceElement: locate('span.customTile'),
+  // targetElement: locate('span.fractionTarget'),
+  sourceElement: 'span.customTile',
+  targetElement: 'span.fractionTarget',
+
+  async verifyStudentAssignmentPage() {
+    await I.waitForPageLoad(60);
+    await I.seeInCurrentUrl(`assessments/app/assessment`);
+    await I.seeElement(this.avatarButton, 30);
+  },
+  async answerAssignmentQuestions() {
+    console.log("Vinoth log: grabTextFrom: " +await I.grabTextFrom(this.totalNumOfQuestions), 30);
+    let numOfQues = await I.grabTextFrom(this.totalNumOfQuestions);
+    numOfQues= numOfQues.trim().slice(-12).slice(0,2);
+    console.log("Vinoth log: numOfQues grabbed value: "+numOfQues);
+    for(let question=9;question<=numOfQues;question+=1){
+      console.log("Vinoth log: i value: "+question);
+      await I.waitForVisible(this.verifyQuestionNumber(question),
+      30,
+    );
+      // let grabNumberOfVisibleElements = await I.grabNumberOfVisibleElements(this.selectBox);
+      // console.log("Vinoth log: grabNumberOfVisibleElements: "+grabNumberOfVisibleElements);
+
+      if((await I.grabNumberOfVisibleElements(this.selectBox))!=0){
+        console.log("Vinoth log: selectBox displayed for question: "+question);
+        await this.answerSelectBox();
+        console.log("Vinoth log: selectBox answered for question: "+question);
+      }if((await I.grabNumberOfVisibleElements(this.checkBox))!=0){
+        console.log("Vinoth log: checkBox displayed for question: "+question);
+        await this.answerCheckBox();
+        console.log("Vinoth log: checkBox answered for question: "+question);
+      }if((await I.grabNumberOfVisibleElements(this.targetElement))!=0){
+        console.log("Vinoth log: DragAndDrop displayed for question: "+question);
+        await this.answerDragAndDrop();
+        console.log("Vinoth log: DragAndDrop answered for question: "+question);
+      }if((await I.grabNumberOfVisibleElements(this.textBox))!=0){
+        console.log("Vinoth log: textBox displayed for question: "+question);
+        await this.answerTextBox();
+        console.log("Vinoth log: textBox answered for question: "+question);
+      }if(!(await I.grabNumberOfVisibleElements(this.submitButton))){
+        await this.clickNextButton();
+      }
+    }
+    await this.clickSubmitButton();
+    
+
+  // await doTheMathStudentAssignmentPlayerPage.answerQuestionOne(true);
+  // await doTheMathStudentAssignmentPlayerPage.answerQuestionTwo(true);
+  // await doTheMathStudentAssignmentPlayerPage.answerQuestionThree(true);
+  // await doTheMathStudentAssignmentPlayerPage.answerQuestionFour(true);
+  // await doTheMathStudentAssignmentPlayerPage.answerQuestionFive(true);
+  // await doTheMathStudentAssignmentPlayerPage.answerQuestionSix(true);
+  // await doTheMathStudentAssignmentPlayerPage.answerQuestionSeven(true);
+  // await doTheMathStudentAssignmentPlayerPage.answerQuestionEight(true);
+  // await doTheMathStudentAssignmentPlayerPage.answerQuestionNine(true);
+  // await doTheMathStudentAssignmentPlayerPage.answerQuestionTen(true);
+  // await doTheMathStudentAssignmentPlayerPage.answerQuestionEleven(true);
+  // await doTheMathStudentAssignmentPlayerPage.answerQuestionTwelve(true);
+  // await doTheMathStudentAssignmentPlayerPage.answerQuestionThirteen(true);
+  // await doTheMathStudentAssignmentPlayerPage.answerQuestionFourteen(true);
+  // await doTheMathStudentAssignmentPlayerPage.answerQuestionFifteen(true);
+  // await doTheMathStudentAssignmentPlayerPage.answerQuestionSixteen(true);
+  // await doTheMathStudentAssignmentPlayerPage.answerQuestionSeventeen(true);
+  // await doTheMathStudentAssignmentPlayerPage.answerQuestionEighteen(true);
+  // await doTheMathStudentAssignmentPlayerPage.answerQuestionNineteen(true);
+  // await doTheMathStudentAssignmentPlayerPage.answerQuestionTwenty(true);
+},
+
+  async answerTextBox() {
+    // await I.waitForElement(this.verifyQuestionNumber(questionNumber),
+    //   30,
+    // );
+    for (let i = 1; i <= await I.grabNumberOfVisibleElements(this.textBox); i += 1) {
+      await I.clearField(locate(this.textBox).at(i));
+      await I.fillField(locate(this.textBox).at(i), i);
+    }
+  },
+
+  async answerCheckBox() {
+    // await I.waitForElement(this.verifyQuestionNumber(questionNumber),
+    //   30,
+    // );
+    for (let i = 1; i <= await I.grabNumberOfVisibleElements(this.checkBox); i += 1) {
+      if (i === 2 || i === 3) {
+        await I.clickWhenClickable(locate(this.checkBox).at(i));
+      }
+    }
+  },
+
+  async answerSelectBox() {
+    // await I.waitForElement(this.verifyQuestionNumber(questionNumber),
+    //   30,
+    // );
+    for (let i = 1; i <= 3; i += 1) {
+      if (!(i === 2 || i === 3)) {
+        await I.clickWhenClickable(this.clickSelectBox(i), 30);
+      }
+    }
+  },
+
+  async answerDragAndDrop() {
+    // await I.waitForElement(this.verifyQuestionNumber(questionNumber),
+    //   30,
+    // );
+    await I.waitForPageLoad();
+    await I.wait(20);
+    // for (
+    //   let i = 1;
+    //   i <= await I.grabNumberOfVisibleElements('span.fractionTarget');
+    //   i += 1
+    // ) {
+    //   const beforeDragAndDrop = await I.grabTextFrom(this.getSourceElementValue).at(i);
+    //   let srcElement = await locate('span.customTile').at(i);
+    //   let tgtElement = await locate('span.fractionTarget').at(i);
+    //   let srcElement = await locate(this.sourceElement).at(i);
+    //   let tgtElement = await locate(this.targetElement).at(i);
+    //   await I.dragAndDrop(sourceElement, targetElement);
+    //   let afterDragAndDrop = await I.grabTextFrom(this.getTargetElementValue.at(i));
+    //   await I.assertEqual(beforeDragAndDrop, afterDragAndDrop);
+    // }
+    await this.clickNextButton();
+  },
+
+  async clickNextButton() {
+    // await I.waitForElement(this.nextButton, 30);
+    await I.clickWhenClickable(this.nextButton, 30);
+  },
+
+  async clickSubmitButton() {
+    await I.clickWhenClickable(this.submitButton, 30);
+    await I.clickWhenClickable(this.submitButton, 30);
+    await I.clickWhenClickable(this.yesButton, 30);
+  },
+
+  async verifyAssignmentEndPage() {
+    await I.waitForPageLoad(30);
+    await I.waitForVisible(this.assignmentEndPage, 30);
+  },
+/*
+  async answerQuestionOne() {
+    await this.answerTextBox(1);
+    await this.clickNextButton();
+  },
+
+  async answerQuestionTwo() {
+    const questionNumber = 2;
+    await I.waitForElement(this.verifyQuestionNumber(questionNumber),
+      30,
+    );
+    for (let i = 1; i <= 10; i += 1) {
+      if (!(i === 5 || i === 10)) {
+        await I.clickWhenClickable(`//div[@data-id=${i}]`, 30);
+      }
+    }
+    await this.clickNextButton();
+  },
+
+  async answerQuestionThree() {
+    const questionNumber = 3;
+    await I.waitForElement(this.verifyQuestionNumber(questionNumber),
+      30,
+    );
+    for (let i = 1; i <= await I.grabNumberOfVisibleElements(this.checkBox); i += 1) {
+      if (i === 2 || i === 3) {
+        await I.clickWhenClickable(locate(this.checkBox).at(i));
+      }
+    }
+    await this.clickNextButton();
+  },
+
+  async answerQuestionFour() {
+    const questionNumber = 4;
+    await I.waitForElement(this.verifyQuestionNumber(questionNumber),
+      30,
+    );
+    for (let i = 1; i <= 8; i += 1) {
+      await I.clickWhenClickable(`//div[@data-id=${i}]`, 30);
+    }
+    await this.clickNextButton();
+  },
+
+  async answerQuestionFive() {
+    await this.answerTextBox(5);
+    for (let i = 1; i <= 3; i += 1) {
+      await I.clickWhenClickable(`//div[@data-id=${i}]`, 30);
+    }
+    await this.clickNextButton();
+  },
+
+  async answerQuestionSix() {
+    await this.answerTextBox(6);
+    await this.clickNextButton();
+  },
+
+  async answerQuestionSeven() {
+    await this.answerTextBox(7);
+    await this.clickNextButton();
+  },
+
+  async answerQuestionEight() {
+    await this.answerDragAndDrop(8);
+    await this.clickNextButton();
+  },
+
+  async answerQuestionNine() {
+    for (let i = 1; i <= 5; i += 1) {
+      await I.clickWhenClickable(`//div[@data-id=${i}]`, 30);
+    }
+    await this.answerTextBox(9);
+    await this.clickNextButton();
+  },
+
+  async answerQuestionTen() {
+    await this.answerTextBox(10);
+    await this.clickNextButton();
+  },
+
+  async answerQuestionEleven() {
+    await this.answerTextBox(11);
+    await this.clickNextButton();
+  },
+
+  async answerQuestionTwelve() {
+    for (let i = 1; i <= 5; i += 1) {
+      await I.clickWhenClickable(`//div[@data-id=${i}]`, 30);
+    }
+    await this.answerTextBox(12);
+    await this.clickNextButton();
+  },
+
+  async answerQuestionThirteen() {
+    await this.answerTextBox(13);
+    await this.clickNextButton();
+  },
+
+  async answerQuestionFourteen() {
+    await this.answerTextBox(14);
+    await this.clickNextButton();
+  },
+
+  async answerQuestionFifteen() {
+    await this.answerTextBox(15);
+    await this.clickNextButton();
+  },
+
+  async answerQuestionSixteen() {
+    await this.answerDragAndDrop(16);
+    await this.clickNextButton();
+  },
+
+  async answerQuestionSeventeen() {
+    await this.answerTextBox(17);
+    await this.clickNextButton();
+  },
+
+  async answerQuestionEighteen() {
+    await this.answerTextBox(18);
+    await this.clickNextButton();
+  },
+
+  async answerQuestionNineteen() {
+    await this.answerTextBox(19);
+    await this.clickNextButton();
+  },
+
+  async answerQuestionTwenty() {
+    await this.answerTextBox(20);
+    await this.clickSubmitButton();
+  },*/
+};
+
+****************************************************************************************************************************************
+
+const { I } = inject();
+
+module.exports = {
+  avatarButton: { id: 'avatarButton' },
+  nextButton: locate('span').withText('Next'),
+  submitButton: locate('span').withText('Submit'),
+  yesButton: locate('span').withText('Yes'),
+  textBox: '//*[@type="text"]',
+  checkBox: '//*[@type="checkbox"]',
+  selectBox: '//*[@data-id=1]',
+  totalNumOfQuestions: '//*[@id="ProgressBar"]//following::div[1]',
+  assignmentEndPage: locate('p').withText('Your test has been submitted.'),
+  getSourceElementValue: locate('//div[contains(@class,"tilePoolContainer")]/span[contains(@class,"customTile")]//strong'),
+  getTargetElementValue: locate('//span[contains(@class,"fractionTarget")]//following::strong'),
+  verifyQuestionNumber: questionNumber => {
+    return locate(
+      `//*[contains(text(),"${questionNumber} of 20 Questions")]`,
+    );
+  },
+  clickSelectBox: i => {
+    return locate(
+      `//*[@data-id=${i}]`,
+    );
+  },
+  sourceElement: 'span.customTile',
+  targetElement: 'span.fractionTarget',
+
+  async verifyStudentAssignmentPage() {
+    await I.waitForPageLoad(60);
+    await I.seeInCurrentUrl(`assessments/app/assessment`);
+    await I.seeElement(this.avatarButton, 30);
+  },
+  async answerAssignmentQuestions() {
+    console.log("Vinoth log: grabTextFrom: " + await I.grabTextFrom(this.totalNumOfQuestions), 30);
+    let numOfQues = await I.grabTextFrom(this.totalNumOfQuestions);
+    numOfQues = numOfQues.trim().slice(-12).slice(0, 2);
+    console.log("Vinoth log: numOfQues grabbed value: " + numOfQues);
+    for (let question = 16; question <= numOfQues; question += 1) {
+      console.log("Vinoth log: i value: " + question);
+      await I.waitForVisible(this.verifyQuestionNumber(question),
+        60,
+      );
+      if ((await I.grabNumberOfVisibleElements(this.selectBox, 30)) != 0) {
+        console.log("Vinoth log: selectBox displayed for question: " + question);
+        // let selectBoxes = await I.grabNumberOfVisibleElements(this.selectBox);
+        await this.answerSelectBox(await I.grabNumberOfVisibleElements(this.selectBox));
+        console.log("Vinoth log: selectBox answered for question: " + question);
+      } if ((await I.grabNumberOfVisibleElements(this.checkBox, 30)) != 0) {
+        console.log("Vinoth log: checkBox displayed for question: " + question);
+        // let checkBoxes = await I.grabNumberOfVisibleElements(this.checkBox);
+        await this.answerCheckBox(await I.grabNumberOfVisibleElements(this.checkBox));
+        console.log("Vinoth log: checkBox answered for question: " + question);
+      } if ((await I.grabNumberOfVisibleElements(this.targetElement, 30)) != 0) {
+        console.log("Vinoth log: DragAndDrop displayed for question: " + question);
+        // let targetElements = await I.grabNumberOfVisibleElements(this.targetElement);
+        await this.answerDragAndDrop(await I.grabNumberOfVisibleElements(this.targetElement));
+        console.log("Vinoth log: DragAndDrop answered for question: " + question);
+      } if ((await I.grabNumberOfVisibleElements(this.textBox, 30)) != 0) {
+        console.log("Vinoth log: textBox displayed for question: " + question);
+        // let textBoxes = await I.grabNumberOfVisibleElements(this.textBox);
+        await this.answerTextBox(await I.grabNumberOfVisibleElements(this.textBox));
+        console.log("Vinoth log: textBox answered for question: " + question);
+      } if (!(await I.grabNumberOfVisibleElements(this.submitButton, 30))) {
+        await this.clickNextButton();
+      }
+    }
+    await this.clickSubmitButton();
+  },
+
+  async answerTextBox(textBoxes) {
+    for (let i = 1; i <= textBoxes; i += 1) {
+      await I.clearField(locate(this.textBox).at(i));
+      await I.fillField(locate(this.textBox).at(i), i);
+    }
+  },
+
+  async answerCheckBox(checkBoxes) {
+    for (let i = 1; i <= checkBoxes; i += 1) {
+      if (i === 2 || i === 3) {
+        await I.clickWhenClickable(locate(this.checkBox).at(i));
+      }
+    }
+  },
+
+  async answerSelectBox(selectBoxes) {
+    for (let i = 1; i <= selectBoxes; i += 1) {
+      if (!(i === 2 || i === 3)) {
+        await I.clickWhenClickable(this.clickSelectBox(i), 30);
+      }
+    }
+  },
+
+  async answerDragAndDrop(targetElements) {
+    await I.waitForPageLoad();
+    await I.wait(20);
+    // for (
+    //   let i = 1;
+    //   i <= targetElements;
+    //   i += 1
+    // ) {
+    //   const beforeDragAndDrop = await I.grabTextFrom(this.getSourceElementValue).at(i);
+    //   let srcElement = await locate('span.customTile').at(i);
+    //   let tgtElement = await locate('span.fractionTarget').at(i);
+    //   let srcElement = await locate(this.sourceElement).at(i);
+    //   let tgtElement = await locate(this.targetElement).at(i);
+    //   await I.dragAndDrop(sourceElement, targetElement);
+    //   let afterDragAndDrop = await I.grabTextFrom(this.getTargetElementValue.at(i));
+    //   await I.assertEqual(beforeDragAndDrop, afterDragAndDrop);
+    // }
+    await this.clickNextButton();
+  },
+
+  async clickNextButton() {
+    await I.clickWhenClickable(this.nextButton, 30);
+  },
+
+  async clickSubmitButton() {
+    await I.clickWhenClickable(this.submitButton, 30);
+    await I.clickWhenClickable(this.submitButton, 30);
+    await I.clickWhenClickable(this.yesButton, 30);
+  },
+
+  async verifyAssignmentEndPage() {
+    await I.waitForPageLoad(30);
+    await I.waitForVisible(this.assignmentEndPage, 30);
+  },
+};

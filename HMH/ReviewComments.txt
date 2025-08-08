@@ -1,0 +1,68 @@
+
+In e2e/config/pageIncludes.js:
+> @@ -161,4 +162,22 @@ exports.include = {
+   licensingManagementUsersTableComponent:
+     './components/table/licensing/licensingManagementUsers.table.component.js',
+   tableHeaderComponent: './components/table/table.header.component.js',
++
++  // flight
+•	alphabetical order
+•	if it Is page add word page everywhere
+•	do not use obreveations DTM use doTheMath instead of flight teacherProductModuleDTM -> doTheMathProductPage etc...
+______________________________________________________________________________________________________________________________________________________________
+
+In e2e/pages/heinemannFlight/assessmentModule/studentAssignmentPlayer.page.js:
+> +        ).at(i),
++      );
++      const sourceElement = locate('span.customTile').at(i);
++      const targetElement = locate('span.fractionTarget').at(i);
++      I.dragAndDrop(sourceElement, targetElement);
++      const afterDragAndDrop = I.grabTextFrom(
++        locate(
++          '//span[contains(@class,"fractionTarget")]//following::strong',
++        ).at(i),
++      );
++      I.assertEqual(beforeDragAndDrop, afterDragAndDrop);
++    }
++    await this.clickNextButton();
++  },
++
++  async answerQuestionSeventeen() {
+what is that? it should be 1 function with loop inside controlling switch between questions rewrite the whole page function in appropriate way please
+______________________________________________________________________________________________________________________________________________________________
+
+In e2e/pages/heinemannFlight/assessmentModule/studentAssignmentPlayer.page.js:
+> +      i += 1
++    ) {
++      const beforeDragAndDrop = I.grabTextFrom(
++        locate(
++          '//div[contains(@class,"tilePoolContainer")]/span[contains(@class,"customTile")]//strong',
++        ).at(i),
++      );
++      const sourceElement = locate('span.customTile').at(i);
++      const targetElement = locate('span.fractionTarget').at(i);
++      I.dragAndDrop(sourceElement, targetElement);
++      const afterDragAndDrop = I.grabTextFrom(
++        locate(
++          '//span[contains(@class,"fractionTarget")]//following::strong',
++        ).at(i),
++      );
++      I.assertEqual(beforeDragAndDrop, afterDragAndDrop);
+create separate function to control different question types and use it inside function which will control answering question logic so the you should have something like:
+async answerQuestions(type){
+    await questionType(type)
+    .....
+}
+______________________________________________________________________________________________________________________________________________________________
+
+In e2e/tests/steps/heinemannFlight/assessmentModule/studentAssignmentPlayer.e2e.steps.js:
+> @@ -0,0 +1,35 @@
++const { studentAssignmentPlayer } = inject();
++
++Then('the student should land on assignment page {string}', async () => {
++  await studentAssignmentPlayer.verifyStudentAssignmentPage(true);
++});
++
++When('the student answering all the questions and submitted', async () => {
++  await studentAssignmentPlayer.answerQuestionOne(true);
+this should be rewritten using SOLID and DRY

@@ -1,0 +1,40 @@
+|About PCH||https://info.pch.com/customer-service|
+|Scam Prevention||https://info.pch.com/fraud-protection|
+|Local Area Winners||http://www.pch.com/localwinners|
+|Ad Preferences||https://preferences-mgr.trustarc.com/?pid=pch01&aid=pch_pub01&type=pch|
+|Accessibility Statement||https://privacy.pch.com/accessibility|
+|Do Not Sell My Info||https://accounts.pch.com/do-not-sell|
+|Privacy Policy||https://privacy.pch.com/|
+|Terms Of Use||https://privacy.pch.com/pchdotcom-tou|
+|Official Rules||https://rules.pch.com/viewrulesfacts/?mailid=UniGen|
+|Sweepstakes Facts||https://rules.pch.com/viewrulesfacts/?mailid=UniGen|
+|FAQ's||https://pch.custhelp.com/app/home|
+|Pay Online||https://myaccount.pch.com/Home/Index2?PaymentSourceId=0&SessionExpired=False|
+|Info Center||https://info.pch.com/contact-us|
+
+
+https://qaapps.psea.local/
+https://devapps.psea.local/
+
+
+Profile pages - Basic/GRL/Handraiser/Profile builder
+Mission module
+Create password
+Influencer/ Pro/ Pro Plus badges
+Other badges, as part of badges script development.
+Survey Panelist, as part of script development.
+QOTD/QAPI, as part of QOTD flow script development.
+IW should be covered, as part of script development.
+
+
+https://offers-test.pch.com/survey?e=vkcors01@pchmail.com&em=e4e1098d-d306-4977-b0b7-5b28d12a63de
+
+https://offers-test.pch.com/survey/question-set/qotd/offers-qotd
+
+Uncaught TypeError: Cannot read properties of null (reading 'getBoundingClientRect')
+    at HTMLDialogElement.<anonymous> (profile-84a09beb.js:20083:8095)
+	
+	
+	ACCOUNT KEYS	
+Email: penhrhemhfru@pchmail.com
+GMT: 5148b121-4b2c-46fc-b593-eccd0183d24d

@@ -1,0 +1,26 @@
+yarn workspace @hmhco/lift-e2e e2e int:flightNewLoginModule:chrome:playwright
+yarn workspace @hmhco/lift-e2e e2e cert:dtmTeacherAssessmentFlow:chrome:playwright
+yarn workspace @hmhco/lift-e2e e2e cert:dtmRosterModule:chrome:playwright
+yarn workspace @hmhco/lift-e2e e2e cert:dtmStudentAssignmentFlow:chrome:playwright
+yarn workspace @hmhco/lift-e2e e2e cert:dtmStudentScoresModule:chrome:playwright
+yarn workspace @hmhco/lift-e2e e2e cert:dtmReportsModule:chrome:playwright
+
+yarn workspace @hmhco/lift-e2e e2e cert:dtmTeacherAssessmentFlowE2e:chrome:playwright
+
+yarn workspace @hmhco/lift-e2e e2e cert:dtmStudentAssessmentFlowE2e:chrome:playwright
+
+yarn workspace @hmhco/lift-e2e e2e cert:dtmReportVerificationE2e:chrome:playwright
+
+Total: 34
+Pending: 
+
+
+yarn workspace @hmhco/lift-e2e e2e cert:flightNewLoginModule:chrome:playwright - Done (flightNewLogin.feature)
+yarn workspace @hmhco/lift-e2e e2e cert:dtmRosterModule:chrome:playwright - Done (roster.feature)
+yarn workspace @hmhco/lift-e2e e2e cert:dtmStudentScoresModule:chrome:playwright - Done (scoresModule.feature)
+yarn workspace @hmhco/lift-e2e e2e cert:dtmReportsModule:chrome:playwright - Done (reports.feature)
+yarn workspace @hmhco/lift-e2e e2e cert:dtmTeacherAssessmentFlow:chrome:playwright - Done (teacherAssessmentFlow.feature)
+yarn workspace @hmhco/lift-e2e e2e cert:dtmStudentAssignmentFlow:chrome:playwright - Done (studentAssignmentFlow.feature)
+
+
+yarn workspace @hmhco/lift-e2e e2e cert:doTheMathE2eAssessmentFlow:chrome:playwright

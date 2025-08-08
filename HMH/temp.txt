@@ -1,0 +1,184 @@
+//*[@id="0HN2BRI752U2M"]
+
+#\30 HN2BRI752U2M
+
+input.search-box
+
+placeholder="Search for anything currently in listing.."
+
+await page
+    .GetByPlaceholder("name@example.com")
+    .FillAsync("playwright@microsoft.com");
+	
+await page
+    .GetByPlaceholder("Search for anything currently in listing..")
+    .FillAsync("HOUSEELIGIBLE");
+	
+	form.searchform - 
+	
+	<button id="0HN2BRI752U2V" type="submit" class="btn btn-primary bblr0 btlr0" _bl_215=""><!--!--><img class="h22" src="/img/svg/Search.svg" _bl_219=""></button>
+	
+	//button[@type="submit"]
+	
+	
+	await page.Locator("xpath=//*[@id="0HN2BRI752U2V"]").ClickAsync();
+	//*[@id="0HN2BRI752U2V"]/img
+	
+	//*[@id="0HN2C043JHTTL"]/img
+	
+	class="flex-listing-search-box"
+	
+await page.Locator("css=button").ClickAsync();
+await page.Locator("xpath=//button").ClickAsync();
+
+await page.Locator("button").ClickAsync();
+await page.Locator("//button").ClickAsync();
+
+var rows = page.GetByRole(AriaRole.Listitem);
+var count = await rows.CountAsync();
+for (int i = 0; i < count; ++i)
+  Console.WriteLine(await rows.Nth(i).TextContentAsync());
+  
+   //div[*
+  *
+
+  (@class,'AllAssessmentBarGraph')]//following::*[contains(@class,'highcharts-point')]
+ 
+ //*[@data-testid="titleCell"]/parent::[*[text()='Vinoth Dec 15 Addition & Subtraction A – Middle of Module Assessment']]/following-sibling::span[[text()='47.8']]
+ 
+ Final - //*[@id="ProgressBar"]//following::div[1]
+ //*[@id="ProgressBar"]
+ 
+ //*[@id="ProgressBar"]//following::div[2]
+
+//*[text()='Add Dues Types']//following::*[text()='Dues Type Code']
+
+//*[text()='Add Dues Types']/parent::[*[text()='Dues Type Code*']]/following-sibling::input[*[@type='text']]
+
+
+//*[text()="Add Dues Types"]/parent::[*[text()="Dues Type Code*"]]/following-sibling::input[@type="text"]
+
+
+//*[text()='Membership Category Group Name']//following::td[2]
+
+//*[text()='Membership Category Group Name']//following::td[1]
+
+
+//*[text()='Dues Type Code*']/following-sibling::input[@type='text']
+//*[text()="Local's Membership Type"]/following-sibling::select
+//*[text()='Dues Scope']/following-sibling::select
+//*[text()='Dues Classification']/following-sibling::select
+//*[text()='Status*']/following-sibling::select
+
+//*[text()='Business Unit']/following-sibling::input[@type='text']
+//*[text()='Dues Type Description*']/following-sibling::input[@type='text']
+//*[text()='ObjectCode - Current Year']/following-sibling::input[@type='text']
+//*[text()='ObjectCode - Previous Year']/following-sibling::input[@type='text']
+//*[text()='ObjectCode - Future Year']/following-sibling::input[@type='text']
+//*[text()='ObjectCode - Income']/following-sibling::input[@type='text']
+
+//*[text()='Subledger Indicator']/following-sibling::select
+//*[text()='Subledger Suffix']/following-sibling::input[@type='text']
+//*[text()='Subledger Prefix Type']/following-sibling::input[@type='text']
+
+
+
+
+//*[text()="Local's Membership Type"]/following-sibling::select
+
+//*[text()='Add Dues Types']/parent::[*[text()='Dues Type Code']]/following-sibling::*[@type='text']
+
+//*[text()='Dues Type Code']/following::input[@type='text']
+ 
+ //*[text()='Dues Type Code']/following-sibling::input[@type='text']
+
+ //*[text()='Local Name']/following-sibling::td[5]
+
+
+//*[@id="0HN2IB7N1SLJQ"]
+#\30 HN2IB7N1SLJQ
+
+
+ //*[text()='Description']/following-sibling::input[@type='text']
+
+ //*[text()='TEST']/following::i[@class='fas fa-ellipsis-h']
+
+ //*[text()='TEST']/following::i[@class='fas fa-ellipsis-h']
+
+ //*[text()='TEST']/following::i[@class='fas fa-ellipsis-h']
+
+ //li[@class='page-item']/following::a[text()='TEST']
+
+ //a[contains(text(),'Edit')]
+ //a[contains(text(),'Delete')]
+
+ //*[text()='Membership Category Group Name']/following::input[@type='text']
+
+ 1) <input type="text" _bl_2212="" maxlength="20" id="0HN2C…/> aka GetByRole(AriaRole.Textbox).Nth(2)
+    2) <input type="text" _bl_2213="" maxlength="50" id="0HN2C…/> aka GetByRole(AriaRole.Textbox).Nth(3)
+    3) <input type="text" _bl_1093="" maxlength="20" id="0HN2C…/> aka GetByRole(AriaRole.Main).Locator("input[type=\"text\"]").Nth(3)
+    4) <input type="text" _bl_1094="" maxlength="50" id="0HN2C…/> aka GetByRole(AriaRole.Main).Locator("input[type=\"text\"]").Nth(4)
+
+          // await page.Locator("xpath=//*[text()='Membership Category Group Name']/following::input[@type='text']").FillAsync(memGrpName+"_update");
+    //    await page.GetByRole(AriaRole.Main).Locator("input[type=\"text\"]").Nth(3).FillAsync(memGrpName+"_update");
+    // await page.GetByRole(AriaRole.Main).Locator("input[type=\"text\"]").Nth(4).FillAsync(memGrpName+"_update");
+    await page.GetByRole(AriaRole.Textbox).Nth(2).FillAsync(memGrpName+"_edit");
+
+ //*[text()='Column Settings']/parent::[*[text()='Membership Category Group Name']]/following::input[@type='text']
+
+ //button[contains(text(),'Update')]
+
+
+ var membershipCategoryGroupNameResults = page.Locator("//*[text()='Membership Category Group Name']//following::td[1]");
+        var membershipCategoryGroupName = await Expect(page.Locator("//*[text()='Membership Category Group Name']//following::td[1]")).AllInnerTextsAsync();
+
+        // var EmploymentCode = await page.Locator("//*[text()='EmploymentCode/Description']//following::td[2]").AllInnerTextsAsync();
+
+        //*[text()='Region']/following::select
+
+        //*[@id="app"]/section/section/main/div[2]/div[2]/div/div/span[2]/span[1]
+
+        div.filter-badge >span
+
+        //*[@class='filter-badge']following::span
+
+
+        //*[text()='999']/following::i[@class='fas fa-ellipsis-h']
+
+        //i[@class='fas fa-ellipsis-h']/following::*[text()='Auto_xiqi']
+
+        //*[text()='05-Central Region']//preceding::i[@class='fas fa-ellipsis-h']
+
+        //*[text()='Member/Non Member']/preceding::input[@type='checkbox']
+
+        //*[text()='Add New Rebate']/following::input[@type="text"]
+
+        #LocalGroupType
+        #Region
+
+        String GLAccountBusinessUnit = rebate+"_GLBC";
+        String GLAccountObjectCode = rebate+"_GLOC";
+        String AccruedExpensesBusinessUnit = rebate+"_AEBC";
+        String AccruedExpensesObjectCode = rebate+"_AEOC";
+
+/following::*//td[4]
+//*[text()='SchoolYear']/following-siblings::*
+//*[text()='Column Settings']/parent::[*[text()='SchoolYear']]/following::*td[4]
+
+//th/parent::[*[text()='SchoolYear']]/following::*td[4]
+
+//*[text()='SchoolYear']/parent::th/following::*td[4]
+
+        button.accordion-button.collapsed
+
+
+
+        //*[@id="0HN4BOB8KCKQ9"]/div/div[3]/div/div/div[4]/div[7]/div
+
+        //label[text()='Total Cards:']/following-siblings::
+
+        //*[text()='Total Cards:']/parent::div/following::div
+
+        //*[text()='Total Cards:']/parent::div/following-siblings::div
+
+        //label[text()='Total Cards:']/parent::div/div
