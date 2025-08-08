@@ -1,0 +1,36 @@
+import java.util.*;
+
+class KthRepeatingChar {
+	public static void main(String[] args) {
+	    String s = "Try programiz testing interviewssss";
+		s = s.replace(" ","").toLowerCase();
+		System.out.println("kthRepeatChar: "+kthRepeatChar(s, 3));
+		
+	}
+	
+	static char kthRepeatChar(String input, int k){
+	    int count=0;
+	    char result='$';
+	    
+	    for(int i=0;i<input.length();i++){
+	        boolean repeat = false;
+	        
+	        for(int j=i+1;j<input.length();j++){
+	           if(input.charAt(i)!=input.charAt(j)){
+	               repeat = true;
+	               break;
+	        }
+	        }
+	        
+        if(!repeat)
+        count++;
+        
+        if(count==k){
+	       result = input.charAt(i); 
+	       break;
+	    }
+	    }
+	    
+	    return result;
+	}
+}

@@ -1,0 +1,14 @@
+D:\Hexaware OneDrive\OneDrive - Hexaware Technologies\Hexaware\Automation\VisualStudio\Sample\bin\Debug\net8.0\Sample.exe
+D:\Hexaware OneDrive\OneDrive - Hexaware Technologies\Hexaware\Automation\VisualStudio\Sample\bin\Debug\net8.0\Sample.deps.json
+D:\Hexaware OneDrive\OneDrive - Hexaware Technologies\Hexaware\Automation\VisualStudio\Sample\bin\Debug\net8.0\Sample.runtimeconfig.json
+D:\Hexaware OneDrive\OneDrive - Hexaware Technologies\Hexaware\Automation\VisualStudio\Sample\bin\Debug\net8.0\Sample.dll
+D:\Hexaware OneDrive\OneDrive - Hexaware Technologies\Hexaware\Automation\VisualStudio\Sample\bin\Debug\net8.0\Sample.pdb
+D:\Hexaware OneDrive\OneDrive - Hexaware Technologies\Hexaware\Automation\VisualStudio\Sample\obj\Debug\net8.0\Sample.GeneratedMSBuildEditorConfig.editorconfig
+D:\Hexaware OneDrive\OneDrive - Hexaware Technologies\Hexaware\Automation\VisualStudio\Sample\obj\Debug\net8.0\Sample.AssemblyInfoInputs.cache
+D:\Hexaware OneDrive\OneDrive - Hexaware Technologies\Hexaware\Automation\VisualStudio\Sample\obj\Debug\net8.0\Sample.AssemblyInfo.cs
+D:\Hexaware OneDrive\OneDrive - Hexaware Technologies\Hexaware\Automation\VisualStudio\Sample\obj\Debug\net8.0\Sample.csproj.CoreCompileInputs.cache
+D:\Hexaware OneDrive\OneDrive - Hexaware Technologies\Hexaware\Automation\VisualStudio\Sample\obj\Debug\net8.0\Sample.dll
+D:\Hexaware OneDrive\OneDrive - Hexaware Technologies\Hexaware\Automation\VisualStudio\Sample\obj\Debug\net8.0\refint\Sample.dll
+D:\Hexaware OneDrive\OneDrive - Hexaware Technologies\Hexaware\Automation\VisualStudio\Sample\obj\Debug\net8.0\Sample.pdb
+D:\Hexaware OneDrive\OneDrive - Hexaware Technologies\Hexaware\Automation\VisualStudio\Sample\obj\Debug\net8.0\Sample.genruntimeconfig.cache
+D:\Hexaware OneDrive\OneDrive - Hexaware Technologies\Hexaware\Automation\VisualStudio\Sample\obj\Debug\net8.0\ref\Sample.dll

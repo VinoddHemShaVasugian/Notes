@@ -1,0 +1,35 @@
+package oops;
+
+interface Testing{
+	public void manual();
+	public void automation();
+}
+
+class Manual implements Testing{
+
+	@Override
+	public void manual() {
+		System.out.println("Manual Testing");
+		
+	}
+
+	@Override
+	public void automation() {
+		System.out.println("Automation Testing");
+		
+	}
+	
+}
+
+
+public class InterfaceDemo {
+
+	public static void main(String[] args) {
+		Testing t = new Manual();
+		t.automation();
+		Manual m = new Manual();
+		m.automation();
+
+	}
+
+}

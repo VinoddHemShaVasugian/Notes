@@ -1,0 +1,58 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Hexaware OneDrive\\OneDrive - Hexaware Technologies\\Hexaware\\Automation\\VisualStudio\\Sample\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{71382D2D-CB52-4EC7-B116-C08A8A5E4E40}|Sample.csproj|d:\\hexaware onedrive\\onedrive - hexaware technologies\\hexaware\\automation\\visualstudio\\sample\\car.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{71382D2D-CB52-4EC7-B116-C08A8A5E4E40}|Sample.csproj|solutionrelative:car.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{71382D2D-CB52-4EC7-B116-C08A8A5E4E40}|Sample.csproj|d:\\hexaware onedrive\\onedrive - hexaware technologies\\hexaware\\automation\\visualstudio\\sample\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{71382D2D-CB52-4EC7-B116-C08A8A5E4E40}|Sample.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Hexaware OneDrive\\OneDrive - Hexaware Technologies\\Hexaware\\Automation\\VisualStudio\\Sample\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "D:\\Hexaware OneDrive\\OneDrive - Hexaware Technologies\\Hexaware\\Automation\\VisualStudio\\Sample\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAABMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-11T13:16:08.284Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Car.cs",
+              "DocumentMoniker": "D:\\Hexaware OneDrive\\OneDrive - Hexaware Technologies\\Hexaware\\Automation\\VisualStudio\\Sample\\Car.cs",
+              "RelativeDocumentMoniker": "Car.cs",
+              "ToolTip": "D:\\Hexaware OneDrive\\OneDrive - Hexaware Technologies\\Hexaware\\Automation\\VisualStudio\\Sample\\Car.cs",
+              "RelativeToolTip": "Car.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAA4AAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-11T13:10:10.613Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+import java.util.*;
+
+class ArrayDuplicateChar {
+	public static void main(String[] args) {
+        System.out.println("Program Start");
+        
+        String s = "testing for tester";
+        
+        removeDuplicate(s);
+        
+        System.out.println("Program end");
+	}
+	
+	public static void removeDuplicate(String str){
+	    
+	    char[] c = str.replace(" ","").toCharArray();
+	    
+	    Set<Character> hs = new HashSet<>();
+	    
+	    for(Character insert: c){
+	        hs.add(insert);
+	    }
+	    
+	    System.out.println("Unique values: "+hs);
+	    
+	}
+}

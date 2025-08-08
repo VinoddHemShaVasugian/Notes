@@ -1,0 +1,23 @@
+import java.util.*;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
+
+class RegexFinder {
+	public static void main(String[] args) {
+	     String s = "test for testing engineer";
+	     
+	     Pattern p = Pattern.compile("test");
+	     Matcher m = p.matcher(s);
+	     
+	     int count =0;
+	     
+	     while(m.find()){
+	         int start = m.start();
+	         int end = m.end();
+	         count++;
+	         System.out.println("Start: "+start+" End: "+end);
+	     }
+	     
+	     System.out.println("Count: "+count);
+	}
+}
