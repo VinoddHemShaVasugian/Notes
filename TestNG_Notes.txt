@@ -1,0 +1,200 @@
+
+/TestNG_E2E_Framework/testng.xml
+mvn clean test -Dsurefire.suiteFile=/TestNG_E2E_Framework/testng.xml
+
+mvn clean test -DsuiteFile=/TestNG_E2E_Framework/testng.xml
+
+********************************************************************************************************************************************
+Allure reports:
+
+To implement Allure Reports for a TestNG framework, follow these steps:
+
+1. Add Allure Dependencies
+
+Add the required dependencies to your pom.xml if you're using Maven:
+
+<dependencies>
+    <dependency>
+        <groupId>io.qameta.allure</groupId>
+        <artifactId>allure-testng</artifactId>
+        <version>2.20.1</version>
+    </dependency>
+</dependencies>
+
+
+2. Configure Allure Annotations
+
+Use Allure annotations in your test classes to enhance the report. For example:
+
+	•  @Epic, @Feature, @Story for categorization.
+	•  @Step for logging steps.
+	•  @Attachment for adding screenshots or logs.
+
+Example:
+
+import io.qameta.allure.*;
+
+public class SampleTest {
+
+    @Test
+    @Epic("Login Module")
+    @Feature("Login Feature")
+    @Story("Valid Login")
+    @Description("Test to verify valid login functionality")
+    public void validLoginTest() {
+        login("user", "password");
+    }
+
+    @Step("Login with username: {0} and password: {1}")
+    public void login(String username, String password) {
+        // Login logic
+    }
+}
+
+
+3. Add Allure Listener
+
+Add the Allure TestNG listener to your testng.xml file:
+
+<listeners>
+    <listener class-name="io.qameta.allure.testng.AllureTestNg"/>
+</listeners>
+
+4. Run Tests and Generate Report
+
+	1. Execute your TestNG tests.
+	2. After execution, the results will be stored in the allure-results folder.
+	3. Use the Allure command-line tool to generate the report:
+	4. Install Allure CLI: Allure Installation Guide - https://allurereport.org/docs/#_installing_a_commandline
+	5. Run the following commands:
+	
+	     allure serve allure-results
+
+	•  This will generate and open the report in your default browser.
+
+5. Optional: Add Screenshots or Logs
+
+You can attach screenshots or logs to your report using the @Attachment annotation:
+@Attachment(value = "Screenshot", type = "image/png")
+public byte[] attachScreenshot(byte[] screenshot) {
+    return screenshot;
+}
+
+This setup will integrate Allure Reports with your TestNG framework.
+
+*************************************************************************************************************************************************
+
+Parallel Execution
+
+To achieve parallel execution in your Selenium-based framework, you can use TestNG's parallel execution feature. Below are the changes required:
+
+1. Update the TestNG XML File
+
+Modify your testng.xml file to include the parallel attribute. This allows TestNG to run tests in parallel. For example:
+
+<suite name="ParallelExecutionSuite" parallel="tests" thread-count="4">
+    <test name="Test1">
+        <classes>
+            <class name="com.framework.tests.TestClass1" />
+        </classes>
+    </test>
+    <test name="Test2">
+        <classes>
+            <class name="com.framework.tests.TestClass2" />
+        </classes>
+    </test>
+</suite>
+
+	•  parallel="tests": Runs test tags in parallel.
+	•  thread-count="4": Specifies the number of threads to use.
+
+2. Make WebDriver Thread-Safe
+
+Since WebDriver is not thread-safe, you need to ensure each thread gets its own WebDriver instance. Use a ThreadLocal variable for WebDriver in the Keywords class.
+
+Update the Keywords class as follows:
+package com.framework.library;
+
+import org.openqa.selenium.WebDriver;
+
+public class Keywords {
+    private static ThreadLocal<WebDriver> threadLocalDriver = new ThreadLocal<>();
+
+    public static void setDriver(WebDriver driver) {
+        threadLocalDriver.set(driver);
+    }
+
+    public static WebDriver getDriver() {
+        return threadLocalDriver.get();
+    }
+
+    public Keywords(String browser) {
+        WebDriver driver;
+        if (browser.equals("Mozilla Firefox")) {
+            WebDriverManager.firefoxdriver().setup();
+            driver = new FirefoxDriver();
+        } else if (browser.equals("Google Chrome")) {
+            ChromeOptions options = new ChromeOptions();
+            options.addArguments("--remote-allow-origins=*");
+            WebDriverManager.chromedriver().setup();
+            driver = new ChromeDriver(options);
+        } else {
+            WebDriverManager.edgedriver().setup();
+            driver = new EdgeDriver();
+        }
+        setDriver(driver);
+    }
+
+    public Keywords() {
+    }
+}
+
+3. Update Test Classes
+
+Ensure each test class initializes the WebDriver instance using the Keywords class. For example:
+package com.framework.tests;
+
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+import com.framework.library.Keywords;
+
+public class TestClass1 {
+    @BeforeMethod
+    public void setUp() {
+        new Keywords("Google Chrome");
+    }
+
+    @Test
+    public void testMethod1() {
+        Keywords.getDriver().get("https://example.com");
+        // Add test steps here
+    }
+
+    @AfterMethod
+    public void tearDown() {
+        Keywords.getDriver().quit();
+    }
+}
+
+4. Configure Thread Count in TestNG
+
+Ensure the thread-count in the testng.xml file matches the number of tests or classes you want to run in parallel.
+
+5. Optional: Use DataProvider for Parallel Test Data
+
+If you want to run the same test with different data in parallel, use the @DataProvider annotation with parallel=true.
+@DataProvider(name = "testData", parallel = true)
+public Object[][] getData() {
+    return new Object[][] {
+        {"data1"},
+        {"data2"}
+    };
+}
+
+Summary
+
+	•  Use ThreadLocal for WebDriver to ensure thread safety.
+	•  Update testng.xml to enable parallel execution.
+	•  Initialize and quit WebDriver in each test class.
+	•  Optionally, use @DataProvider for parallel test data.
