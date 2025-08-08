@@ -1,0 +1,574 @@
+name: $(BuildDefinitionName)-${{ parameters.DeploymentEnvironment }}-$(date:yyyyMMdd)
+
+trigger:
+- none
+
+pool:
+  vmImage: 'windows-latest'
+
+parameters:
+- name: DeploymentEnvironment
+  displayName: "Deployment Environment"
+  type: string
+  default: 'DEV'
+  values:
+    - 'DEV'
+    - 'QA'
+    - 'UAT'
+    - 'Production'
+
+- name: workerInstances
+  type: object
+  default:
+    - 'PSEAReportInstanceMIS'
+
+variables:
+  buildConfiguration: 'Release'
+  solution: '**/*.sln'
+  project: '**/psea.reportworker.local.csproj'
+  artifactName: 'drop'
+
+stages:
+- stage: Build
+  displayName: 'Build Stage'
+  jobs:
+  - job: Build
+    steps:
+    - task: UseDotNet@2
+      displayName: 'Use .NET 8.x'
+      inputs:
+        packageType: 'sdk'
+        version: '8.x'
+        performMultiLevelLookup: true
+        includePreviewVersions: false
+        installationPath: $(Agent.ToolsDirectory)/dotnet
+
+    - task: PowerShell@2
+      displayName: "List all .csproj files"
+      inputs:
+        targetType: 'inline'
+        script: |
+          Get-ChildItem -Path "$(Build.SourcesDirectory)" -Recurse -Filter *.csproj
+
+    - task: DotNetCoreCLI@2
+      displayName: "dotnet NuGet Restore"
+      inputs:
+        command: 'restore'
+        projects: '$(Build.SourcesDirectory)/**/*.csproj'
+        feedsToUse: 'select'
+        vstsFeed: 'bd5f8fbd-935c-487f-be4c-8991e91fd7f0'
+
+    - task: PowerShell@2
+      displayName: "Remove Not required appsettings.json"
+      inputs:
+        targetType: 'inline'
+        script: |
+                If('${{ parameters.DeploymentEnvironment }}' -eq "DEV")
+                { 
+                Remove-Item -Path "$(Build.SourcesDirectory)\appsettings.QA.json" -Force
+                Remove-Item -Path "$(Build.SourcesDirectory)\appsettings.UAT.json" -Force
+                Remove-Item -Path "$(Build.SourcesDirectory)\appsettings.json" -Force
+                Remove-Item -Path "$(Build.SourcesDirectory)\appsettings.PROD.json" -Force
+                Rename-Item -Path "$(Build.SourcesDirectory)\appsettings.DEV.json" -NewName "appsettings.json" -Force
+                }
+                elseif('${{ parameters.DeploymentEnvironment }}' -eq "QA")
+                { 
+                Remove-Item -Path "$(Build.SourcesDirectory)\appsettings.DEV.json" -Force
+                Remove-Item -Path "$(Build.SourcesDirectory)\appsettings.UAT.json" -Force
+                Remove-Item -Path "$(Build.SourcesDirectory)\appsettings.json" -Force
+                Remove-Item -Path "$(Build.SourcesDirectory)\appsettings.PROD.json" -Force
+                Rename-Item -Path "$(Build.SourcesDirectory)\appsettings.QA.json" -NewName "appsettings.json" -Force
+                }
+                elseif('${{ parameters.DeploymentEnvironment }}' -eq "UAT")
+                { 
+                Remove-Item -Path "$(Build.SourcesDirectory)\appsettings.DEV.json" -Force
+                Remove-Item -Path "$(Build.SourcesDirectory)\appsettings.QA.json" -Force
+                Remove-Item -Path "$(Build.SourcesDirectory)\appsettings.json" -Force
+                Remove-Item -Path "$(Build.SourcesDirectory)\appsettings.PROD.json" -Force
+                Rename-Item -Path "$(Build.SourcesDirectory)\appsettings.UAT.json" -NewName "appsettings.json" -Force
+                }
+                elseif('${{ parameters.DeploymentEnvironment }}' -eq "Production")
+                { 
+                Remove-Item -Path "$(Build.SourcesDirectory)\appsettings.QA.json" -Force
+                Remove-Item -Path "$(Build.SourcesDirectory)\appsettings.DEV.json" -Force
+                Remove-Item -Path "$(Build.SourcesDirectory)\appsettings.UAT.json" -Force
+                Remove-Item -Path "$(Build.SourcesDirectory)\appsettings.json" -Force
+                Rename-Item -Path "$(Build.SourcesDirectory)\appsettings.PROD.json" -NewName "appsettings.json" -Force
+                }
+                else
+                {Write-Host "environment Name not correctly Passed"
+                Exit 1
+                }    
+    - task: DotNetCoreCLI@2
+      displayName: "dotnet build"
+      inputs:
+        command: 'build'
+        projects: '$(Build.SourcesDirectory)/**/*.csproj'
+        arguments: '--configuration $(buildConfiguration) -p:AllowUnsafeBlocks=true'
+
+    - task: DotNetCoreCLI@2
+      displayName: "dotnet publish"
+      inputs:
+        command: 'publish'
+        publishWebProjects: false
+        projects: '$(Build.SourcesDirectory)/**/*.csproj'
+        arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory) /p:EnvironmentName=${{ parameters.DeploymentEnvironment }}'
+
+    - task: ArchiveFiles@2
+      displayName: "Archive Build Artifacts"
+      inputs:
+        rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
+        includeRootFolder: false
+        archiveType: 'zip'
+        archiveFile: '$(Build.ArtifactStagingDirectory)/reportworker.zip'
+        replaceExistingArchive: true
+
+    - task: PublishBuildArtifacts@1
+      displayName: "Publish Build Artifacts"
+      inputs:
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+        ArtifactName: 'drop'
+        publishLocation: 'Container'
+
+
+- stage: DevDeploy
+  displayName: 'Deploy DEV Report Worker'
+  jobs:
+  - deployment: DeployReportWorkerToIIS
+    displayName: 'Deploy Report Worker'
+    condition: and(succeeded(), eq('${{ parameters.DeploymentEnvironment }}', 'DEV'))
+    environment:
+      name: DevNew
+      resourceName: S-HQ-DEVAPI02
+      resourceType: VirtualMachine
+      tags: DevNew
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+            - download: current
+              artifact: '${{ variables.artifactName }}'
+
+            - ${{ each instance in parameters.workerInstances }}:
+                - task: PowerShell@2
+                  displayName: 'Deploy ${{ instance }}'
+                  inputs:
+                    targetType: 'inline'
+                    script: |
+                      $instanceName = '${{ instance }}'
+                      $appPath = "C:\PSEA\ReportWorker\$instanceName"
+                      $zipPath = "$(Pipeline.Workspace)\${{ variables.artifactName }}\reportworker.zip"
+
+                      Write-Host "appPath: $appPath"
+                      Write-Host "zipPath: $zipPath"
+
+                      if (Test-Path $appPath) {
+                          $service = Get-Service -Name $instanceName -ErrorAction SilentlyContinue
+
+                          if ($service -and $service.Status -eq 'Running') {
+                            Write-Host "Service $instanceName exists. Stopping..."
+                            Stop-Service -Name $instanceName -Force
+                            Start-Sleep -Seconds 5
+                            Write-Host "Service $instanceName stopped."
+                            
+                            $maxRetries = 5
+                            $retry = 0
+                            $deleted = $false
+
+                            while ($retry -lt $maxRetries -and -not $deleted) {
+                              try {
+                                Remove-Item -Path $appPath -Recurse -Force -ErrorAction Stop
+                                $deleted = $true
+                                Write-Host "Successfully deleted: $appPath"
+                              } catch {
+                                Write-Host "Retrying deletion... Attempt $($retry+1)/$maxRetries"
+                                Start-Sleep -Seconds 5
+                                $retry++
+                              }
+                            }
+
+                            if (-not $deleted) {
+                              Write-Error "Failed to delete $appPath after multiple attempts."
+                              exit 1
+                            }
+                          }
+
+                            New-Item -Path $appPath -ItemType Directory -Force
+                          
+                            # Extract all files from the ZIP archive
+                            Add-Type -AssemblyName System.IO.Compression.FileSystem
+                            [System.IO.Compression.ZipFile]::ExtractToDirectory($zipPath, $appPath)
+
+                            # Check if an additional ZIP exists inside the extracted folder
+                            $nestedZip = Get-ChildItem -Path $appPath -Filter "*.zip" -Recurse | Select-Object -First 1
+                            if ($nestedZip) {
+                              Write-Host "Extracting nested ZIP: $nestedZip"
+                              [System.IO.Compression.ZipFile]::ExtractToDirectory($nestedZip.FullName, $appPath)
+                              Remove-Item -Path $nestedZip.FullName -Force
+                            }
+                             Write-Host "appPath: $appPath"
+                            Write-Host "zipPath: $zipPath"
+
+                            # (Re)configure the service
+                            sc.exe config $instanceName binPath= "\"$appPath\psea.reportworker.local.exe\" $instanceName" start= delayed-auto
+
+                            # Set service recovery options
+                            sc.exe failure $instanceName reset= 0 actions= restart/60000/restart/60000/restart/60000
+
+                            # Verify the service configuration
+                            $serviceConfig = sc.exe qc $instanceName
+                            Write-Host "Service Configuration:" $serviceConfig
+
+                            # Ensure the executable exists
+                            if (!(Test-Path "$appPath\psea.reportworker.local.exe")) {
+                              Write-Error "Executable not found in $appPath"
+                              exit 1
+                            }
+                             
+                      } else {
+                                Write-Host "Service $instanceName does not exist yet. Proceeding to create/configure it."
+
+                                New-Item -Path $appPath -ItemType Directory -Force
+                      
+                                # Extract all files from the ZIP archive
+                                Add-Type -AssemblyName System.IO.Compression.FileSystem
+                                [System.IO.Compression.ZipFile]::ExtractToDirectory($zipPath, $appPath)
+
+                                # Check if an additional ZIP exists inside the extracted folder
+                                $nestedZip = Get-ChildItem -Path $appPath -Filter "*.zip" -Recurse | Select-Object -First 1
+                                if ($nestedZip) {
+                                  Write-Host "Extracting nested ZIP: $nestedZip"
+                                  [System.IO.Compression.ZipFile]::ExtractToDirectory($nestedZip.FullName, $appPath)
+                                  Remove-Item -Path $nestedZip.FullName -Force
+                                }
+
+                                Write-Host "appPath: $appPath"
+                                Write-Host "zipPath: $zipPath"
+                                Write-Host "Create Service: sc.exe create $instanceName binPath= "$appPath\psea.reportworker.local.exe $instanceName" start= delayed-auto "
+
+                                # Create Service
+                                sc.exe create $instanceName binPath= "$appPath\psea.reportworker.local.exe $instanceName" start= delayed-auto 
+
+                                # Set service recovery options
+                                sc.exe failure $instanceName reset= 0 actions= restart/60000/restart/60000/restart/60000
+
+                                # Verify the service configuration
+                                $serviceConfig = sc.exe qc $instanceName
+                                Write-Host "Service Configuration:" $serviceConfig
+
+                                # Ensure the executable exists
+                                if (!(Test-Path "$appPath\psea.reportworker.local.exe")) {
+                                    Write-Error "Executable not found in $appPath"
+                                    exit 1
+                                }
+                      }
+                      
+
+                          # Start the service with error handling
+                          try {
+                              [Environment]::SetEnvironmentVariable('WORKER_INSTANCE_NAME', $instanceName, 'Machine')
+                              Start-Service -Name $instanceName -ErrorAction Stop
+                              Start-Sleep -Seconds 60 # Wait for service to initialize
+                              Write-Host "$instanceName started successfully."
+                          } catch {
+                              Write-Host "Failed to start $instanceName"
+                              exit 1
+                          }
+                      
+                    errorActionPreference: 'stop'
+
+
+- stage: QADeploy
+  displayName: 'Deploy QA Report Worker'
+  jobs:
+  - deployment: DeployReportWorkerToIIS
+    displayName: 'Deploy Report Worker'
+    condition: and(succeeded(), eq('${{ parameters.DeploymentEnvironment }}', 'QA'))
+    environment:
+      name: QA
+      resourceName: S-HQ-QAAPPS01
+      resourceType: VirtualMachine
+      tags: qa_api
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+            - download: current
+              artifact: '${{ variables.artifactName }}'
+
+            - ${{ each instance in parameters.workerInstances }}:
+                - task: PowerShell@2
+                  displayName: 'Deploy ${{ instance }}'
+                  inputs:
+                    targetType: 'inline'
+                    script: |
+                      $instanceName = '${{ instance }}'
+                      $appPath = "C:\PSEA\ReportWorker\$instanceName"
+                      $zipPath = "$(Pipeline.Workspace)\${{ variables.artifactName }}\reportworker.zip"
+
+                      Write-Host "appPath: $appPath"
+                      Write-Host "zipPath: $zipPath"
+
+                      if (Test-Path $appPath) {
+                          $service = Get-Service -Name $instanceName -ErrorAction SilentlyContinue
+
+                          if ($service -and $service.Status -eq 'Running') {
+                            Write-Host "Service $instanceName exists. Stopping..."
+                            Stop-Service -Name $instanceName -Force
+                            Start-Sleep -Seconds 5
+                            Write-Host "Service $instanceName stopped."
+                            
+                            $maxRetries = 5
+                            $retry = 0
+                            $deleted = $false
+
+                            while ($retry -lt $maxRetries -and -not $deleted) {
+                              try {
+                                Remove-Item -Path $appPath -Recurse -Force -ErrorAction Stop
+                                $deleted = $true
+                                Write-Host "Successfully deleted: $appPath"
+                              } catch {
+                                Write-Host "Retrying deletion... Attempt $($retry+1)/$maxRetries"
+                                Start-Sleep -Seconds 5
+                                $retry++
+                              }
+                            }
+
+                            if (-not $deleted) {
+                              Write-Error "Failed to delete $appPath after multiple attempts."
+                              exit 1
+                            }
+                          }
+
+                            New-Item -Path $appPath -ItemType Directory -Force
+                          
+                            # Extract all files from the ZIP archive
+                            Add-Type -AssemblyName System.IO.Compression.FileSystem
+                            [System.IO.Compression.ZipFile]::ExtractToDirectory($zipPath, $appPath)
+
+                            # Check if an additional ZIP exists inside the extracted folder
+                            $nestedZip = Get-ChildItem -Path $appPath -Filter "*.zip" -Recurse | Select-Object -First 1
+                            if ($nestedZip) {
+                              Write-Host "Extracting nested ZIP: $nestedZip"
+                              [System.IO.Compression.ZipFile]::ExtractToDirectory($nestedZip.FullName, $appPath)
+                              Remove-Item -Path $nestedZip.FullName -Force
+                            }
+                             Write-Host "appPath: $appPath"
+                            Write-Host "zipPath: $zipPath"
+
+                            # (Re)configure the service
+                            sc.exe config $instanceName binPath= "\"$appPath\psea.reportworker.local.exe\" $instanceName" start= delayed-auto
+
+                            # Set service recovery options
+                            sc.exe failure $instanceName reset= 0 actions= restart/60000/restart/60000/restart/60000
+
+                            # Verify the service configuration
+                            $serviceConfig = sc.exe qc $instanceName
+                            Write-Host "Service Configuration:" $serviceConfig
+
+                            # Ensure the executable exists
+                            if (!(Test-Path "$appPath\psea.reportworker.local.exe")) {
+                              Write-Error "Executable not found in $appPath"
+                              exit 1
+                            }
+                             
+                      } else {
+                                Write-Host "Service $instanceName does not exist yet. Proceeding to create/configure it."
+
+                                New-Item -Path $appPath -ItemType Directory -Force
+                      
+                                # Extract all files from the ZIP archive
+                                Add-Type -AssemblyName System.IO.Compression.FileSystem
+                                [System.IO.Compression.ZipFile]::ExtractToDirectory($zipPath, $appPath)
+
+                                # Check if an additional ZIP exists inside the extracted folder
+                                $nestedZip = Get-ChildItem -Path $appPath -Filter "*.zip" -Recurse | Select-Object -First 1
+                                if ($nestedZip) {
+                                  Write-Host "Extracting nested ZIP: $nestedZip"
+                                  [System.IO.Compression.ZipFile]::ExtractToDirectory($nestedZip.FullName, $appPath)
+                                  Remove-Item -Path $nestedZip.FullName -Force
+                                }
+
+                                Write-Host "appPath: $appPath"
+                                Write-Host "zipPath: $zipPath"
+                                Write-Host "Create Service: sc.exe create $instanceName binPath= "$appPath\psea.reportworker.local.exe $instanceName" start= delayed-auto "
+
+                                # Create Service
+                                sc.exe create $instanceName binPath= "$appPath\psea.reportworker.local.exe $instanceName" start= delayed-auto 
+
+                                # Set service recovery options
+                                sc.exe failure $instanceName reset= 0 actions= restart/60000/restart/60000/restart/60000
+
+                                # Verify the service configuration
+                                $serviceConfig = sc.exe qc $instanceName
+                                Write-Host "Service Configuration:" $serviceConfig
+
+                                # Ensure the executable exists
+                                if (!(Test-Path "$appPath\psea.reportworker.local.exe")) {
+                                    Write-Error "Executable not found in $appPath"
+                                    exit 1
+                                }
+                      }
+                      
+
+                          # Start the service with error handling
+                          try {
+                              [Environment]::SetEnvironmentVariable('WORKER_INSTANCE_NAME', $instanceName, 'Machine')
+                              Start-Service -Name $instanceName -ErrorAction Stop
+                              Start-Sleep -Seconds 60 # Wait for service to initialize
+                              Write-Host "$instanceName started successfully."
+                          } catch {
+                              Write-Host "Failed to start $instanceName"
+                              exit 1
+                          }
+                      
+                    errorActionPreference: 'stop'
+
+
+
+- stage: UATDeploy
+  displayName: 'Deploy UAT Report Worker'
+  jobs:
+  - deployment: DeployReportWorkerToIIS
+    displayName: 'Deploy Report Worker'
+    condition: and(succeeded(), eq('${{ parameters.DeploymentEnvironment }}', 'UAT'))
+    environment:
+      name: UAT
+      resourceName: S-HQ-UATAPPS01
+      resourceType: VirtualMachine
+      tags: uat_api
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+            - download: current
+              artifact: '${{ variables.artifactName }}'
+
+            - ${{ each instance in parameters.workerInstances }}:
+                - task: PowerShell@2
+                  displayName: 'Deploy ${{ instance }}'
+                  inputs:
+                    targetType: 'inline'
+                    script: |
+                      $instanceName = '${{ instance }}'
+                      $appPath = "C:\PSEA\ReportWorker\$instanceName"
+                      $zipPath = "$(Pipeline.Workspace)\${{ variables.artifactName }}\reportworker.zip"
+
+                      Write-Host "appPath: $appPath"
+                      Write-Host "zipPath: $zipPath"
+
+                      if (Test-Path $appPath) {
+                          $service = Get-Service -Name $instanceName -ErrorAction SilentlyContinue
+
+                          if ($service -and $service.Status -eq 'Running') {
+                            Write-Host "Service $instanceName exists. Stopping..."
+                            Stop-Service -Name $instanceName -Force
+                            Start-Sleep -Seconds 5
+                            Write-Host "Service $instanceName stopped."
+                            
+                            $maxRetries = 5
+                            $retry = 0
+                            $deleted = $false
+
+                            while ($retry -lt $maxRetries -and -not $deleted) {
+                              try {
+                                Remove-Item -Path $appPath -Recurse -Force -ErrorAction Stop
+                                $deleted = $true
+                                Write-Host "Successfully deleted: $appPath"
+                              } catch {
+                                Write-Host "Retrying deletion... Attempt $($retry+1)/$maxRetries"
+                                Start-Sleep -Seconds 5
+                                $retry++
+                              }
+                            }
+
+                            if (-not $deleted) {
+                              Write-Error "Failed to delete $appPath after multiple attempts."
+                              exit 1
+                            }
+                          }
+
+                            New-Item -Path $appPath -ItemType Directory -Force
+                          
+                            # Extract all files from the ZIP archive
+                            Add-Type -AssemblyName System.IO.Compression.FileSystem
+                            [System.IO.Compression.ZipFile]::ExtractToDirectory($zipPath, $appPath)
+
+                            # Check if an additional ZIP exists inside the extracted folder
+                            $nestedZip = Get-ChildItem -Path $appPath -Filter "*.zip" -Recurse | Select-Object -First 1
+                            if ($nestedZip) {
+                              Write-Host "Extracting nested ZIP: $nestedZip"
+                              [System.IO.Compression.ZipFile]::ExtractToDirectory($nestedZip.FullName, $appPath)
+                              Remove-Item -Path $nestedZip.FullName -Force
+                            }
+                             Write-Host "appPath: $appPath"
+                            Write-Host "zipPath: $zipPath"
+
+                            # (Re)configure the service
+                            sc.exe config $instanceName binPath= "\"$appPath\psea.reportworker.local.exe\" $instanceName" start= delayed-auto
+
+                            # Set service recovery options
+                            sc.exe failure $instanceName reset= 0 actions= restart/60000/restart/60000/restart/60000
+
+                            # Verify the service configuration
+                            $serviceConfig = sc.exe qc $instanceName
+                            Write-Host "Service Configuration:" $serviceConfig
+
+                            # Ensure the executable exists
+                            if (!(Test-Path "$appPath\psea.reportworker.local.exe")) {
+                              Write-Error "Executable not found in $appPath"
+                              exit 1
+                            }
+                             
+                      } else {
+                                Write-Host "Service $instanceName does not exist yet. Proceeding to create/configure it."
+
+                                New-Item -Path $appPath -ItemType Directory -Force
+                      
+                                # Extract all files from the ZIP archive
+                                Add-Type -AssemblyName System.IO.Compression.FileSystem
+                                [System.IO.Compression.ZipFile]::ExtractToDirectory($zipPath, $appPath)
+
+                                # Check if an additional ZIP exists inside the extracted folder
+                                $nestedZip = Get-ChildItem -Path $appPath -Filter "*.zip" -Recurse | Select-Object -First 1
+                                if ($nestedZip) {
+                                  Write-Host "Extracting nested ZIP: $nestedZip"
+                                  [System.IO.Compression.ZipFile]::ExtractToDirectory($nestedZip.FullName, $appPath)
+                                  Remove-Item -Path $nestedZip.FullName -Force
+                                }
+
+                                Write-Host "appPath: $appPath"
+                                Write-Host "zipPath: $zipPath"
+                                Write-Host "Create Service: sc.exe create $instanceName binPath= "$appPath\psea.reportworker.local.exe $instanceName" start= delayed-auto "
+
+                                # Create Service
+                                sc.exe create $instanceName binPath= "$appPath\psea.reportworker.local.exe $instanceName" start= delayed-auto 
+
+                                # Set service recovery options
+                                sc.exe failure $instanceName reset= 0 actions= restart/60000/restart/60000/restart/60000
+
+                                # Verify the service configuration
+                                $serviceConfig = sc.exe qc $instanceName
+                                Write-Host "Service Configuration:" $serviceConfig
+
+                                # Ensure the executable exists
+                                if (!(Test-Path "$appPath\psea.reportworker.local.exe")) {
+                                    Write-Error "Executable not found in $appPath"
+                                    exit 1
+                                }
+                      }
+                      
+
+                          # Start the service with error handling
+                          try {
+                              [Environment]::SetEnvironmentVariable('WORKER_INSTANCE_NAME', $instanceName, 'Machine')
+                              Start-Service -Name $instanceName -ErrorAction Stop
+                              Start-Sleep -Seconds 60 # Wait for service to initialize
+                              Write-Host "$instanceName started successfully."
+                          } catch {
+                              Write-Host "Failed to start $instanceName"
+                              exit 1
+                          }
+                      
+                    errorActionPreference: 'stop'
+
