@@ -8,15 +8,15 @@ let letExample = "Evening";
 if(1==1){
    var varExample = "afternoon"
    let letExample = "afternoon"
-   console.log("block level varExample: "+varExample)
-   console.log("block level letExample: "+letExample)
+   // console.log("block level varExample: "+varExample)
+   // console.log("block level letExample: "+letExample)
 }
 
    function add(a,b){
    var varExample = "night"
    let letExample = "night"
-   console.log("function level varExample: "+varExample)
-   console.log("function level letExample: "+letExample)
+   // console.log("function level varExample: "+varExample)
+   // console.log("function level letExample: "+letExample)
 return a+b
 }
 
