@@ -1,0 +1,64 @@
+Objective: Convert user stories or requirements into BDD (Behavior Driven Development) test cases.
+
+Input Parameters:
+1. User Story/Requirement: [Insert the user story or requirement here]
+2. Number of Test Cases: [Specify the number of test cases to generate, default is 5]
+3. Test Case Type: [Specify "positive", "negative", or "edge" for the type of test cases, default is "positive"]
+
+Instructions:
+1. Analyze the provided user story/requirement to identify the key functionalities and expected behavior.
+2. Based on the input parameters, generate the specified number of BDD test cases in Gherkin syntax.
+3. Ensure that the generated test cases cover the specified test case type.
+
+Structure of Gherkin Test Cases:
+- Each test case should follow this format:
+  ```
+  Feature: [Feature Title]
+    Scenario: [Scenario Title]
+      Given [initial context]
+      When [event occurs]
+      Then [expected outcome]
+  ```
+
+Examples:
+1. Positive Test Case Example:
+   ```
+   Feature: User Login
+     Scenario: Successful login with valid credentials
+       Given the user is on the login page
+       When the user enters valid username and password
+       Then the user should be redirected to the dashboard
+   ```
+
+2. Negative Test Case Example:
+   ```
+   Feature: User Login
+     Scenario: Unsuccessful login with invalid credentials
+       Given the user is on the login page
+       When the user enters invalid username and password
+       Then an error message should be displayed
+   ```
+
+3. Edge Case Test Case Example:
+   ```
+   Feature: User Login
+     Scenario: Login attempt with empty credentials
+       Given the user is on the login page
+       When the user leaves the username and password fields empty
+       Then an error message should indicate that fields cannot be empty
+   ```
+
+Reference Suggestions:
+- "Given-When-Then" format best practices
+- Examples of BDD in Agile methodologies
+- Resources on writing effective user stories
+
+Thought Process with Sub Tasks:
+1. Identify User Story Elements: Break down the user story into its core components (actors, actions, outcomes).
+2. Determine Test Case Validity: Assess which scenarios are reasonable (positive, negative, edge) based on the user story.
+3. Draft Scenarios: Write out the scenarios using Gherkin syntax, ensuring clarity and completeness.
+4. Review and Revise: Check the generated test cases for accuracy, completeness, and adherence to BDD standards.
+5. Output the Test Cases: Ensure the final output is formatted correctly and includes the specified number of test cases as requested.
+
+Output:
+- Provide a list of BDD test cases formatted correctly in Gherkin syntax based on the input parameters, ensuring clarity and comprehensive coverage of the user story elements.

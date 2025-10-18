@@ -1,0 +1,30 @@
+Structure of Gherkin Test Cases:
+- Each test case should follow this format:
+
+  Feature: [Feature Title]
+    Scenario: [Scenario Title]
+      Given [initial context]
+      When [event occurs]
+      Then [expected outcome]
+
+Examples:
+1. Positive Test Case Example:
+   Feature: User Login
+     Scenario: Successful login with valid credentials
+       Given the user is on the login page
+       When the user enters valid username and password
+       Then the user should be redirected to the dashboard
+
+2. Negative Test Case Example:
+   Feature: User Login
+     Scenario: Unsuccessful login with invalid credentials
+       Given the user is on the login page
+       When the user enters invalid username and password
+       Then an error message should be displayed
+
+3. Edge Case Test Case Example:
+   Feature: User Login
+     Scenario: Login attempt with empty credentials
+       Given the user is on the login page
+       When the user leaves the username and password fields empty
+       Then an error message should indicate that fields cannot be empty
