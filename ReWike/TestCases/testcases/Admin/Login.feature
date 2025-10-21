@@ -11,21 +11,21 @@ Feature: User Login Validation
   @Smoke @Positive
   Scenario: Successful login with valid credentials
     When the user enters valid username and password
-    |username|password      |
-    |sundars@rewike.com|Sundar@12345|
-    And clicks "log In" button
+      | username           | password     |
+      | sundars@rewike.com | Sundar@12345 |
+    And the user clicks "log In" button
     Then the user should be redirected to the 'Select an Account' page
 
   @Negative
   Scenario: Unsuccessful login with invalid credentials
     When the user enters an invalid username or password
-    And clicks "log In" button
+    And the user clicks "log In" button
     Then an error message should be displayed indicating invalid credentials
 
   @Negative
   Scenario: Attempt to login with empty credentials
     When the user clicks on the login button without entering any credentials (Duplicate for review)
-    When clicks "log In" button
+    And the user clicks "log In" button
     Then an error message should be displayed indicating that both fields are required
 
   @Smoke @Positive

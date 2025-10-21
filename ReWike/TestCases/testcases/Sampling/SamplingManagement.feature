@@ -8,7 +8,7 @@ In order to validate the Sampling Management page
 
   Background:
     Given the recognized user is on Campaign Manager dashboard page
-    And clicks 'Sampling' menu
+    And the user clicks 'Sampling' menu
 
   @Smoke @Positive
   Scenario: View list of samples

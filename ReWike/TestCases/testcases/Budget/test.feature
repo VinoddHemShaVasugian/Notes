@@ -6,8 +6,9 @@ Feature: Create New Budget Validation
 
   Background:
     Given the recognized user is on Campaign Manager dashboard page
-    And clicks "Budget" menu
-    And clicks "Create New" button
+    And the user clicks 'Budget' menu
+    And the user read the columns from 'Budget' page
+    And the user read the existing results from the list
 
   @Smoke @Positive
   Scenario: Navigate through budget creation steps
@@ -93,3 +94,12 @@ Feature: Create New Budget Validation
     When clicks "Save & Next" button
     Then the budget should be saved with "Draft" status
     And can be edited later from the budget list
+
+      @Positive
+  Scenario: Clone an existing budget and verifying copied budget
+    When the user do the search with 'Sample Name'
+    And the user clicks 'More options' icon
+    And the user clicks 'Clone' icon
+    Then the confimration message 'Sample cloned successfully' should be displayed
+    And the user selects required value 'Brand' from the 'Select Brand(s)' dropdown
+    And the list should only show samples for the selected brand 'Brand' and ' - Copy'
